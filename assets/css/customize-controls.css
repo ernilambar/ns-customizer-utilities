@@ -1,0 +1,162 @@
+/* === Heading Control === */
+.customize-control-nscu-heading {
+  text-align: center;
+}
+.customize-control-nscu-heading h3 {
+  color: #666;
+  background-color: #ddd;
+  padding: 4px 0;
+}
+
+/* === Date Time Control === */
+.flatpickr-calendar.open {
+  z-index: 50000000 !important;
+}
+
+/* === Toggle Control === */
+.customize-control-nscu-toggle .nscu-toggle-wrapper {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+.customize-control-nscu-toggle .nscu-toggle-field {
+  position: relative;
+  display: inline-block;
+  min-width: 50px;
+  margin-top: 5px;
+  height: 24px;
+}
+.customize-control-nscu-toggle .nscu-toggle-field input {
+  display: none;
+}
+.customize-control-nscu-toggle .nscu-toggle-field .nscu-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.customize-control-nscu-toggle .nscu-toggle-field .nscu-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.customize-control-nscu-toggle .nscu-toggle-field input:checked + .nscu-toggle-slider {
+  background-color: #2271b1;
+}
+.customize-control-nscu-toggle .nscu-toggle-field input:focus + .nscu-toggle-slider {
+  box-shadow: 0 0 1px #2271b1;
+}
+.customize-control-nscu-toggle .nscu-toggle-field input:checked + .nscu-toggle-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.customize-control-nscu-toggle .nscu-toggle-field .nscu-toggle-slider.round {
+  border-radius: 34px;
+}
+.customize-control-nscu-toggle .nscu-toggle-field .nscu-toggle-slider.round:before {
+  border-radius: 50%;
+}
+
+/* === Radio Image Control === */
+.customize-control-nscu-radio-image input[type=radio] {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+.customize-control-nscu-radio-image img {
+  box-sizing: border-box;
+  max-width: 100%;
+  height: auto;
+  padding: 1px;
+  border: 4px solid transparent;
+}
+.customize-control-nscu-radio-image img:hover, .customize-control-nscu-radio-image img:focus {
+  border-color: #ccc;
+}
+.customize-control-nscu-radio-image input:checked + span + img {
+  border-color: #00a0d2;
+}
+
+/* === Sortable Control === */
+.customize-control-nscu-sortable ul.ui-sortable {
+  cursor: default;
+}
+.customize-control-nscu-sortable ul.ui-sortable .dashicons-visibility {
+  cursor: pointer;
+}
+.customize-control-nscu-sortable ul.ui-sortable li {
+  padding: 5px 10px;
+  border: 1px solid #333;
+  background: #fff;
+  cursor: move;
+}
+.customize-control-nscu-sortable ul.ui-sortable li .dashicons.dashicons-menu {
+  float: right;
+}
+.customize-control-nscu-sortable ul.ui-sortable li .dashicons.visibility {
+  margin-right: 10px;
+}
+.customize-control-nscu-sortable ul.ui-sortable li.invisible {
+  color: #aaa;
+  border: 1px dashed #aaa;
+}
+.customize-control-nscu-sortable ul.ui-sortable li.invisible .dashicons.visibility {
+  color: #aaa;
+}
+
+/* === Header Section === */
+#customize-controls .control-section-nscu-header {
+  background-color: #eee;
+  text-align: center;
+}
+#customize-controls .control-section-nscu-header .accordion-section-title {
+  background-color: #eee;
+}
+#customize-controls .control-section-nscu-header .accordion-section-title:hover, #customize-controls .control-section-nscu-header .accordion-section-title:focus {
+  background-color: #eee;
+}
+
+/* === Range Control === */
+.customize-control-nscu-range .range-field {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.customize-control-nscu-range .range-value-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.customize-control-nscu-range .range-value-holder .range-number {
+  width: 45px;
+}
+
+/* === Dimension Control === */
+.customize-control-nscu-dimension .dimension-field {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.customize-control-nscu-dimension .dimension-number {
+  width: 55px !important;
+}
+.customize-control-nscu-dimension .dimension-unit {
+  width: 60px;
+}
+
+/*# sourceMappingURL=customize-controls.css.map */

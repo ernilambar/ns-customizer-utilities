@@ -1,0 +1,197 @@
+/* === Heading Control === */
+.customize-control-nscu-heading {
+	text-align: center;
+
+	h3 {
+		color:#666;
+		background-color: #ddd;
+		padding: 4px 0;
+	}
+}
+
+/* === Date Time Control === */
+.flatpickr-calendar.open {
+	z-index: 50000000 !important;
+}
+
+/* === Toggle Control === */
+.customize-control-nscu-toggle {
+	.nscu-toggle-wrapper {
+		display: flex;
+		gap: 15px;
+		justify-content: space-between;
+	}
+
+	.nscu-toggle-field {
+		position: relative;
+		display: inline-block;
+		min-width: 50px;
+		margin-top: 5px;
+		height: 24px;
+
+		input {
+			display: none;
+		}
+
+		.nscu-toggle-slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		.nscu-toggle-slider:before {
+			position: absolute;
+			content: "";
+			height: 16px;
+			width: 16px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		input:checked + .nscu-toggle-slider {
+			background-color: #2271b1;
+		}
+
+		input:focus + .nscu-toggle-slider {
+			box-shadow: 0 0 1px #2271b1;
+		}
+
+		input:checked + .nscu-toggle-slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		.nscu-toggle-slider.round {
+			border-radius: 34px;
+		}
+
+		.nscu-toggle-slider.round:before {
+			border-radius: 50%;
+		}
+	}
+}
+
+/* === Radio Image Control === */
+.customize-control-nscu-radio-image {
+
+	input[type="radio"] {
+		clip: rect(1px, 1px, 1px, 1px);
+		height: 1px;
+		overflow: hidden;
+		position: absolute !important;
+		width: 1px;
+	}
+
+	img {
+		box-sizing: border-box;
+		max-width: 100%;
+		height: auto;
+		padding: 1px;
+		border: 4px solid transparent;
+
+		&:hover, &:focus {
+			border-color: #ccc;
+		}
+	}
+
+	input:checked + span + img {
+		border-color: #00a0d2;
+	}
+}
+
+/* === Sortable Control === */
+.customize-control-nscu-sortable {
+	ul.ui-sortable {
+		cursor: default;
+
+		.dashicons-visibility {
+			cursor: pointer;
+		}
+
+		li {
+			padding: 5px 10px;
+			border: 1px solid #333;
+			background: #fff;
+			cursor: move;
+
+			.dashicons.dashicons-menu {
+				float: right;
+			}
+
+			.dashicons.visibility {
+				margin-right: 10px;
+			}
+
+			&.invisible {
+				color: #aaa;
+				border: 1px dashed #aaa;
+
+				.dashicons.visibility {
+					color: #aaa;
+				}
+			}
+		}
+	}
+}
+
+/* === Header Section === */
+#customize-controls .control-section-nscu-header {
+	background-color: #eee;
+	text-align: center;
+
+	.accordion-section-title {
+		background-color: #eee;
+
+		&:hover,
+		&:focus {
+			background-color: #eee;
+		}
+	}
+}
+
+/* === Range Control === */
+.customize-control-nscu-range {
+	.range-field {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+	}
+
+	.range-value-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+
+		.range-number {
+			width: 45px;
+		}
+	}
+}
+
+/* === Dimension Control === */
+.customize-control-nscu-dimension {
+	.dimension-field {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+	}
+
+	.dimension-number {
+		width: 55px !important;
+	}
+
+	.dimension-unit {
+		width: 60px;
+	}
+}
