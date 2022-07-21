@@ -34,6 +34,11 @@ class Heading extends WP_Customize_Control {
 		$this->json['id']    = $this->id;
 	}
 
+	public function enqueue() {
+		wp_enqueue_style( 'nscu-customize-controls' );
+		wp_enqueue_script( 'nscu-customize-controls' );
+	}
+
 	/**
 	 * Content template.
 	 *
