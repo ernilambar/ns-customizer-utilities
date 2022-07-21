@@ -1,2 +1,3 @@
-# ns-customizer-utilities
+# NS Customizer Utilities
+
 Custom Customizer Controls
