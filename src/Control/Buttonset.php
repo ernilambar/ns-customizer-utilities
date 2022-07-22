@@ -1,6 +1,6 @@
 <?php
 /**
- * Heading control
+ * Buttonset control
  *
  * @package NSCU
  */
@@ -10,13 +10,13 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Heading control class.
+ * Buttonset control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class Heading extends WP_Customize_Control {
+class Buttonset extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +24,7 @@ class Heading extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-heading';
+	public $type = 'nscu-buttonset';
 
 	/**
 	 * Export data to JS.
@@ -36,9 +36,10 @@ class Heading extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']      = $this->type . '-' . $this->id;
+		$data['value']   = $this->value();
+		$data['link']    = $this->get_link();
+		$data['choices'] = $this->choices;
 
 		return $data;
 	}
@@ -66,6 +67,14 @@ class Heading extends WP_Customize_Control {
 		<# if ( data.description ) { #>
 		<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
+
+		<div id="input_{{ data.id }}" class="buttonset">
+	  <# for ( key in data.choices ) { #>
+		<input {{{ data.inputAttrs }}} class="switch-input" type="radio" value="{{ key }}" name="_customize-radio-{{{ data.id }}}" id="{{ data.id }}{{ key }}" {{{ data.link }}}<# if ( key === data.value ) { #> checked="checked" <# } #>>
+		  <label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">{{{ data.choices[ key ] }}}</label>
+		</input>
+	  <# } #>
+	</div>
 		<?php
 	}
 
