@@ -1,12 +1,36 @@
-/* === Heading Control === */
-.customize-control-nscu-heading {
-	text-align: center;
-
-	h3 {
-		color:#666;
-		background-color: #ddd;
-		padding: 4px 0;
+/* === Buttonset Control === */
+.customize-control-nscu-buttonset {
+	input[type="radio"] {
+		clip: rect(1px, 1px, 1px, 1px);
+		height: 1px;
+		overflow: hidden;
+		position: absolute !important;
+		width: 1px;
 	}
+
+  .buttonset {
+    display: flex;
+    flex-wrap: wrap;
+
+    .switch-label {
+      background: rgba(0,0,0,.1);
+      border: 1px rgba(0,0,0,.1);
+      color: #555d66;
+      margin: 0;
+      text-align: center;
+      padding: 0.5em 1em;
+      flex-grow: 1;
+    }
+
+    .switch-input {
+      &:checked {
+        + .switch-label {
+          background-color: #2271b1;
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
 }
 
 /* === Date Time Control === */
@@ -14,70 +38,26 @@
 	z-index: 50000000 !important;
 }
 
-/* === Toggle Control === */
-.customize-control-nscu-toggle {
-	.nscu-toggle-wrapper {
-		display: flex;
-		gap: 15px;
-		justify-content: space-between;
-	}
+/* === Heading Control === */
+.customize-control-nscu-heading {
+	background-color: #fff;
+  left: -24px;
+  padding: 10px 24px;
+  position: relative;
+  width: calc(100% + 48px);
+}
 
-	.nscu-toggle-field {
-		position: relative;
-		display: inline-block;
-		min-width: 50px;
-		margin-top: 5px;
-		height: 24px;
-
-		input {
-			display: none;
-		}
-
-		.nscu-toggle-slider {
-			position: absolute;
-			cursor: pointer;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-color: #ccc;
-			-webkit-transition: 0.4s;
-			transition: 0.4s;
-		}
-
-		.nscu-toggle-slider:before {
-			position: absolute;
-			content: "";
-			height: 16px;
-			width: 16px;
-			left: 4px;
-			bottom: 4px;
-			background-color: white;
-			-webkit-transition: 0.4s;
-			transition: 0.4s;
-		}
-
-		input:checked + .nscu-toggle-slider {
-			background-color: #2271b1;
-		}
-
-		input:focus + .nscu-toggle-slider {
-			box-shadow: 0 0 1px #2271b1;
-		}
-
-		input:checked + .nscu-toggle-slider:before {
-			-webkit-transform: translateX(26px);
-			-ms-transform: translateX(26px);
-			transform: translateX(26px);
-		}
-
-		.nscu-toggle-slider.round {
-			border-radius: 34px;
-		}
-
-		.nscu-toggle-slider.round:before {
-			border-radius: 50%;
-		}
+/* === Message Control === */
+.customize-control-nscu-message {
+	.customize-control-description {
+		font-style: normal;
+		color: #666;
+		padding: 6px 6px 6px 12px;
+		border: 0;
+		border-left-width: 5px;
+		border-color: #ccc;
+		border-style: solid;
+		width: 90%;
 	}
 }
 
@@ -105,7 +85,27 @@
 	}
 
 	input:checked + span + img {
-		border-color: #00a0d2;
+		border-color: #2271b1;
+	}
+}
+
+/* === Range Control === */
+.customize-control-nscu-range {
+	.range-field {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+	}
+
+	.range-value-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+
+		.range-number {
+			width: 45px;
+		}
 	}
 }
 
@@ -144,6 +144,90 @@
 	}
 }
 
+/* === Toggle Control === */
+.customize-control-nscu-toggle {
+	.field-wrapper {
+		display: flex;
+		gap: 15px;
+		justify-content: space-between;
+	}
+
+	.field-holder {
+		position: relative;
+		display: inline-block;
+		min-width: 50px;
+		margin-top: 5px;
+		height: 24px;
+
+		input {
+			display: none;
+		}
+
+		.field-slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		.field-slider:before {
+			position: absolute;
+			content: "";
+			height: 16px;
+			width: 16px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		input:checked + .field-slider {
+			background-color: #2271b1;
+		}
+
+		input:focus + .field-slider {
+			box-shadow: 0 0 1px #2271b1;
+		}
+
+		input:checked + .field-slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		.field-slider.round {
+			border-radius: 34px;
+		}
+
+		.field-slider.round:before {
+			border-radius: 50%;
+		}
+	}
+}
+
+/* === Button Section === */
+.control-section-nscu-button {
+	.accordion-section-title {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		justify-content: space-between;
+		padding: 7px 0px 7px 14px;
+		padding-right: 14px !important;
+
+		&.no-button {
+			padding: 10px 10px 11px 14px;
+			padding-right: 30px !important;
+		}
+	}
+}
+
 /* === Header Section === */
 #customize-controls .control-section-nscu-header {
 	background-color: #eee;
@@ -156,42 +240,5 @@
 		&:focus {
 			background-color: #eee;
 		}
-	}
-}
-
-/* === Range Control === */
-.customize-control-nscu-range {
-	.range-field {
-		display: flex;
-		justify-content: center;
-		gap: 5px;
-	}
-
-	.range-value-holder {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 5px;
-
-		.range-number {
-			width: 45px;
-		}
-	}
-}
-
-/* === Dimension Control === */
-.customize-control-nscu-dimension {
-	.dimension-field {
-		display: flex;
-		justify-content: center;
-		gap: 5px;
-	}
-
-	.dimension-number {
-		width: 55px !important;
-	}
-
-	.dimension-unit {
-		width: 60px;
 	}
 }

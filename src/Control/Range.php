@@ -1,6 +1,6 @@
 <?php
 /**
- * Heading control
+ * Range control
  *
  * @package NSCU
  */
@@ -10,13 +10,13 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Heading control class.
+ * Range control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class Heading extends WP_Customize_Control {
+class Range extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +24,16 @@ class Heading extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-heading';
+	public $type = 'nscu-range';
+
+	/**
+	 * Suffix.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	public $suffix = '';
 
 	/**
 	 * Export data to JS.
@@ -39,6 +48,17 @@ class Heading extends WP_Customize_Control {
 		$data['id']    = $this->type . '-' . $this->id;
 		$data['value'] = $this->value();
 		$data['link']  = $this->get_link();
+
+		$data['suffix'] = $this->suffix;
+
+		$data['input_attrs'] = wp_parse_args(
+			$this->input_attrs,
+			array(
+				'min'  => 1,
+				'max'  => 100,
+				'step' => 1,
+			)
+		);
 
 		return $data;
 	}
@@ -61,11 +81,20 @@ class Heading extends WP_Customize_Control {
 	public function content_template() {
 		?>
 		<# if ( data.label ) { #>
-		<span class="customize-control-title">{{ data.label }}</span>
+			<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
 		<# } #>
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
+		<div class="range-field">
+			<input type="range" class="range-input" value="{{ data.value }}" min="{{ data.input_attrs.min }}" max="{{ data.input_attrs.max }}" step="{{ data.input_attrs.step }}" id="{{ data.id }}" {{{ data.link }}} />
+
+			<div class="range-value-holder">
+				<input type="text" class="range-number" value="{{ data.value }}" />
+				<span class="range-value-suffix">{{ data.suffix }}</span>
+			</div>
+		</div>
+
 		<?php
 	}
 

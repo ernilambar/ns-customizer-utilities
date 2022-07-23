@@ -1,6 +1,6 @@
 <?php
 /**
- * Heading control
+ * Date Time control
  *
  * @package NSCU
  */
@@ -10,13 +10,13 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Heading control class.
+ * Date Time control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class Heading extends WP_Customize_Control {
+class DateTime extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +24,7 @@ class Heading extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-heading';
+	public $type = 'nscu-date-time';
 
 	/**
 	 * Export data to JS.
@@ -36,9 +36,10 @@ class Heading extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']           = $this->type . '-' . $this->id;
+		$data['value']        = $this->value();
+		$data['link']         = $this->get_link();
+		$data['defaultValue'] = $this->setting->default;
 
 		return $data;
 	}
@@ -61,11 +62,18 @@ class Heading extends WP_Customize_Control {
 	public function content_template() {
 		?>
 		<# if ( data.label ) { #>
-		<span class="customize-control-title">{{ data.label }}</span>
+			<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
 		<# } #>
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
+		<label class="nscu-date-time">
+			<div class="nscu-date-time-wrapper">
+				<div class="nscu-date-time-field">
+					<input id="{{ data.id }}" type="text" class="nscu-date-time-input" value="{{ data.value }}" {{{ data.link }}} />
+				</div>
+			</div>
+		</label>
 		<?php
 	}
 

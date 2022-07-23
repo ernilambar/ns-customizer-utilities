@@ -1,6 +1,6 @@
 <?php
 /**
- * Heading control
+ * Message control
  *
  * @package NSCU
  */
@@ -10,13 +10,13 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Heading control class.
+ * Message control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class Heading extends WP_Customize_Control {
+class Message extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +24,7 @@ class Heading extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-heading';
+	public $type = 'nscu-message';
 
 	/**
 	 * Export data to JS.
