@@ -45,9 +45,10 @@ class Range extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']           = $this->type . '-' . $this->id;
+		$data['value']        = $this->value();
+		$data['link']         = $this->get_link();
+		$data['defaultValue'] = $this->setting->default;
 
 		$data['suffix'] = $this->suffix;
 
@@ -86,14 +87,23 @@ class Range extends WP_Customize_Control {
 		<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
-		<div class="range-field">
-			<input type="range" class="range-input" value="{{ data.value }}" min="{{ data.input_attrs.min }}" max="{{ data.input_attrs.max }}" step="{{ data.input_attrs.step }}" id="{{ data.id }}" {{{ data.link }}} />
 
-			<div class="range-value-holder">
-				<input type="text" class="range-number" value="{{ data.value }}" />
-				<span class="range-value-suffix">{{ data.suffix }}</span>
+		<div class="range-wrapper" style="position:relative;">
+			<button class="range-reset" data-default="{{data.defaultValue}}">
+				<i class="dashicons dashicons-image-rotate"></i>
+			</button><!-- .range-reset -->
+
+			<div class="range-field">
+				<input type="range" class="range-input" value="{{ data.value }}" min="{{ data.input_attrs.min }}" max="{{ data.input_attrs.max }}" step="{{ data.input_attrs.step }}" id="{{ data.id }}" {{{ data.link }}} />
+
+				<div class="range-value-holder">
+					<input type="text" class="range-number" value="{{ data.value }}" />
+					<span class="range-value-suffix">{{ data.suffix }}</span>
+				</div>
 			</div>
-		</div>
+
+		</div><!-- .range-wrapper -->
+
 
 		<?php
 	}

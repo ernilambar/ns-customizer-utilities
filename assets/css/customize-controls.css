@@ -87,6 +87,28 @@
 .customize-control-nscu-range .range-value-holder .range-number {
   width: 45px;
 }
+.customize-control-nscu-range .range-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 22px;
+  position: absolute;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  color: #50575e;
+  background-color: transparent;
+  border-radius: 50%;
+  border-width: 0;
+  opacity: 1;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 3;
+}
+.customize-control-nscu-range .range-reset i {
+  font-size: 12px;
+}
 
 /* === Sortable Control === */
 .customize-control-nscu-sortable ul.ui-sortable {
