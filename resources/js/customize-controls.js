@@ -46,6 +46,12 @@
 			control.container.on( 'input change', 'input.range-number', function() {
 				control.setting.set( $( this ).val() );
 			} );
+			control.container.on( 'click', '.range-reset', function(e) {
+				e.preventDefault();
+				const resetValue = $(this).data('default');
+				control.container.find( '.range-number' ).val( resetValue );
+				control.setting.set( resetValue );
+			} );
 		},
 	} );
 
