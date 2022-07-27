@@ -41,7 +41,7 @@ class Dimension extends WP_Customize_Control {
 		$data['link']  = $this->get_link();
 
 		$data['dimension_number'] = '';
-		$data['dimension_unit'] = 'px';
+		$data['dimension_unit']   = 'px';
 
 		$is_number = preg_match( '(\d+)', $data['value'], $matches );
 
@@ -51,7 +51,7 @@ class Dimension extends WP_Customize_Control {
 
 		$pattern = '/\d+/i';
 
-		$data['dimension_unit'] = preg_replace( $pattern, '', $data['value']);
+		$data['dimension_unit'] = preg_replace( $pattern, '', $data['value'] );
 
 		$data['input_attrs'] = wp_parse_args(
 			$this->input_attrs,

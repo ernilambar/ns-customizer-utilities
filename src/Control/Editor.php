@@ -26,7 +26,13 @@ class Editor extends WP_Customize_Control {
 	 */
 	public $type = 'nscu-editor';
 
-	public $choices = [];
+	/**
+	 * Editor options.
+	 *
+	 * @since 1.0.0
+	 * @var array
+	 */
+	public $choices = array();
 
 	/**
 	 * Export data to JS.

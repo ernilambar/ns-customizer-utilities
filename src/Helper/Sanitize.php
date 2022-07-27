@@ -51,9 +51,9 @@ class Sanitize {
 	 * @return string Sanitized content.
 	 */
 	public static function dimension( $input, $setting ) {
-		$is_valid = false;
+		$is_valid        = false;
 		$is_number_valid = false;
-		$is_unit_valid = false;
+		$is_unit_valid   = false;
 
 		$number = null;
 
@@ -65,8 +65,8 @@ class Sanitize {
 		}
 
 		$atts = $setting->manager->get_control( $setting->id )->input_attrs;
-		$min = ( isset( $atts['min'] ) ? $atts['min'] : $input );
-		$max = ( isset( $atts['max'] ) ? $atts['max'] : $input );
+		$min  = ( isset( $atts['min'] ) ? $atts['min'] : $input );
+		$max  = ( isset( $atts['max'] ) ? $atts['max'] : $input );
 
 		if ( $min <= $number && $number <= $max ) {
 			$is_number_valid = true;

@@ -64,14 +64,14 @@ class DropdownTaxonomies extends WP_Customize_Control {
 		$args['taxonomy'] = $our_taxonomy;
 		$this->taxonomy   = esc_attr( $our_taxonomy );
 
-		$tax_args       = array(
+		$tax_args = array(
 			'hierarchical' => 0,
 			'taxonomy'     => $this->taxonomy,
 		);
 
 		$all_taxonomies = get_categories( $tax_args );
 
-		$choices    = array();
+		$choices = array();
 
 		$choices[0] = esc_html__( '&mdash; Select &mdash;', 'education-soul' );
 
@@ -96,10 +96,10 @@ class DropdownTaxonomies extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']      = $this->type . '-' . $this->id;
-		$data['value']   = $this->value();
-		$data['link']    = $this->get_link();
-		$data['choices'] = $this->choices;
+		$data['id']       = $this->type . '-' . $this->id;
+		$data['value']    = $this->value();
+		$data['link']     = $this->get_link();
+		$data['choices']  = $this->choices;
 		$data['multiple'] = $this->multiple;
 
 		return $data;

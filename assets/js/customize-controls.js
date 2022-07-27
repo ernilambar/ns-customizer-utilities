@@ -11,11 +11,32 @@
   });
   api.controlConstructor['nscu-date-time'] = api.Control.extend({
     ready: function ready() {
-      this.container.find('.nscu-date-time-input').flatpickr({
-        dateFormat: 'Y-m-d H:i',
-        enableTime: true,
-        time_24hr: true
-      });
+      var control = this;
+      var $input = control.container.find('.nscu-date-time-input');
+      var disableDate = $input.data('disable-date');
+      var disableTime = $input.data('disable-time');
+      var dateFormat = 'Y-m-d H:i';
+      var enableTime = true;
+      var time_24hr = true;
+      var noCalendar = false;
+
+      if (true == disableDate) {
+        dateFormat = 'H:i';
+        noCalendar = true;
+      }
+
+      if (true == disableTime) {
+        dateFormat = 'Y-m-d';
+        enableTime = false;
+      }
+
+      var pickerArgs = {
+        dateFormat: dateFormat,
+        enableTime: enableTime,
+        noCalendar: noCalendar,
+        time_24hr: time_24hr
+      };
+      this.container.find('.nscu-date-time-input').flatpickr(pickerArgs);
     }
   });
   api.controlConstructor['nscu-dimension'] = api.Control.extend({

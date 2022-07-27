@@ -15,11 +15,31 @@
 	api.controlConstructor[ 'nscu-date-time' ] = api.Control.extend( {
 
 		ready() {
-			this.container.find( '.nscu-date-time-input' ).flatpickr( {
-				dateFormat: 'Y-m-d H:i',
-				enableTime: true,
-				time_24hr: true,
-			} );
+			const control = this;
+
+			const $input= control.container.find('.nscu-date-time-input');
+
+			const disableDate = $input.data('disable-date');
+			const disableTime = $input.data('disable-time');
+
+			let dateFormat = 'Y-m-d H:i';
+			let enableTime = true;
+			let time_24hr = true;
+			let noCalendar = false;
+
+			if ( true == disableDate ) {
+				dateFormat = 'H:i';
+				noCalendar = true;
+			}
+
+			if ( true == disableTime ) {
+				dateFormat = 'Y-m-d';
+				enableTime = false;
+			}
+
+			const pickerArgs = { dateFormat, enableTime, noCalendar, time_24hr };
+
+			this.container.find( '.nscu-date-time-input' ).flatpickr( pickerArgs );
 		},
 	} );
 

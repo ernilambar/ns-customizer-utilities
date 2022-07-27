@@ -27,6 +27,22 @@ class DateTime extends WP_Customize_Control {
 	public $type = 'nscu-date-time';
 
 	/**
+	 * Disable time.
+	 *
+	 * @since 1.0.0
+	 * @var bool
+	 */
+	public $disable_time = false;
+
+	/**
+	 * Disable date.
+	 *
+	 * @since 1.0.0
+	 * @var bool
+	 */
+	public $disable_date = false;
+
+	/**
 	 * Export data to JS.
 	 *
 	 * @since 1.0.0
@@ -36,10 +52,11 @@ class DateTime extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']           = $this->type . '-' . $this->id;
-		$data['value']        = $this->value();
-		$data['link']         = $this->get_link();
-		$data['defaultValue'] = $this->setting->default;
+		$data['id']          = $this->type . '-' . $this->id;
+		$data['value']       = $this->value();
+		$data['link']        = $this->get_link();
+		$data['disableTime'] = $this->disable_time;
+		$data['disableDate'] = $this->disable_date;
 
 		return $data;
 	}
@@ -70,7 +87,7 @@ class DateTime extends WP_Customize_Control {
 		<label class="nscu-date-time">
 			<div class="nscu-date-time-wrapper">
 				<div class="nscu-date-time-field">
-					<input id="{{ data.id }}" type="text" class="nscu-date-time-input" value="{{ data.value }}" {{{ data.link }}} />
+					<input id="{{ data.id }}" type="text" class="nscu-date-time-input" value="{{ data.value }}" data-disable-time="{{ data.disableTime }}" data-disable-date="{{ data.disableDate }}" {{{ data.link }}} />
 				</div>
 			</div>
 		</label>
