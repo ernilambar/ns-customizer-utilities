@@ -62,6 +62,16 @@
 				const currentValue = control.container.find( '.dimension-slider' ).val() + control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
 				control.setting.set( currentValue );
 			} );
+
+			control.container.on( 'click', '.dimension-reset', function(e) {
+				e.preventDefault();
+				const dimensionNumber = $(this).data('default-dimension-number');
+				const dimensionUnit = $(this).data('default-dimension-unit');
+				control.container.find( '.dimension-slider' ).val( dimensionNumber );
+				control.container.find( '.dimension-number' ).val( dimensionNumber );
+				control.container.find( '.dimension-unit' ).val( dimensionUnit );
+				control.setting.set( dimensionNumber + dimensionUnit );
+			} );
 		},
 	} );
 

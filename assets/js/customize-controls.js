@@ -56,6 +56,15 @@
         var currentValue = control.container.find('.dimension-slider').val() + control.container.find('.dimension-unit option').filter(':selected').val();
         control.setting.set(currentValue);
       });
+      control.container.on('click', '.dimension-reset', function (e) {
+        e.preventDefault();
+        var dimensionNumber = $(this).data('default-dimension-number');
+        var dimensionUnit = $(this).data('default-dimension-unit');
+        control.container.find('.dimension-slider').val(dimensionNumber);
+        control.container.find('.dimension-number').val(dimensionNumber);
+        control.container.find('.dimension-unit').val(dimensionUnit);
+        control.setting.set(dimensionNumber + dimensionUnit);
+      });
     }
   });
   api.controlConstructor['nscu-dropdown-taxonomies'] = api.Control.extend({

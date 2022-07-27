@@ -88,7 +88,7 @@ class Range extends WP_Customize_Control {
 			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 
-		<div class="range-wrapper" style="position:relative;">
+		<div class="range-wrapper">
 			<button class="range-reset" data-default="{{data.defaultValue}}">
 				<i class="dashicons dashicons-image-rotate"></i>
 			</button><!-- .range-reset -->
