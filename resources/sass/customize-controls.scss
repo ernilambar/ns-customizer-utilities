@@ -38,6 +38,13 @@
 	z-index: 50000000 !important;
 }
 
+/* === Editor Control === */
+.customize-control-nscu-editor {
+  textarea {
+    width: 100%;
+  }
+}
+
 /* === Heading Control === */
 .customize-control-nscu-heading {
 	background-color: #fff;

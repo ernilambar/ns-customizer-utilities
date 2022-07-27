@@ -5,10 +5,7 @@
 			const control = this;
 
 			const element = control.container.find( 'textarea' );
-			const id      = 'custom-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
-
-						console.log( id );
-
+			const id      = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
 
 			let defaultParams = {
 	      tinymce: {

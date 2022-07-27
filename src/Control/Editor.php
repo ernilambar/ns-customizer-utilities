@@ -26,6 +26,8 @@ class Editor extends WP_Customize_Control {
 	 */
 	public $type = 'nscu-editor';
 
+	public $choices = [];
+
 	/**
 	 * Export data to JS.
 	 *
@@ -36,25 +38,13 @@ class Editor extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['id']    = $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
-
-		$data['skyrockettinymcetoolbar1'] = isset( $this->input_attrs['toolbar1'] ) ? esc_attr( $this->input_attrs['toolbar1'] ) : 'bold italic bullist numlist alignleft aligncenter alignright link';
-
-		$data['skyrockettinymcetoolbar2'] = isset( $this->input_attrs['toolbar2'] ) ? esc_attr( $this->input_attrs['toolbar2'] ) : '';
-		$data['skyrocketmediabuttons'] = isset( $this->input_attrs['mediaButtons'] ) && ( $this->input_attrs['mediaButtons'] === true ) ? true : false;
+		$data['id']      = $this->type . '-' . $this->id;
+		$data['choices'] = $this->choices;
+		$data['value']   = $this->value();
+		$data['link']    = $this->get_link();
 
 		return $data;
 	}
-
-	// public function to_json() {
-	// 	parent::to_json();
-	// 	$this->json['skyrockettinymcetoolbar1'] = isset( $this->input_attrs['toolbar1'] ) ? esc_attr( $this->input_attrs['toolbar1'] ) : 'bold italic bullist numlist alignleft aligncenter alignright link';
-	// 	$this->json['skyrockettinymcetoolbar2'] = isset( $this->input_attrs['toolbar2'] ) ? esc_attr( $this->input_attrs['toolbar2'] ) : '';
-	// 	$this->json['skyrocketmediabuttons'] = isset( $this->input_attrs['mediaButtons'] ) && ( $this->input_attrs['mediaButtons'] === true ) ? true : false;
-	// }
 
 	/**
 	 * Enqueue scripts and styles.
@@ -77,7 +67,7 @@ class Editor extends WP_Customize_Control {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 
-		<textarea id="custom-editor-{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}" {{{ data.inputAttrs }}} {{{ data.link }}}>{{ data.value }}</textarea>
+		<textarea id="{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}" {{{ data.inputAttrs }}} {{{ data.link }}}>{{ data.value }}</textarea>
 
 		<?php
 	}

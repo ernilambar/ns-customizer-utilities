@@ -5,8 +5,7 @@
     ready: function ready() {
       var control = this;
       var element = control.container.find('textarea');
-      var id = 'custom-editor-' + control.id.replace('[', '').replace(']', '');
-      console.log(id);
+      var id = 'nscu-editor-' + control.id.replace('[', '').replace(']', '');
       var defaultParams = {
         tinymce: {
           wpautop: true
