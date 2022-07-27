@@ -42,6 +42,53 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize dimension.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string               $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return string Sanitized content.
+	 */
+	public static function dimension( $input, $setting ) {
+		$is_valid = false;
+		$is_number_valid = false;
+		$is_unit_valid = false;
+
+		$number = null;
+
+		// Check number.
+		$is_number = preg_match( '(\d+)', $input, $matches );
+
+		if ( $is_number ) {
+			$number = floatval( reset( $matches ) );
+		}
+
+		$atts = $setting->manager->get_control( $setting->id )->input_attrs;
+		$min = ( isset( $atts['min'] ) ? $atts['min'] : $input );
+		$max = ( isset( $atts['max'] ) ? $atts['max'] : $input );
+
+		if ( $min <= $number && $number <= $max ) {
+			$is_number_valid = true;
+		}
+
+		// Check units.
+		$units = array( 'px', '%', 'em', 'rem', 'vh', 'vw' );
+
+		$pattern = '/\d+/i';
+
+		$unit = preg_replace( $pattern, '', $input );
+
+		if ( in_array( $unit, $units, true ) ) {
+			$is_unit_valid = true;
+		}
+
+		$is_valid = $is_number_valid && $is_unit_valid;
+
+		return ( $is_valid ? $input : $setting->default );
+	}
+
+	/**
 	 * Sanitize email.
 	 *
 	 * @since 1.0.0

@@ -38,6 +38,23 @@
 	z-index: 50000000 !important;
 }
 
+/* === Dimension Control === */
+.customize-control-nscu-dimension {
+	.dimension-field {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+	}
+
+	.dimension-number {
+		width: 55px !important;
+	}
+
+	.dimension-unit {
+		width: 60px;
+	}
+}
+
 /* === Editor Control === */
 .customize-control-nscu-editor {
   textarea {

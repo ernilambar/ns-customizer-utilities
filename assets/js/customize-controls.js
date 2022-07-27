@@ -48,6 +48,25 @@
       });
     }
   });
+  api.controlConstructor['nscu-dimension'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      control.container.on('input change', 'input.dimension-slider', function () {
+        var currentValue = control.container.find('.dimension-slider').val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.container.find('.dimension-number').val(control.container.find('.dimension-slider').val());
+        control.setting.set(currentValue);
+      });
+      control.container.on('input change', 'input.dimension-number', function () {
+        var currentValue = $(this).val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.container.find('.dimension-slider').val($(this).val());
+        control.setting.set(currentValue);
+      });
+      control.container.on('change', 'select.dimension-unit', function () {
+        var currentValue = control.container.find('.dimension-slider').val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.setting.set(currentValue);
+      });
+    }
+  });
   api.controlConstructor['nscu-radio-image'] = api.Control.extend({
     ready: function ready() {
       var control = this;
