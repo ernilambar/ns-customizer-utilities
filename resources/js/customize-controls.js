@@ -1,40 +1,5 @@
 ( function( $, api ) {
 
-		api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
-		ready() {
-			const control = this;
-
-			const element = control.container.find( 'textarea' );
-			const id      = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
-
-			let defaultParams = {
-	      tinymce: {
-	        wpautop: true
-	      },
-	      quicktags: true,
-	      mediaButtons: true
-	    };
-
-	    // Overwrite the default paramaters if choices is defined.
-	    if ( wp.editor && wp.editor.initialize ) {
-	      wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
-	    }
-
-	    const editor = tinyMCE.get( id );
-
-	    if ( editor ) {
-	      editor.onChange.add( function( ed ) {
-	        var content;
-
-	        ed.save();
-	        content = editor.getContent();
-	        element.val( content ).trigger( 'change' );
-	        wp.customize.instance( control.id ).set( content );
-	      } );
-	    }
-		},
-	} );
-
 	api.controlConstructor[ 'nscu-buttonset' ] = api.Control.extend( {
 		ready() {
 			const control = this;
@@ -80,6 +45,52 @@
 		},
 	} );
 
+	api.controlConstructor['nscu-dropdown-taxonomies'] = api.Control.extend( {
+		ready: function() {
+			var control = this;
+
+			$( 'select', control.container ).change(
+				function() {
+					control.setting.set( $( this ).val() );
+				}
+			);
+		}
+	} );
+
+	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
+		ready() {
+			const control = this;
+
+			const element = control.container.find( 'textarea' );
+			const id      = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
+
+			let defaultParams = {
+	      tinymce: {
+	        wpautop: true
+	      },
+	      quicktags: true,
+	      mediaButtons: true
+	    };
+
+	    // Overwrite the default paramaters if choices is defined.
+	    if ( wp.editor && wp.editor.initialize ) {
+	      wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
+	    }
+
+	    const editor = tinyMCE.get( id );
+
+	    if ( editor ) {
+	      editor.onChange.add( function( ed ) {
+	        var content;
+
+	        ed.save();
+	        content = editor.getContent();
+	        element.val( content ).trigger( 'change' );
+	        wp.customize.instance( control.id ).set( content );
+	      } );
+	    }
+		},
+	} );
 
 	api.controlConstructor[ 'nscu-radio-image' ] = api.Control.extend( {
 		ready() {

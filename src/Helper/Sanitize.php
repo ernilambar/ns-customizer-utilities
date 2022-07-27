@@ -156,6 +156,31 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize select multiple.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed                $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return mixed Sanitized value.
+	 */
+	public static function select_multiple( $input, $setting ) {
+		$new_values = array();
+
+		$choices = $setting->manager->get_control( $setting->id )->choices;
+
+		if ( is_array( $input ) && ! empty( $input ) ) {
+			foreach ( $input as $item => $val ) {
+				if ( array_key_exists( $val, $choices ) ) {
+					$new_values[] = $val;
+				}
+			}
+		}
+
+		return $new_values;
+	}
+
+	/**
 	 * Sanitize sortable.
 	 *
 	 * @since 1.0.0
