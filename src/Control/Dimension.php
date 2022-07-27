@@ -40,21 +40,16 @@ class Dimension extends WP_Customize_Control {
 		$data['value'] = $this->value();
 		$data['link']  = $this->get_link();
 		$data['defaultValue'] = $this->setting->default;
-		$data['defaultDimensionNumber'] = '80';
-		$data['defaultDimensionUnit'] = '%';
 
-		$data['dimension_number'] = '';
-		$data['dimension_unit']   = 'px';
+		$default_dimension_details = $this->get_dimension_details( $this->setting->default );
 
-		$is_number = preg_match( '(\d+)', $data['value'], $matches );
+		$data['defaultDimensionNumber'] = $default_dimension_details['number'];
+		$data['defaultDimensionUnit'] = $default_dimension_details['unit'];
 
-		if ( $is_number ) {
-			$data['dimension_number'] = reset( $matches );
-		}
+		$current_dimension_details = $this->get_dimension_details( $data['value'] );
 
-		$pattern = '/\d+/i';
-
-		$data['dimension_unit'] = preg_replace( $pattern, '', $data['value'] );
+		$data['dimension_number'] = $current_dimension_details['number'];
+		$data['dimension_unit']   = $current_dimension_details['unit'];
 
 		$data['input_attrs'] = wp_parse_args(
 			$this->input_attrs,
@@ -66,6 +61,25 @@ class Dimension extends WP_Customize_Control {
 		);
 
 		return $data;
+	}
+
+	protected function get_dimension_details( $input ) {
+		$output = array(
+			'number' => '',
+			'unit'   => '',
+		);
+
+		$is_number = preg_match( '(\d+)', $input, $matches );
+
+		if ( $is_number ) {
+			$output['number'] = reset( $matches );
+		}
+
+		$pattern = '/\d+/i';
+
+		$output['unit'] = preg_replace( $pattern, '', $input );
+
+		return $output;
 	}
 
 	/**
