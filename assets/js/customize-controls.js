@@ -1,6 +1,50 @@
 "use strict";
 
 (function ($, api) {
+  api.controlConstructor['nscu-buttonset'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      $('input:radio', control.container).change(function () {
+        control.setting.set($(this).val());
+      });
+    }
+  });
+  api.controlConstructor['nscu-date-time'] = api.Control.extend({
+    ready: function ready() {
+      this.container.find('.nscu-date-time-input').flatpickr({
+        dateFormat: 'Y-m-d H:i',
+        enableTime: true,
+        time_24hr: true
+      });
+    }
+  });
+  api.controlConstructor['nscu-dimension'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      control.container.on('input change', 'input.dimension-slider', function () {
+        var currentValue = control.container.find('.dimension-slider').val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.container.find('.dimension-number').val(control.container.find('.dimension-slider').val());
+        control.setting.set(currentValue);
+      });
+      control.container.on('input change', 'input.dimension-number', function () {
+        var currentValue = $(this).val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.container.find('.dimension-slider').val($(this).val());
+        control.setting.set(currentValue);
+      });
+      control.container.on('change', 'select.dimension-unit', function () {
+        var currentValue = control.container.find('.dimension-slider').val() + control.container.find('.dimension-unit option').filter(':selected').val();
+        control.setting.set(currentValue);
+      });
+    }
+  });
+  api.controlConstructor['nscu-dropdown-taxonomies'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      $('select', control.container).change(function () {
+        control.setting.set($(this).val());
+      });
+    }
+  });
   api.controlConstructor['nscu-editor'] = api.Control.extend({
     ready: function ready() {
       var control = this;
@@ -29,23 +73,6 @@
           wp.customize.instance(control.id).set(content);
         });
       }
-    }
-  });
-  api.controlConstructor['nscu-buttonset'] = api.Control.extend({
-    ready: function ready() {
-      var control = this;
-      $('input:radio', control.container).change(function () {
-        control.setting.set($(this).val());
-      });
-    }
-  });
-  api.controlConstructor['nscu-date-time'] = api.Control.extend({
-    ready: function ready() {
-      this.container.find('.nscu-date-time-input').flatpickr({
-        dateFormat: 'Y-m-d H:i',
-        enableTime: true,
-        time_24hr: true
-      });
     }
   });
   api.controlConstructor['nscu-radio-image'] = api.Control.extend({
