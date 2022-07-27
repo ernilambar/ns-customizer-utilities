@@ -1,6 +1,37 @@
 "use strict";
 
 (function ($, api) {
+  api.controlConstructor['nscu-editor'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      var element = control.container.find('textarea');
+      var id = 'custom-editor-' + control.id.replace('[', '').replace(']', '');
+      console.log(id);
+      var defaultParams = {
+        tinymce: {
+          wpautop: true
+        },
+        quicktags: true,
+        mediaButtons: true
+      }; // Overwrite the default paramaters if choices is defined.
+
+      if (wp.editor && wp.editor.initialize) {
+        wp.editor.initialize(id, jQuery.extend({}, defaultParams, control.params.choices));
+      }
+
+      var editor = tinyMCE.get(id);
+
+      if (editor) {
+        editor.onChange.add(function (ed) {
+          var content;
+          ed.save();
+          content = editor.getContent();
+          element.val(content).trigger('change');
+          wp.customize.instance(control.id).set(content);
+        });
+      }
+    }
+  });
   api.controlConstructor['nscu-buttonset'] = api.Control.extend({
     ready: function ready() {
       var control = this;
