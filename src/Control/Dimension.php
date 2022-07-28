@@ -36,15 +36,15 @@ class Dimension extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']           = $this->type . '-' . $this->id;
+		$data['value']        = $this->value();
+		$data['link']         = $this->get_link();
 		$data['defaultValue'] = $this->setting->default;
 
 		$default_dimension_details = $this->get_dimension_details( $this->setting->default );
 
 		$data['defaultDimensionNumber'] = $default_dimension_details['number'];
-		$data['defaultDimensionUnit'] = $default_dimension_details['unit'];
+		$data['defaultDimensionUnit']   = $default_dimension_details['unit'];
 
 		$current_dimension_details = $this->get_dimension_details( $data['value'] );
 
