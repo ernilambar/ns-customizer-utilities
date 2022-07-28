@@ -100,10 +100,10 @@ class Dimension extends WP_Customize_Control {
 	public function content_template() {
 		?>
 		<# if ( data.label ) { #>
-		<span class="customize-control-title">{{ data.label }}</span>
+			<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
 		<# } #>
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 
 		<div class="dimension-wrapper">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Radio Image control
+ * Dropdown Google Fonts control
  *
  * @package NSCU
  */
@@ -8,15 +8,16 @@
 namespace Nilambar\CustomizerUtils\Control;
 
 use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Helper\GoogleFonts;
 
 /**
- * Radio Image control class.
+ * Dropdown Google Fonts control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class RadioImage extends WP_Customize_Control {
+class DropdownGoogleFonts extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +25,23 @@ class RadioImage extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-radio-image';
+	public $type = 'nscu-google-fonts';
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+	 * @param string               $id      Control ID.
+	 * @param array                $args    Optional. Arguments to override class property defaults.
+	 */
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->choices = GoogleFonts::get_fonts_options();
+
+		parent::__construct( $manager, $id, $args );
+	}
+
 
 	/**
 	 * Export data to JS.
@@ -73,13 +90,13 @@ class RadioImage extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 
-			<# _.each( data.choices, function( args, choice ) { #>
-				<label>
-					<input type="radio" value="{{ choice }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( choice == data.value ) { #> checked="checked" <# } #> />
-					<span class="screen-reader-text">{{ args.label }}</span>
-					<img src="{{ args.url }}" alt="{{ args.label }}" />
-				</label>
-			<# } ) #>
+			<select {{{ data.link }}} name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}" <# if ( true == data.multiple ) { #>multiple<# } #>>
+				<# _.each( data.choices, function( label, choice ) { #>
+
+					<option value="{{ choice }}" <# if ( choice === data.value ) { #> selected="selected" <# } #>>{{{ label }}}</option>
+
+				<# } ) #>
+			</select>
 		<?php
 	}
 

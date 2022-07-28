@@ -75,6 +75,14 @@
       });
     }
   });
+  api.controlConstructor['nscu-dropdown-google-fonts'] = api.Control.extend({
+    ready: function ready() {
+      var control = this;
+      $('select', control.container).change(function () {
+        control.setting.set($(this).val());
+      });
+    }
+  });
   api.controlConstructor['nscu-editor'] = api.Control.extend({
     ready: function ready() {
       var control = this;

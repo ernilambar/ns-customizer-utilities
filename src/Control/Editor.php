@@ -66,7 +66,7 @@ class Editor extends WP_Customize_Control {
 	public function content_template() {
 		?>
 		<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
+			<label class="customize-control-title" for="{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}">{{ data.label }}</label>
 		<# } #>
 
 		<# if ( data.description ) { #>
