@@ -36,9 +36,10 @@ class Message extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']          = $this->type . '-' . $this->id;
+		$data['value']       = $this->value();
+		$data['description'] = wp_kses_post( $this->description );
+		$data['link']        = $this->get_link();
 
 		return $data;
 	}
@@ -64,7 +65,7 @@ class Message extends WP_Customize_Control {
 		<span class="customize-control-title">{{ data.label }}</span>
 		<# } #>
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+		<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 		<?php
 	}
