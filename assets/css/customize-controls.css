@@ -67,6 +67,13 @@
   font-size: 12px;
 }
 
+/* === Divider Control === */
+.customize-control-nscu-divider hr {
+  border: 0;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #f8f8f8;
+}
+
 /* === Editor Control === */
 .customize-control-nscu-editor textarea {
   width: 100%;
