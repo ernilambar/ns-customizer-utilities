@@ -45,9 +45,17 @@ class Editor extends WP_Customize_Control {
 		$data = parent::json();
 
 		$data['id']      = $this->type . '-' . $this->id;
-		$data['choices'] = $this->choices;
 		$data['value']   = $this->value();
 		$data['link']    = $this->get_link();
+		$data['choices'] = wp_parse_args(
+			$this->choices,
+			array(
+				'tabs'            => 'both',
+				'media_buttons'   => false,
+				'toolbar'         => 'default',
+				'toolbar_buttons' => '',
+			)
+		);
 
 		return $data;
 	}

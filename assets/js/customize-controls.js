@@ -88,16 +88,38 @@
       var control = this;
       var element = control.container.find('textarea');
       var id = 'nscu-editor-' + control.id.replace('[', '').replace(']', '');
-      var defaultParams = {
-        tinymce: {
-          wpautop: true
-        },
-        quicktags: true,
-        mediaButtons: true
-      }; // Overwrite the default paramaters if choices is defined.
+      var choices = control.params.choices;
+      var editorParams = {
+        quicktags: choices.tabs == 'both' || choices.tabs == 'text' ? true : false,
+        mediaButtons: choices.media_buttons
+      };
+
+      if (choices.tabs == 'both' || choices.tabs == 'visual') {
+        var toolbarButtons = '';
+
+        if (choices.toolbar == 'default') {
+          toolbarButtons = 'bold italic bullist numlist link';
+        } else if (choices.toolbar == 'minimal') {
+          toolbarButtons = 'bold italic link';
+        } else if (choices.toolbar == 'advance') {
+          toolbarButtons = 'formatselect bold italic | bullist numlist | alignleft aligncenter alignright | link';
+        }
+
+        if (choices.toolbar == 'custom') {
+          toolbarButtons = choices.toolbar_buttons != '' ? choices.toolbar_buttons : 'bold italic bullist numlist link';
+        }
+
+        editorParams.tinymce = {
+          wpautop: true,
+          toolbar1: toolbarButtons
+        };
+      } else {
+        editorParams.tinymce = false;
+      } // Initialize editor.
+
 
       if (wp.editor && wp.editor.initialize) {
-        wp.editor.initialize(id, jQuery.extend({}, defaultParams, control.params.choices));
+        wp.editor.initialize(id, editorParams);
       }
 
       var editor = tinyMCE.get(id);
