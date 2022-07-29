@@ -9,24 +9,34 @@
 	}
 
   .buttonset {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
     .switch-label {
-      background: rgba(0,0,0,.1);
-      border: 1px rgba(0,0,0,.1);
-      color: #555d66;
-      margin: 0;
-      text-align: center;
-      padding: 0.5em 1em;
-      flex-grow: 1;
-    }
+    	display: inline-block;
+	    border: 1px solid #7e8993;
+	    padding: 5px 10px;
+	    background-color: #fff;
+	    z-index: 1;
+	    margin: 0 0 0 -1px;
+		}
+
+    .switch-label:first-of-type {
+	    border-radius: 3px 0 0 3px;
+		}
+
+    .switch-label:last-child {
+	    border-radius: 0 3px 3px 0;
+		}
 
     .switch-input {
       &:checked {
         + .switch-label {
-          background-color: #2271b1;
-          color: rgba(255, 255, 255, 0.8);
+        	border-color: #7e8993;
+			    background: #008dd4;
+			    color: #fff;
+			    z-index: 2;
         }
       }
     }
@@ -151,7 +161,7 @@
 	}
 
 	input:checked + span + img {
-		border-color: #2271b1;
+		border-color: #008dd4;
 	}
 }
 
@@ -282,7 +292,7 @@
 		}
 
 		input:checked + .field-slider {
-			background-color: #2271b1;
+			background-color: #008dd4;
 		}
 
 		input:focus + .field-slider {
