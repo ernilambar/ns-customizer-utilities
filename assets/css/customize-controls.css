@@ -88,6 +88,9 @@
   position: relative;
   width: calc(100% + 48px);
 }
+.customize-control-nscu-heading .customize-control-title {
+  font-size: 15px;
+}
 
 /* === Message Control === */
 .customize-control-nscu-message .customize-control-description {
@@ -268,9 +271,30 @@
 }
 #customize-controls .control-section-nscu-header .accordion-section-title {
   background-color: #eee;
+  font-size: 15px;
 }
 #customize-controls .control-section-nscu-header .accordion-section-title:hover, #customize-controls .control-section-nscu-header .accordion-section-title:focus {
   background-color: #eee;
+}
+
+/* === Upsell Section === */
+#customize-controls .control-section-nscu-upsell {
+  background-color: #344860;
+}
+#customize-controls .control-section-nscu-upsell .accordion-section-title {
+  background-color: #344860;
+  border-color: #344860;
+  user-select: none;
+}
+#customize-controls .control-section-nscu-upsell .accordion-section-title:hover, #customize-controls .control-section-nscu-upsell .accordion-section-title:focus {
+  background-color: #344860;
+  border-color: #344860;
+}
+#customize-controls .control-section-nscu-upsell .accordion-section-title a {
+  color: #fff;
+  display: block;
+  width: 100%;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=customize-controls.css.map */
