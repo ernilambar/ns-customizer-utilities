@@ -65,7 +65,6 @@ class Button extends WP_Customize_Section {
 	 */
 	protected function render_template() {
 		?>
-
 		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand">
 			<h3 class="accordion-section-title<# if ( true == data.button.button_status ) { #> no-button<# } #>">
 				<span class="nscu-title">{{ data.title }}</span>

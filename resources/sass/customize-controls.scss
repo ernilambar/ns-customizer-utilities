@@ -107,6 +107,10 @@
   padding: 10px 24px;
   position: relative;
   width: calc(100% + 48px);
+
+  .customize-control-title {
+  	font-size: 15px;
+  }
 }
 
 /* === Message Control === */
@@ -325,10 +329,35 @@
 
 	.accordion-section-title {
 		background-color: #eee;
+		font-size: 15px;
 
 		&:hover,
 		&:focus {
 			background-color: #eee;
+		}
+	}
+}
+
+/* === Upsell Section === */
+#customize-controls .control-section-nscu-upsell {
+	background-color: #344860;
+
+	.accordion-section-title {
+		background-color: #344860;
+		border-color: #344860;
+		user-select: none;
+
+		&:hover,
+		&:focus {
+			background-color: #344860;
+			border-color: #344860;
+		}
+
+		a {
+			color: #fff;
+			display: block;
+			width: 100%;
+			text-decoration: none;
 		}
 	}
 }

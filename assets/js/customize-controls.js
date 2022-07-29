@@ -211,17 +211,19 @@
     }
   });
   api.sectionConstructor['nscu-button'] = api.Section.extend({
-    // No events for this type of section.
     attachEvents: function attachEvents() {},
-    // Always make the section active.
     isContextuallyActive: function isContextuallyActive() {
       return true;
     }
   });
   api.sectionConstructor['nscu-header'] = api.Section.extend({
-    // No events for this type of section.
     attachEvents: function attachEvents() {},
-    // Always make the section active.
+    isContextuallyActive: function isContextuallyActive() {
+      return true;
+    }
+  });
+  api.sectionConstructor['nscu-upsell'] = api.Section.extend({
+    attachEvents: function attachEvents() {},
     isContextuallyActive: function isContextuallyActive() {
       return true;
     }
