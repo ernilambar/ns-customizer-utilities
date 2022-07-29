@@ -27,6 +27,14 @@ class RadioImage extends WP_Customize_Control {
 	public $type = 'nscu-radio-image';
 
 	/**
+	 * Images columns.
+	 *
+	 * @since 1.0.0
+	 * @var int
+	 */
+	public $columns = 3;
+
+	/**
 	 * Export data to JS.
 	 *
 	 * @since 1.0.0
@@ -40,6 +48,7 @@ class RadioImage extends WP_Customize_Control {
 		$data['value']        = $this->value();
 		$data['link']         = $this->get_link();
 		$data['choices']      = $this->choices;
+		$data['columns']      = $this->columns;
 		$data['defaultValue'] = $this->setting->default;
 
 		return $data;
@@ -73,13 +82,16 @@ class RadioImage extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 
-			<# _.each( data.choices, function( args, choice ) { #>
-				<label>
-					<input type="radio" value="{{ choice }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( choice == data.value ) { #> checked="checked" <# } #> />
-					<span class="screen-reader-text">{{ args.label }}</span>
-					<img src="{{ args.url }}" alt="{{ args.label }}" />
-				</label>
-			<# } ) #>
+			<div class="radio-images columns-{{data.columns}}">
+				<# _.each( data.choices, function( args, choice ) { #>
+					<label>
+						<input type="radio" value="{{ choice }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( choice == data.value ) { #> checked="checked" <# } #> />
+						<span class="screen-reader-text">{{ args.label }}</span>
+						<img src="{{ args.url }}" alt="{{ args.label }}" />
+					</label>
+				<# } ) #>
+			</div><!-- .radio-images -->
+
 		<?php
 	}
 
