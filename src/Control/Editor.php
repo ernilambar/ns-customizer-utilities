@@ -71,6 +71,11 @@ class Editor extends WP_Customize_Control {
 		wp_enqueue_script( 'nscu-customize-controls' );
 	}
 
+	/**
+	 * Render JS template.
+	 *
+	 * @since 1.0.0
+	 */
 	public function content_template() {
 		?>
 		<# if ( data.label ) { #>

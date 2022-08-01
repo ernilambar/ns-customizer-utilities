@@ -63,6 +63,14 @@ class Dimension extends WP_Customize_Control {
 		return $data;
 	}
 
+	/**
+	 * Return dimension details.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $input Dimension value with unit.
+	 * @return array Dimension details with number and unit.
+	 */
 	protected function get_dimension_details( $input ) {
 		$output = array(
 			'number' => '',

@@ -112,6 +112,21 @@ class Sanitize {
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
 	 * @return int Sanitized number; otherwise, the setting default.
 	 */
+	public static function integer( $input, $setting ) {
+		$input = intval( $input );
+
+		return ( $input ? $input : $setting->default );
+	}
+
+	/**
+	 * Sanitize number.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int                  $input Number to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return int Sanitized number; otherwise, the setting default.
+	 */
 	public static function number( $input, $setting ) {
 		$input = absint( $input );
 
