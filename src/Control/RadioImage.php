@@ -75,7 +75,7 @@ class RadioImage extends WP_Customize_Control {
 				return;
 			} #>
 			<# if ( data.label ) { #>
-				<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
+				<span class="customize-control-title">{{ data.label }}</span>
 			<# } #>
 
 			<# if ( data.description ) { #>
