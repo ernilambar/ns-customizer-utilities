@@ -232,6 +232,18 @@
 		},
 	} );
 
+	api.controlConstructor[ 'nscu-switcher' ] = api.Control.extend( {
+
+		ready() {
+			const control = this;
+
+			this.container.on( 'change', 'input:checkbox', function() {
+				const value = this.checked ? true : false;
+				control.setting.set( value );
+			} );
+		},
+	} );
+
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
 
 		ready() {

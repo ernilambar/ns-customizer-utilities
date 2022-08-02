@@ -272,6 +272,73 @@
 	}
 }
 
+/* === Switcher Control === */
+.customize-control-nscu-switcher {
+	.field-wrapper {
+		display: flex;
+		gap: 15px;
+		justify-content: space-between;
+	}
+
+	.field-holder {
+		position: relative;
+		display: inline-block;
+		min-width: 50px;
+		margin-top: 5px;
+		height: 24px;
+
+		input {
+			display: none;
+		}
+
+		.field-slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		.field-slider:before {
+			position: absolute;
+			content: "";
+			height: 16px;
+			width: 16px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+		input:checked + .field-slider {
+			background-color: #008dd4;
+		}
+
+		input:focus + .field-slider {
+			box-shadow: 0 0 1px #2271b1;
+		}
+
+		input:checked + .field-slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		.field-slider.round {
+			border-radius: 34px;
+		}
+
+		.field-slider.round:before {
+			border-radius: 50%;
+		}
+	}
+}
+
 /* === Toggle Control === */
 .customize-control-nscu-toggle {
 	.field-wrapper {
