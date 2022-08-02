@@ -1,6 +1,6 @@
 <?php
 /**
- * Toggle control
+ * Switcher control
  *
  * @package NSCU
  */
@@ -10,13 +10,13 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Toggle control class.
+ * Switcher control class.
  *
  * @since 1.0.0
  *
  * @see WP_Customize_Control
  */
-class Toggle extends WP_Customize_Control {
+class Switcher extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,7 +24,7 @@ class Toggle extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-toggle';
+	public $type = 'nscu-switcher';
 
 	/**
 	 * Export data to JS.
@@ -67,7 +67,7 @@ class Toggle extends WP_Customize_Control {
 					<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
 				<# } #>
 				<div class="field-holder">
-					<input id="{{ data.id }}" type="checkbox" class="toggle-input" value="on" {{{ data.link }}} <# if ( 'on' === data.value ) { #> checked="checked" <# } #> />
+					<input id="{{ data.id }}" type="checkbox" class="switcher-input" value="{{ data.value }}" {{{ data.link }}} <# if ( true == data.value ) { #> checked="checked" <# } #> />
 					<span class="field-slider round"></span>
 				</div>
 			</div>
