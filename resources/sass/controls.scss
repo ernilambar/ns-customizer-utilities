@@ -55,6 +55,19 @@
   }
 }
 
+/* === Checkbox Control === */
+.customize-control-nscu-checkbox {
+	.field-wrapper {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	input[type="checkbox"] {
+		margin: 0;
+	}
+}
+
 /* === Date Time Control === */
 .flatpickr-calendar.open {
 	z-index: 50000000 !important;
