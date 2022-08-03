@@ -132,7 +132,7 @@ import 'flatpickr';
 
 	api.controlConstructor['nscu-dropdown-google-fonts'] = api.nscuSelectControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
+	api.controlConstructor['nscu-editor'] = api.Control.extend( {
 		ready() {
 			const control = this;
 
@@ -216,7 +216,6 @@ import 'flatpickr';
 	api.controlConstructor['nscu-select'] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-sortable' ] = api.Control.extend( {
-
 		ready() {
 			'use strict';
 
@@ -260,6 +259,8 @@ import 'flatpickr';
 	} );
 
 	api.controlConstructor['nscu-switcher'] = api.nscuCheckboxControl.extend( {} );
+
+	api.controlConstructor['nscu-textarea'] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
 		ready() {
