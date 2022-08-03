@@ -1,6 +1,5 @@
-@import './vendors/flatpickr.scss';
-@import './vendors/select2.scss';
-
+@import 'select2';
+@import 'flatpickr';
 
 /* === Default Select2 === */
 .select2-search--dropdown .select2-search__field {

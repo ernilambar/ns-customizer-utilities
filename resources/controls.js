@@ -1,7 +1,7 @@
 import './sass/controls.scss';
 
-import './js/flatpickr.js';
-import './js/select2.js';
+import 'select2';
+import 'flatpickr';
 
 ( function( $, api ) {
 
