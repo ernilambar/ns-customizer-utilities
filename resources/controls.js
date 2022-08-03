@@ -5,36 +5,72 @@ import 'flatpickr';
 
 ( function( $, api ) {
 
-	api.controlConstructor[ 'nscu-buttonset' ] = api.Control.extend( {
-		ready() {
-			const control = this;
+	api.nscuBasicControl = api.Control.extend({
+		ready: function () {
+      var control = this;
 
-			$( 'input:radio', control.container ).change(
+      api.Control.prototype.ready.call(control);
+
+      control.initBaseControl();
+    },
+
+    initBaseControl: function (control) {
+      control = control || this;
+
+      control.container.on('change keyup paste click', 'input', function () {
+        control.setting.set(jQuery(this).val());
+      });
+    }
+	});
+
+	api.nscuSelectControl = api.Control.extend({
+		ready: function () {
+      var control = this;
+
+      api.Control.prototype.ready.call(control);
+
+      control.initSelectControl();
+    },
+
+    initSelectControl: function (control) {
+      control = control || this;
+
+      $( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
 				function() {
 					control.setting.set( $( this ).val() );
 				}
 			);
-		},
-	} );
+    }
+	});
 
-	api.controlConstructor[ 'nscu-checkbox' ] = api.Control.extend( {
+	api.nscuCheckboxControl = api.Control.extend({
+		ready: function () {
+      var control = this;
 
-		ready() {
-			const control = this;
+      api.Control.prototype.ready.call(control);
 
-			this.container.on( 'change', 'input:checkbox', function() {
+      control.initCheckboxControl();
+    },
+
+    initCheckboxControl: function (control) {
+      control = control || this;
+
+      control.container.on( 'change', 'input:checkbox', function() {
 				const value = this.checked ? true : false;
 				control.setting.set( value );
 			} );
-		},
-	} );
+    }
+	});
 
-	api.controlConstructor[ 'nscu-date-time' ] = api.Control.extend( {
+	api.controlConstructor['nscu-buttonset'] = api.nscuBasicControl.extend( {} );
 
+	api.controlConstructor['nscu-checkbox'] = api.nscuCheckboxControl.extend( {} );
+
+	api.controlConstructor['nscu-date-time'] = api.Control.extend( {
 		ready() {
 			const control = this;
 
-			const $input= control.container.find('.nscu-date-time-input');
+			const $input= control.container.find('.date-time-input');
 
 			const disableDate = $input.data('disable-date');
 			const disableTime = $input.data('disable-time');
@@ -56,7 +92,7 @@ import 'flatpickr';
 
 			const pickerArgs = { dateFormat, enableTime, noCalendar, time_24hr };
 
-			this.container.find( '.nscu-date-time-input' ).flatpickr( pickerArgs );
+			this.container.find( '.date-time-input' ).flatpickr( pickerArgs );
 		},
 	} );
 
@@ -92,29 +128,9 @@ import 'flatpickr';
 		},
 	} );
 
-	api.controlConstructor['nscu-dropdown-taxonomies'] = api.Control.extend( {
-		ready: function() {
-			var control = this;
+	api.controlConstructor['nscu-dropdown-taxonomies'] = api.nscuSelectControl.extend( {} );
 
-			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
-				function() {
-					control.setting.set( $( this ).val() );
-				}
-			);
-		}
-	} );
-
-	api.controlConstructor['nscu-dropdown-google-fonts'] = api.Control.extend( {
-		ready: function() {
-			var control = this;
-
-			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
-				function() {
-					control.setting.set( $( this ).val() );
-				}
-			);
-		}
-	} );
+	api.controlConstructor['nscu-dropdown-google-fonts'] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
 		ready() {
@@ -167,35 +183,15 @@ import 'flatpickr';
 	        ed.save();
 	        content = editor.getContent();
 	        element.val( content ).trigger( 'change' );
-	        wp.customize.instance( control.id ).set( content );
+	        api.instance( control.id ).set( content );
 	      } );
 	    }
 		},
 	} );
 
-	api.controlConstructor['nscu-radio'] = api.Control.extend( {
-		ready: function() {
-			var control = this;
+	api.controlConstructor['nscu-radio'] = api.nscuBasicControl.extend( {} );
 
-			$( 'input:radio', control.container ).change(
-				function() {
-					control.setting.set( $( this ).val() );
-				}
-			);
-		}
-	} );
-
-	api.controlConstructor[ 'nscu-radio-image' ] = api.Control.extend( {
-		ready() {
-			const control = this;
-
-			$( 'input:radio', control.container ).change(
-				function() {
-					control.setting.set( $( this ).val() );
-				}
-			);
-		},
-	} );
+	api.controlConstructor['nscu-radio-image'] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-range' ] = api.Control.extend( {
 
@@ -217,17 +213,7 @@ import 'flatpickr';
 		},
 	} );
 
-	api.controlConstructor['nscu-select'] = api.Control.extend( {
-		ready: function() {
-			var control = this;
-
-			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
-				function() {
-					control.setting.set( $( this ).val() );
-				}
-			);
-		}
-	} );
+	api.controlConstructor['nscu-select'] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-sortable' ] = api.Control.extend( {
 
@@ -273,20 +259,9 @@ import 'flatpickr';
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-switcher' ] = api.Control.extend( {
-
-		ready() {
-			const control = this;
-
-			this.container.on( 'change', 'input:checkbox', function() {
-				const value = this.checked ? true : false;
-				control.setting.set( value );
-			} );
-		},
-	} );
+	api.controlConstructor['nscu-switcher'] = api.nscuCheckboxControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
-
 		ready() {
 			const control = this;
 
@@ -301,29 +276,17 @@ import 'flatpickr';
 		},
 	} );
 
-	api.sectionConstructor['nscu-button'] = api.Section.extend( {
-		attachEvents: function () {},
-
-		isContextuallyActive: function () {
-			return true;
-		}
-	} );
-
-	api.sectionConstructor[ 'nscu-header' ] = api.Section.extend( {
+	api.nscuDummySection = api.Section.extend({
 		attachEvents() {},
 
 		isContextuallyActive() {
 			return true;
-		},
-	} );
-
-	api.sectionConstructor['nscu-upsell'] = api.Section.extend( {
-		attachEvents: function () {},
-
-		isContextuallyActive: function () {
-			return true;
 		}
-	} );
+	});
+
+	api.sectionConstructor['nscu-button'] = api.nscuDummySection.extend( {} );
+	api.sectionConstructor['nscu-header'] = api.nscuDummySection.extend( {} );
+	api.sectionConstructor['nscu-upsell'] = api.nscuDummySection.extend( {} );
 
 }( jQuery, wp.customize ) );
 
