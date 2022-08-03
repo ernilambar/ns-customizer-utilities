@@ -7,17 +7,15 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Select;
 use Nilambar\CustomizerUtils\Helper\GoogleFonts;
 
 /**
  * Dropdown Google Fonts control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class DropdownGoogleFonts extends WP_Customize_Control {
+class DropdownGoogleFonts extends Select {
 
 	/**
 	 * Control type.
@@ -41,69 +39,4 @@ class DropdownGoogleFonts extends WP_Customize_Control {
 
 		parent::__construct( $manager, $id, $args );
 	}
-
-
-	/**
-	 * Export data to JS.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return array JSON data.
-	 */
-	public function json() {
-		$data = parent::json();
-
-		$data['id']           = $this->type . '-' . $this->id;
-		$data['value']        = $this->value();
-		$data['link']         = $this->get_link();
-		$data['choices']      = $this->choices;
-		$data['defaultValue'] = $this->setting->default;
-
-		return $data;
-	}
-
-	/**
-	 * Enqueue scripts and styles.
-	 *
-	 * @since 1.0.0
-	 */
-	public function enqueue() {
-		wp_enqueue_style( 'nscu-controls' );
-		wp_enqueue_script( 'nscu-controls' );
-	}
-
-	/**
-	 * Render JS template.
-	 *
-	 * @since 1.0.0
-	 */
-	public function content_template() {
-		?>
-			<# if ( ! data.choices ) {
-				return;
-			} #>
-			<# if ( data.label ) { #>
-				<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
-			<# } #>
-
-			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
-
-			<select {{{ data.link }}} name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}" <# if ( true == data.multiple ) { #>multiple<# } #>>
-				<# _.each( data.choices, function( label, choice ) { #>
-
-					<option value="{{ choice }}" <# if ( choice === data.value ) { #> selected="selected" <# } #>>{{{ label }}}</option>
-
-				<# } ) #>
-			</select>
-		<?php
-	}
-
-	/**
-	 * Render content.
-	 *
-	 * @since 1.0.0
-	 */
-	public function render_content() {}
 }

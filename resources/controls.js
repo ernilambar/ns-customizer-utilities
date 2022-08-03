@@ -192,6 +192,18 @@ import './js/flatpickr.js';
 		},
 	} );
 
+	api.controlConstructor['nscu-select'] = api.Control.extend( {
+		ready: function() {
+			var control = this;
+
+			$( 'select', control.container ).change(
+				function() {
+					control.setting.set( $( this ).val() );
+				}
+			);
+		}
+	} );
+
 	api.controlConstructor[ 'nscu-sortable' ] = api.Control.extend( {
 
 		ready() {
