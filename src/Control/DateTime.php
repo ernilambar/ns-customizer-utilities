@@ -87,7 +87,7 @@ class DateTime extends WP_Customize_Control {
 		<label class="nscu-date-time">
 			<div class="nscu-date-time-wrapper">
 				<div class="nscu-date-time-field">
-					<input id="{{ data.id }}" type="text" class="nscu-date-time-input" value="{{ data.value }}" data-disable-time="{{ data.disableTime }}" data-disable-date="{{ data.disableDate }}" {{{ data.link }}} />
+					<input id="{{ data.id }}" type="text" class="date-time-input" value="{{ data.value }}" data-disable-time="{{ data.disableTime }}" data-disable-date="{{ data.disableDate }}" {{{ data.link }}} />
 				</div>
 			</div>
 		</label>
