@@ -173,6 +173,18 @@ import 'flatpickr';
 		},
 	} );
 
+	api.controlConstructor['nscu-radio'] = api.Control.extend( {
+		ready: function() {
+			var control = this;
+
+			$( 'input:radio', control.container ).change(
+				function() {
+					control.setting.set( $( this ).val() );
+				}
+			);
+		}
+	} );
+
 	api.controlConstructor[ 'nscu-radio-image' ] = api.Control.extend( {
 		ready() {
 			const control = this;

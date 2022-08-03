@@ -162,6 +162,25 @@
 	}
 }
 
+/* === Radio Control === */
+.customize-control-nscu-radio {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		flex-direction: column;
+
+		&.layout-horizontal {
+			flex-direction: row;
+			gap: 12px;
+		}
+
+		li {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /* === Radio Image Control === */
 .customize-control-nscu-radio-image {
 	input[type="radio"] {
