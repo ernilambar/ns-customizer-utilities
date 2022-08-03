@@ -23,7 +23,7 @@ class DropdownGoogleFonts extends Select {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-google-fonts';
+	public $type = 'nscu-dropdown-google-fonts';
 
 	/**
 	 * Constructor.

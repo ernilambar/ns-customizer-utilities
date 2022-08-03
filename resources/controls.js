@@ -1,6 +1,7 @@
 import './sass/controls.scss';
 
 import './js/flatpickr.js';
+import './js/select2.js';
 
 ( function( $, api ) {
 
@@ -83,7 +84,7 @@ import './js/flatpickr.js';
 		ready: function() {
 			var control = this;
 
-			$( 'select', control.container ).change(
+			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
 				function() {
 					control.setting.set( $( this ).val() );
 				}
@@ -95,7 +96,7 @@ import './js/flatpickr.js';
 		ready: function() {
 			var control = this;
 
-			$( 'select', control.container ).change(
+			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
 				function() {
 					control.setting.set( $( this ).val() );
 				}
@@ -196,7 +197,7 @@ import './js/flatpickr.js';
 		ready: function() {
 			var control = this;
 
-			$( 'select', control.container ).change(
+			$( 'select', control.container ).select2({width: 260, minimumResultsForSearch: 10}).change(
 				function() {
 					control.setting.set( $( this ).val() );
 				}
