@@ -70,8 +70,8 @@ class Range extends WP_Customize_Control {
 	 * @since 1.0.0
 	 */
 	public function enqueue() {
-		wp_enqueue_style( 'nscu-customize-controls' );
-		wp_enqueue_script( 'nscu-customize-controls' );
+		wp_enqueue_style( 'nscu-controls' );
+		wp_enqueue_script( 'nscu-controls' );
 	}
 
 	/**
