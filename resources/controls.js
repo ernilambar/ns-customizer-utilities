@@ -17,6 +17,18 @@ import 'flatpickr';
 		},
 	} );
 
+	api.controlConstructor[ 'nscu-checkbox' ] = api.Control.extend( {
+
+		ready() {
+			const control = this;
+
+			this.container.on( 'change', 'input:checkbox', function() {
+				const value = this.checked ? true : false;
+				control.setting.set( value );
+			} );
+		},
+	} );
+
 	api.controlConstructor[ 'nscu-date-time' ] = api.Control.extend( {
 
 		ready() {
