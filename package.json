@@ -1,12 +1,12 @@
 {
   "name": "ns-customizer-utilities",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "scripts": {
-    "build": "pnpm run css && pnpm run js",
-    "preinstall": "npx only-allow pnpm",
-    "js": "npx babel resources/js --out-dir assets/js",
-    "css": "sass resources/sass:assets/css"
+    "dev": "webpack --watch",
+    "build": "webpack",
+    "prod": "NODE_ENV=production webpack",
+    "preinstall": "npx only-allow pnpm"
   },
   "keywords": [
     "wordpress",
@@ -19,6 +19,19 @@
     "@babel/cli": "^7.18.9",
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
-    "sass": "^1.53.0"
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.1",
+    "postcss-preset-env": "^7.7.2",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

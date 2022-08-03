@@ -7,6 +7,7 @@
 
 namespace Nilambar\CustomizerUtils;
 
+define( 'NSCU_VERSION' , '0.0.10' );
 
 if ( ! defined( 'NSCU_DIR' ) ) {
 	define( 'NSCU_DIR' , rtrim( plugin_dir_path( __FILE__ ), '/' ) );
@@ -15,6 +16,7 @@ if ( ! defined( 'NSCU_DIR' ) ) {
 if ( ! defined( 'NSCU_URL' ) ) {
 	define( 'NSCU_URL' , rtrim( plugin_dir_url( __FILE__ ), '/' )  );
 }
+
 /**
  * Init class.
  *
@@ -32,11 +34,8 @@ class Init {
 	}
 
 	public function load_assets() {
-		wp_register_script( 'nscu-flatpicker', NSCU_URL . '/assets/third-party/flatpickr/js/flatpickr.js', array( 'jquery' ), '4.6.13', true );
-		wp_register_script( 'nscu-customize-controls', NSCU_URL . '/assets/js/customize-controls.js', array( 'jquery', 'customize-controls', 'nscu-flatpicker'  ), '0.0.1', true );
-
-		wp_register_style( 'nscu-flatpicker', NSCU_URL . '/assets/third-party/flatpickr/css/flatpickr.css', array(), '4.6.13' );
-		wp_register_style( 'nscu-customize-controls', NSCU_URL . '/assets/css/customize-controls.css', array( 'nscu-flatpicker' ), '0.0.1' );
+		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls.js', array( 'jquery', 'customize-controls' ), NSCU_VERSION, true );
+		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls.css', array(), NSCU_VERSION );
 	}
 }
 

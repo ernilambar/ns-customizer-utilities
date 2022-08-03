@@ -1,3 +1,7 @@
+import './sass/controls.scss';
+
+import './js/flatpickr.js';
+
 ( function( $, api ) {
 
 	api.controlConstructor[ 'nscu-buttonset' ] = api.Control.extend( {
@@ -285,3 +289,4 @@
 	} );
 
 }( jQuery, wp.customize ) );
+

@@ -67,8 +67,8 @@ class Editor extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_editor();
-		wp_enqueue_style( 'nscu-customize-controls' );
-		wp_enqueue_script( 'nscu-customize-controls' );
+		wp_enqueue_style( 'nscu-controls' );
+		wp_enqueue_script( 'nscu-controls' );
 	}
 
 	/**
