@@ -221,6 +221,32 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize text.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int                  $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return int Sanitized value.
+	 */
+	public static function text( $input, $setting ) {
+		return sanitize_text_field( $input );
+	}
+
+	/**
+	 * Sanitize textarea.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int                  $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return int Sanitized value.
+	 */
+	public static function textarea( $input, $setting ) {
+		return sanitize_textarea_field( $input );
+	}
+
+	/**
 	 * Sanitize toggle.
 	 *
 	 * @since 1.0.0

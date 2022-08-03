@@ -260,8 +260,6 @@ import 'flatpickr';
 
 	api.controlConstructor['nscu-switcher'] = api.nscuCheckboxControl.extend( {} );
 
-	api.controlConstructor['nscu-textarea'] = api.nscuBasicControl.extend( {} );
-
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
 		ready() {
 			const control = this;
