@@ -1,5 +1,5 @@
-@import 'select2';
-@import 'flatpickr';
+@import "select2";
+@import "flatpickr";
 
 /* === Default Select2 === */
 .select2-search--dropdown .select2-search__field {
@@ -20,39 +20,39 @@
 		width: 1px;
 	}
 
-  .buttonset {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+	.buttonset {
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
 
-    .switch-label {
-    	display: inline-block;
-	    border: 1px solid #7e8993;
-	    padding: 5px 10px;
-	    background-color: #fff;
-	    z-index: 1;
-	    margin: 0 0 0 -1px;
+		.switch-label {
+			display: inline-block;
+			border: 1px solid #7e8993;
+			padding: 5px 10px;
+			background-color: #fff;
+			z-index: 1;
+			margin: 0 0 0 -1px;
 		}
 
-    .switch-label:first-of-type {
-	    border-radius: 3px 0 0 3px;
+		.switch-label:first-of-type {
+			border-radius: 3px 0 0 3px;
 		}
 
-    .switch-label:last-child {
-	    border-radius: 0 3px 3px 0;
+		.switch-label:last-child {
+			border-radius: 0 3px 3px 0;
 		}
 
-    .switch-input {
-      &:checked {
-        + .switch-label {
-        	border-color: #7e8993;
-			    background: #008dd4;
-			    color: #fff;
-			    z-index: 2;
-        }
-      }
-    }
-  }
+		.switch-input {
+			&:checked {
+				+ .switch-label {
+					border-color: #7e8993;
+					background: #008dd4;
+					color: #fff;
+					z-index: 2;
+				}
+			}
+		}
+	}
 }
 
 /* === Checkbox Control === */
@@ -95,57 +95,57 @@
 
 	.dimension-reset {
 		display: flex;
-    align-items: center;
-    justify-content: center;
-    right: 0;
-    bottom: 28px;
-    position: absolute;
-    padding: 0;
-    width: 16px;
-    height: 16px;
-    color: #50575e;
-    background-color: transparent;
-    border-radius: 50%;
-    border-width: 0;
-    opacity: 1;
-    cursor: pointer;
-    transition: all .3s;
-    z-index: 3;
+		align-items: center;
+		justify-content: center;
+		right: 0;
+		bottom: 28px;
+		position: absolute;
+		padding: 0;
+		width: 16px;
+		height: 16px;
+		color: #50575e;
+		background-color: transparent;
+		border-radius: 50%;
+		border-width: 0;
+		opacity: 1;
+		cursor: pointer;
+		transition: all 0.3s;
+		z-index: 3;
 
-    i {
-	    font-size: 12px;
-	  }
+		i {
+			font-size: 12px;
+		}
 	}
 }
 
 /* === Divider Control === */
 .customize-control-nscu-divider {
-  hr {
-  	border: 0;
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #f8f8f8;
-  }
+	hr {
+		border: 0;
+		border-top: 1px solid #cccccc;
+		border-bottom: 1px solid #f8f8f8;
+	}
 }
 
 /* === Editor Control === */
 .customize-control-nscu-editor {
-  textarea {
-    width: 100%;
-    height: 120px;
-  }
+	textarea {
+		width: 100%;
+		height: 120px;
+	}
 }
 
 /* === Heading Control === */
 .customize-control-nscu-heading {
 	background-color: #fff;
-  left: -24px;
-  padding: 10px 24px;
-  position: relative;
-  width: calc(100% + 48px);
+	left: -24px;
+	padding: 10px 24px;
+	position: relative;
+	width: calc(100% + 48px);
 
-  .customize-control-title {
-  	font-size: 15px;
-  }
+	.customize-control-title {
+		font-size: 15px;
+	}
 }
 
 /* === Message Control === */
@@ -223,7 +223,8 @@
 		padding: 1px;
 		border: 3px solid transparent;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			border-color: #ccc;
 		}
 	}
@@ -258,26 +259,26 @@
 
 	.range-reset {
 		display: flex;
-    align-items: center;
-    justify-content: center;
-    right: 0;
-    bottom: 28px;
-    position: absolute;
-    padding: 0;
-    width: 16px;
-    height: 16px;
-    color: #50575e;
-    background-color: transparent;
-    border-radius: 50%;
-    border-width: 0;
-    opacity: 1;
-    cursor: pointer;
-    transition: all .3s;
-    z-index: 3;
+		align-items: center;
+		justify-content: center;
+		right: 0;
+		bottom: 28px;
+		position: absolute;
+		padding: 0;
+		width: 16px;
+		height: 16px;
+		color: #50575e;
+		background-color: transparent;
+		border-radius: 50%;
+		border-width: 0;
+		opacity: 1;
+		cursor: pointer;
+		transition: all 0.3s;
+		z-index: 3;
 
-    i {
-	    font-size: 12px;
-	  }
+		i {
+			font-size: 12px;
+		}
 	}
 }
 
@@ -343,7 +344,6 @@
 			right: 0;
 			bottom: 0;
 			background-color: #ccc;
-			-webkit-transition: 0.4s;
 			transition: 0.4s;
 		}
 
@@ -355,7 +355,6 @@
 			left: 4px;
 			bottom: 4px;
 			background-color: white;
-			-webkit-transition: 0.4s;
 			transition: 0.4s;
 		}
 
@@ -368,8 +367,6 @@
 		}
 
 		input:checked + .field-slider:before {
-			-webkit-transform: translateX(26px);
-			-ms-transform: translateX(26px);
 			transform: translateX(26px);
 		}
 
@@ -410,7 +407,6 @@
 			right: 0;
 			bottom: 0;
 			background-color: #ccc;
-			-webkit-transition: 0.4s;
 			transition: 0.4s;
 		}
 
@@ -422,7 +418,6 @@
 			left: 4px;
 			bottom: 4px;
 			background-color: white;
-			-webkit-transition: 0.4s;
 			transition: 0.4s;
 		}
 
@@ -435,8 +430,6 @@
 		}
 
 		input:checked + .field-slider:before {
-			-webkit-transform: translateX(26px);
-			-ms-transform: translateX(26px);
 			transform: translateX(26px);
 		}
 
@@ -452,10 +445,10 @@
 
 /* === Textarea Control === */
 .customize-control-nscu-textarea {
-  textarea {
-    width: 100%;
-    height: 120px;
-  }
+	textarea {
+		width: 100%;
+		height: 120px;
+	}
 }
 /* === Button Section === */
 .control-section-nscu-button {
