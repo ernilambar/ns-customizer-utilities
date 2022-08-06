@@ -100,7 +100,7 @@ function acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider ) {
 jQuery( document ).ready( function( $ ) {
 
 	// Loop over each control and transform it into our color picker.
-	$( '.alpha-color-control' ).each( function() {
+	$( '.color-alpha-picker' ).each( function() {
 
 		// Scope the vars.
 		var $control, startingColor, paletteInput, showOpacity, defaultColor, palette,

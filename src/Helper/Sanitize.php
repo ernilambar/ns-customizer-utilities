@@ -42,6 +42,21 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize color alpha.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int                  $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return int Sanitized value; otherwise, the setting default.
+	 */
+	public static function color_alpha( $input, $setting ) {
+		$color_obj = \ariColor::newColor( $input );
+
+		return $color_obj->toCSS( 'rgba' );
+	}
+
+	/**
 	 * Sanitize dimension.
 	 *
 	 * @since 1.0.0

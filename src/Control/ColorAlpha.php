@@ -34,9 +34,10 @@ class ColorAlpha extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']    = $this->type . '-' . $this->id;
-		$data['value'] = $this->value();
-		$data['link']  = $this->get_link();
+		$data['id']           = $this->type . '-' . $this->id;
+		$data['value']        = $this->value();
+		$data['link']         = $this->get_link();
+		$data['defaultValue'] = $this->setting->default;
 
 		$data['choices'] = wp_parse_args(
 			$this->choices,
@@ -76,7 +77,7 @@ class ColorAlpha extends WP_Customize_Control {
 		<# if ( data.description ) { #>
 		<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
-		<input class="alpha-color-control" type="text" data-show-opacity="{{ data.choices.show_opacity }}" data-palette="{{ data.choices.palette }}" data-default-color="{{ data.value }}" {{{ data.link }}} />
+		<input class="color-alpha-picker" type="text" value="{{ data.value }}" data-show-opacity="{{ data.choices.show_opacity }}" data-palette="{{ data.choices.palette }}" data-default-color="{{ data.defaultValue }}" {{{ data.link }}} />
 		<?php
 	}
 

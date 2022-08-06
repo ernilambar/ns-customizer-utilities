@@ -52,7 +52,7 @@ class Text extends WP_Customize_Control {
 
 		$attr_string = '';
 
-		if ( is_array( $this->input_attrs ) && ! empty( $this->input_attrs  ) ) {
+		if ( is_array( $this->input_attrs ) && ! empty( $this->input_attrs ) ) {
 			foreach ( $this->input_attrs as $attr => $value ) {
 				$attr_string .= $attr . '="' . esc_attr( $value ) . '" ';
 			}

@@ -12,6 +12,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve( __dirname, 'assets' ),
+		assetModuleFilename: 'static/[name][ext][query]',
 		filename: '[name].js',
 	},
 	target: 'browserslist',
@@ -49,6 +50,10 @@ module.exports = {
 					},
 					'sass-loader',
 				],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
 			},
 		],
 	},

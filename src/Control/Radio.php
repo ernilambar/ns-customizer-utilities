@@ -44,10 +44,10 @@ class Radio extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']       = $this->type . '-' . $this->id;
-		$data['value']    = $this->value();
-		$data['link']     = $this->get_link();
-		$data['choices']  = $this->choices;
+		$data['id']      = $this->type . '-' . $this->id;
+		$data['value']   = $this->value();
+		$data['link']    = $this->get_link();
+		$data['choices'] = $this->choices;
 		$data['layout']  = $this->layout;
 
 		return $data;
@@ -80,20 +80,20 @@ class Radio extends WP_Customize_Control {
 		<ul class="layout-{{ data.layout }}">
 			<# _.each( data.choices, function( label, key ) { #>
 				<li>
-		      <label>
-		        <input
-		          {{{ data.inputAttrs }}}
-		          type="radio"
-		          data-id="{{ data.id }}"
-		          value="{{ key }}"
-		          {{ data.link }}
-		          name="_customize-radio-{{ data.id }}"
-		          <# if ( data.value === key ) { #> checked<# } #>
-		        />
-		        {{ label }}
-		      </label>
+			  <label>
+				<input
+				  {{{ data.inputAttrs }}}
+				  type="radio"
+				  data-id="{{ data.id }}"
+				  value="{{ key }}"
+				  {{ data.link }}
+				  name="_customize-radio-{{ data.id }}"
+				  <# if ( data.value === key ) { #> checked<# } #>
+				/>
+				{{ label }}
+			  </label>
 				</li>
-	    <# } ); #>
+		<# } ); #>
 		</ul>
 		<?php
 	}
