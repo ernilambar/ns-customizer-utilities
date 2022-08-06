@@ -22,25 +22,7 @@ class ColorAlpha extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'alpha-color';
-
-	/**
-	 * Palettes.
-	 *
-	 * Supported palette values are true, false, or an array of RGBa and Hex colors.
-	 *
-	 * @since 1.0.0
-	 * @var bool|array
-	 */
-	public $palette;
-
-	/**
-	 * Show opacity value in slider handle.
-	 *
-	 * @since 1.0.0
-	 * @var bool
-	 */
-	public $show_opacity;
+	public $type = 'nscu-color-alpha';
 
 	/**
 	 * Export data to JS.
@@ -52,10 +34,21 @@ class ColorAlpha extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
-		$data['id']      = $this->type . '-' . $this->id;
-		$data['value']   = $this->value();
-		$data['link']    = $this->get_link();
-		$data['choices'] = $this->choices;
+		$data['id']    = $this->type . '-' . $this->id;
+		$data['value'] = $this->value();
+		$data['link']  = $this->get_link();
+
+		$data['choices'] = wp_parse_args(
+			$this->choices,
+			array(
+				'palette'      => true,
+				'show_opacity' => true,
+			)
+		);
+
+		if ( is_array( $data['choices']['palette'] ) ) {
+			$data['choices']['palette'] = implode( '|', $data['choices']['palette'] );
+		}
 
 		return $data;
 	}
@@ -71,29 +64,26 @@ class ColorAlpha extends WP_Customize_Control {
 	}
 
 	/**
-	 * Render the control.
+	 * Render JS template.
+	 *
+	 * @since 1.0.0
 	 */
-	public function render_content() {
-
-		// Process the palette
-		if ( is_array( $this->palette ) ) {
-			$palette = implode( '|', $this->palette );
-		} else {
-			// Default to true.
-			$palette = ( false === $this->palette || 'false' === $this->palette ) ? 'false' : 'true';
-		}
-
-		// Support passing show_opacity as string or boolean. Default to true.
-		$show_opacity = ( false === $this->show_opacity || 'false' === $this->show_opacity ) ? 'false' : 'true';
-
-		// Begin the output. ?>
-
-		<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
-
-		<label>
-			<input class="alpha-color-control" type="text" data-show-opacity="<?php echo $show_opacity; ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
-		</label>
+	public function content_template() {
+		?>
+		<# if ( data.label ) { #>
+		<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
+		<# if ( data.description ) { #>
+		<span class="description customize-control-description">{{ data.description }}</span>
+		<# } #>
+		<input class="alpha-color-control" type="text" data-show-opacity="{{ data.choices.show_opacity }}" data-palette="{{ data.choices.palette }}" data-default-color="{{ data.value }}" {{{ data.link }}} />
 		<?php
 	}
+
+	/**
+	 * Render content.
+	 *
+	 * @since 1.0.0
+	 */
+	public function render_content() {}
 }
