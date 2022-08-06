@@ -3,6 +3,8 @@ import './sass/controls.scss';
 import 'select2';
 import 'flatpickr';
 
+import './js/color-alpha';
+
 ( function( $, api ) {
 	api.nscuBasicControl = api.Control.extend( {
 		ready() {
@@ -284,4 +286,3 @@ import 'flatpickr';
 	api.sectionConstructor[ 'nscu-header' ] = api.nscuDummySection.extend( {} );
 	api.sectionConstructor[ 'nscu-upsell' ] = api.nscuDummySection.extend( {} );
 }( jQuery, wp.customize ) );
-
