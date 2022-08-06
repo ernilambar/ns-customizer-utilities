@@ -1,6 +1,6 @@
 <?php
 /**
- * Text control
+ * Color Alpha control
  *
  * @package NSCU
  */
@@ -10,13 +10,11 @@ namespace Nilambar\CustomizerUtils\Control;
 use WP_Customize_Control;
 
 /**
- * Text control class.
+ * Color Alpha control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Text extends WP_Customize_Control {
+class ColorAlpha extends WP_Customize_Control {
 
 	/**
 	 * Control type.
@@ -24,15 +22,7 @@ class Text extends WP_Customize_Control {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $type = 'nscu-text';
-
-	/**
-	 * Input type.
-	 *
-	 * @since 1.0.0
-	 * @var string
-	 */
-	public $input_type = 'text';
+	public $type = 'nscu-color-alpha';
 
 	/**
 	 * Export data to JS.
@@ -48,17 +38,18 @@ class Text extends WP_Customize_Control {
 		$data['value']        = $this->value();
 		$data['link']         = $this->get_link();
 		$data['defaultValue'] = $this->setting->default;
-		$data['input_type']   = $this->input_type;
 
-		$attr_string = '';
+		$data['choices'] = wp_parse_args(
+			$this->choices,
+			array(
+				'palette'      => true,
+				'show_opacity' => true,
+			)
+		);
 
-		if ( is_array( $this->input_attrs ) && ! empty( $this->input_attrs ) ) {
-			foreach ( $this->input_attrs as $attr => $value ) {
-				$attr_string .= $attr . '="' . esc_attr( $value ) . '" ';
-			}
+		if ( is_array( $data['choices']['palette'] ) ) {
+			$data['choices']['palette'] = implode( '|', $data['choices']['palette'] );
 		}
-
-		$data['inputAttrs'] = $attr_string;
 
 		return $data;
 	}
@@ -80,17 +71,13 @@ class Text extends WP_Customize_Control {
 	 */
 	public function content_template() {
 		?>
-
-		{{ console.log( data.inputAttrs ) }}
-
 		<# if ( data.label ) { #>
-			<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
+		<span class="customize-control-title">{{ data.label }}</span>
 		<# } #>
 		<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{ data.description }}</span>
+		<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
-
-		<input type="{{ data.input_type }}" name="_customize-text-{{ data.id }}" id="{{ data.id }}" value="{{ data.value }}" {{{ data.link }}} {{{ data.inputAttrs }}} />
+		<input class="color-alpha-picker" type="text" value="{{ data.value }}" data-show-opacity="{{ data.choices.show_opacity }}" data-palette="{{ data.choices.palette }}" data-default-color="{{ data.defaultValue }}" {{{ data.link }}} />
 		<?php
 	}
 

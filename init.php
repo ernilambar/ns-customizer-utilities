@@ -34,8 +34,8 @@ class Init {
 	}
 
 	public function load_assets() {
-		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls.js', array( 'jquery', 'customize-controls' ), NSCU_VERSION, true );
-		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls.css', array(), NSCU_VERSION );
+		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls.css', array( 'wp-color-picker' ), NSCU_VERSION );
+		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls.js', array( 'jquery', 'customize-controls', 'wp-color-picker' ), NSCU_VERSION, true );
 	}
 }
 
