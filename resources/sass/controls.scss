@@ -96,6 +96,10 @@
 	}
 
 	.dimension-reset {
+		display: none;
+	}
+
+	.dimension-container:hover .dimension-reset {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -113,6 +117,10 @@
 		cursor: pointer;
 		transition: all 0.3s;
 		z-index: 3;
+
+		&:hover i {
+			color: #008dd4;
+		}
 
 		i {
 			font-size: 12px;
@@ -260,6 +268,10 @@
 	}
 
 	.range-reset {
+		display: none;
+	}
+
+	.range-container:hover .range-reset {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -278,10 +290,15 @@
 		transition: all 0.3s;
 		z-index: 3;
 
+		&:hover i {
+			color: #008dd4;
+		}
+
 		i {
 			font-size: 12px;
 		}
 	}
+
 }
 
 /* === Sortable Control === */
