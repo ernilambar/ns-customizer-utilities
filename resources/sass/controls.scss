@@ -3,6 +3,8 @@
 
 @import "_color-alpha.scss";
 
+$color_primary: #008dd4;
+
 /* === Default Select2 === */
 .select2-search--dropdown .select2-search__field {
 	padding: 0 4px;
@@ -48,7 +50,7 @@
 			&:checked {
 				+ .switch-label {
 					border-color: #7e8993;
-					background: #008dd4;
+					background: $color_primary;
 					color: #fff;
 					z-index: 2;
 				}
@@ -119,7 +121,7 @@
 		z-index: 3;
 
 		&:hover i {
-			color: #008dd4;
+			color: $color_primary;
 		}
 
 		i {
@@ -240,7 +242,7 @@
 	}
 
 	input:checked + span + img {
-		border-color: #008dd4;
+		border-color: $color_primary;
 	}
 }
 
@@ -291,14 +293,13 @@
 		z-index: 3;
 
 		&:hover i {
-			color: #008dd4;
+			color: $color_primary;
 		}
 
 		i {
 			font-size: 12px;
 		}
 	}
-
 }
 
 /* === Sortable Control === */
@@ -378,7 +379,7 @@
 		}
 
 		input:checked + .field-slider {
-			background-color: #008dd4;
+			background-color: $color_primary;
 		}
 
 		input:focus + .field-slider {
@@ -441,7 +442,7 @@
 		}
 
 		input:checked + .field-slider {
-			background-color: #008dd4;
+			background-color: $color_primary;
 		}
 
 		input:focus + .field-slider {
