@@ -27,6 +27,31 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize checkbox multiple.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int                  $input The value to sanitize.
+	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
+	 * @return int Sanitized value; otherwise, the setting default.
+	 */
+	public static function checkbox_multiple( $input, $setting ) {
+		$multi_values = (array) $input;
+
+		$choices = $setting->manager->get_control( $setting->id )->choices;
+
+		$new_values = array();
+
+		foreach ( $multi_values as $item ) {
+			if ( array_key_exists( $item, $choices ) ) {
+				$new_values[] = $item;
+			}
+		}
+
+		return $new_values;
+	}
+
+	/**
 	 * Sanitize color.
 	 *
 	 * @since 1.0.0

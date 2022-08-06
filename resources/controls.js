@@ -67,6 +67,30 @@ import './js/color-alpha';
 
 	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend( {} );
 
+	api.controlConstructor[ 'nscu-checkbox-multiple' ] = api.Control.extend( {
+		ready() {
+			const control = this;
+
+			// Save the value
+			control.container.on( 'change', 'input', function() {
+				const value = [];
+				let i = 0;
+
+				jQuery.each( control.params.choices, function( key ) {
+					if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
+						control.container.find( 'input[value="' + key + '"]' ).parent().addClass( 'checked' );
+						value[ i ] = key;
+						i++;
+					} else {
+						control.container.find( 'input[value="' + key + '"]' ).parent().removeClass( 'checked' );
+					}
+				} );
+
+				control.setting.set( value );
+			} );
+		},
+	} );
+
 	api.controlConstructor[ 'nscu-date-time' ] = api.Control.extend( {
 		ready() {
 			const control = this;
