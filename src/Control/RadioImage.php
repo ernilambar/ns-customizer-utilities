@@ -51,6 +51,16 @@ class RadioImage extends WP_Customize_Control {
 		$data['columns']      = $this->columns;
 		$data['defaultValue'] = $this->setting->default;
 
+		$options = array();
+
+		if ( is_array( $this->choices ) && ! empty( $this->choices ) ) {
+	    foreach ( $this->choices as $key => $val ) {
+	      $options[] = "{$key}|||{$val}";
+	    }
+		}
+
+    $data['options'] = $options;
+
 		return $data;
 	}
 
@@ -82,12 +92,18 @@ class RadioImage extends WP_Customize_Control {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 
+			<# var optionArr, optionKey, optionVal #>
+
 			<div class="radio-images columns-{{data.columns}}">
-				<# _.each( data.choices, function( args, choice ) { #>
+				<# _.each( data.options, function( option ) { #>
+
+					<# optionArr = option.split( '|||' ) #>
+					<# optionKey = optionArr[0] #>
+					<# optionVal = optionArr[1] #>
+
 					<label>
-						<input type="radio" value="{{ choice }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( choice == data.value ) { #> checked="checked" <# } #> />
-						<span class="screen-reader-text">{{ args.label }}</span>
-						<img src="{{ args.url }}" alt="{{ args.label }}" />
+						<input type="radio" value="{{ optionKey }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( optionKey === data.value ) { #> checked="checked" <# } #> />
+						<img src="{{ optionVal }}" alt="{{ optionKey }}" />
 					</label>
 				<# } ) #>
 			</div><!-- .radio-images -->

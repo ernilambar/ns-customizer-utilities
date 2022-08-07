@@ -50,6 +50,16 @@ class Select extends WP_Customize_Control {
 		$data['choices']  = $this->choices;
 		$data['multiple'] = $this->multiple;
 
+		$options = array();
+
+		if ( is_array( $this->choices ) && ! empty( $this->choices ) ) {
+	    foreach ( $this->choices as $key => $val ) {
+	      $options[] = "{$key}|||{$val}";
+	    }
+		}
+
+    $data['options'] = $options;
+
 		return $data;
 	}
 
@@ -77,10 +87,16 @@ class Select extends WP_Customize_Control {
 			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 
-		<select {{{ data.link }}} name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}" <# if ( true == data.multiple ) { #>multiple<# } #>>
-			<# _.each( data.choices, function( label, choice ) { #>
+		<# var optionArr, optionKey, optionVal #>
 
-				<option value="{{ choice }}" <# if ( choice === data.value ) { #> selected="selected" <# } #>>{{{ label }}}</option>
+		<select {{{ data.link }}} name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}" <# if ( true == data.multiple ) { #>multiple<# } #>>
+			<# _.each( data.options, function( option ) { #>
+
+				<# optionArr = option.split( '|||' ) #>
+				<# optionKey = optionArr[0] #>
+				<# optionVal = optionArr[1] #>
+
+				<option value="{{ optionKey }}" <# if ( optionKey === data.value ) { #> selected="selected" <# } #>>{{{ optionVal }}}</option>
 
 			<# } ) #>
 		</select>
