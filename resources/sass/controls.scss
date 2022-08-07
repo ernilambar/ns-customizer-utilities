@@ -241,7 +241,7 @@ $color_primary: #008dd4;
 		}
 	}
 
-	input:checked + span + img {
+	input:checked + img {
 		border-color: $color_primary;
 	}
 }

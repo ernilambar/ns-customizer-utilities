@@ -50,6 +50,16 @@ class Radio extends WP_Customize_Control {
 		$data['choices'] = $this->choices;
 		$data['layout']  = $this->layout;
 
+		$options = array();
+
+		if ( is_array( $this->choices ) && ! empty( $this->choices ) ) {
+	    foreach ( $this->choices as $key => $val ) {
+	      $options[] = "{$key}|||{$val}";
+	    }
+		}
+
+    $data['options'] = $options;
+
 		return $data;
 	}
 
@@ -77,20 +87,25 @@ class Radio extends WP_Customize_Control {
 			<span class="description customize-control-description">{{ data.description }}</span>
 		<# } #>
 
+		<# var optionArr, optionKey, optionVal #>
+
 		<ul class="layout-{{ data.layout }}">
-			<# _.each( data.choices, function( label, key ) { #>
+			<# _.each( data.options, function( option ) { #>
+				<# optionArr = option.split('|||') #>
+				<# optionKey = optionArr[0] #>
+				<# optionVal = optionArr[1] #>
 				<li>
 			  <label>
 				<input
 				  {{{ data.inputAttrs }}}
 				  type="radio"
 				  data-id="{{ data.id }}"
-				  value="{{ key }}"
+				  value="{{ optionKey }}"
 				  {{ data.link }}
 				  name="_customize-radio-{{ data.id }}"
-				  <# if ( data.value === key ) { #> checked<# } #>
+				  <# if ( data.value === optionKey ) { #> checked<# } #>
 				/>
-				{{ label }}
+				{{ optionVal }}
 			  </label>
 				</li>
 		<# } ); #>

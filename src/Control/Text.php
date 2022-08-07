@@ -80,9 +80,6 @@ class Text extends WP_Customize_Control {
 	 */
 	public function content_template() {
 		?>
-
-		{{ console.log( data.inputAttrs ) }}
-
 		<# if ( data.label ) { #>
 			<label class="customize-control-title" for="{{ data.id }}">{{ data.label }}</label>
 		<# } #>
