@@ -63,7 +63,7 @@ class DropdownTaxonomies extends Select {
 
 		$choices = array();
 
-		$choices[0] = esc_html__( '&mdash; Select &mdash;', 'education-soul' );
+		$choices[0] = esc_html__( '&mdash; Select &mdash;', 'ns-customizer-utilities' );
 
 		if ( ! empty( $all_taxonomies ) && ! is_wp_error( $all_taxonomies ) ) {
 			foreach ( $all_taxonomies as $tax ) {

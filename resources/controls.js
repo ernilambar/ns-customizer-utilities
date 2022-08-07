@@ -154,6 +154,8 @@ import './js/color-alpha';
 
 	api.controlConstructor[ 'nscu-dropdown-taxonomies' ] = api.nscuSelectControl.extend( {} );
 
+	api.controlConstructor[ 'nscu-dropdown-posts' ] = api.nscuSelectControl.extend( {} );
+
 	api.controlConstructor[ 'nscu-dropdown-google-fonts' ] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
