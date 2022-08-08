@@ -74,7 +74,7 @@ class Buttonset extends WP_Customize_Control {
 				<label class="switch-label switch-label-<# if ( key === data.value ) { #>on <# } else { #>off<# } #>" for="{{ data.id }}{{ key }}">{{{ data.choices[ key ] }}}</label>
 				</input>
 			<# } #>
-	</div>
+		</div>
 		<?php
 	}
 
