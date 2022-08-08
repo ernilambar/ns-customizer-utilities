@@ -211,6 +211,18 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize slug.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $input The value to sanitize.
+	 * @return mixed Sanitized value.
+	 */
+	public static function slug( $input ) {
+		return sanitize_title( $input );
+	}
+
+	/**
 	 * Sanitize select multiple.
 	 *
 	 * @since 1.0.0
@@ -258,6 +270,30 @@ class Sanitize {
 		}
 
 		return $new_value;
+	}
+
+	/**
+	 * Sanitize text.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $input The value to sanitize.
+	 * @return mixed Sanitized value.
+	 */
+	public static function text( $input ) {
+		return sanitize_text_field( $input );
+	}
+
+	/**
+	 * Sanitize textarea.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $input The value to sanitize.
+	 * @return mixed Sanitized value.
+	 */
+	public static function textarea( $input ) {
+		return sanitize_textarea_field( $input );
 	}
 
 	/**

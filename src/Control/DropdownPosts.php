@@ -38,7 +38,7 @@ class DropdownPosts extends Select {
 	 * @access public
 	 * @var array
 	 */
-	public $query_args = [];
+	public $query_args = array();
 
 	/**
 	 * Constructor.
@@ -54,7 +54,7 @@ class DropdownPosts extends Select {
 			$this->post_type = esc_attr( $args['post_type'] );
 		}
 
-		$query_args = [];
+		$query_args = array();
 
 		if ( isset( $args['query_args'] ) ) {
 			$this->query_args = $args['query_args'];
@@ -62,12 +62,15 @@ class DropdownPosts extends Select {
 
 		$query_args = $this->query_args;
 
-		$query_args = array_merge( $query_args, array(
-			'post_type'      => $this->post_type,
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'no_found_rows'  => true,
-		) );
+		$query_args = array_merge(
+			$query_args,
+			array(
+				'post_type'      => $this->post_type,
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
+				'no_found_rows'  => true,
+			)
+		);
 
 		$the_query = new \WP_Query( $query_args );
 
@@ -78,11 +81,10 @@ class DropdownPosts extends Select {
 		$all_posts = get_posts( $query_args );
 
 		if ( $all_posts ) {
-			foreach ($all_posts as $key => $p ) {
-				$options[strval($p->ID)] = get_the_title( $p->ID);
+			foreach ( $all_posts as $key => $p ) {
+				$options[ strval( $p->ID ) ] = get_the_title( $p->ID );
 			}
 		}
-
 
 		$this->choices = $options;
 

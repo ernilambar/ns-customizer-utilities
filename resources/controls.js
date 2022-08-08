@@ -67,10 +67,10 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			control.container.on( 'click', '.customize-control-title', function(){
-				$(this).toggleClass('acc-active');
-				control.container.find('.customize-control-description').fadeToggle();
-			});
+			control.container.on( 'click', '.customize-control-title', function() {
+				$( this ).toggleClass( 'acc-active' );
+				control.container.find( '.customize-control-description' ).fadeToggle();
+			} );
 		},
 	} );
 

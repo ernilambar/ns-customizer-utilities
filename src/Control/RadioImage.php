@@ -54,12 +54,12 @@ class RadioImage extends WP_Customize_Control {
 		$options = array();
 
 		if ( is_array( $this->choices ) && ! empty( $this->choices ) ) {
-	    foreach ( $this->choices as $key => $val ) {
-	      $options[] = "{$key}|||{$val}";
-	    }
+			foreach ( $this->choices as $key => $val ) {
+				$options[] = "{$key}|||{$val}";
+			}
 		}
 
-    $data['options'] = $options;
+		$data['options'] = $options;
 
 		return $data;
 	}
