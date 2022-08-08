@@ -63,6 +63,17 @@ import './js/color-alpha';
 		},
 	} );
 
+	api.controlConstructor[ 'nscu-accordion' ] = api.Control.extend( {
+		ready() {
+			const control = this;
+
+			control.container.on( 'click', '.customize-control-title', function(){
+				$(this).toggleClass('acc-active');
+				control.container.find('.customize-control-description').fadeToggle();
+			});
+		},
+	} );
+
 	api.controlConstructor[ 'nscu-buttonset' ] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend( {} );

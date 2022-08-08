@@ -14,6 +14,30 @@ $color_primary: #008dd4;
 	z-index: 50000000 !important;
 }
 
+/* === Accordion Control === */
+.customize-control-nscu-accordion {
+	.customize-control-title {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.accordion-icon-toggle {
+		padding-top: 5px;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.acc-active .accordion-icon-toggle {
+		transform: rotate(-45deg);
+	}
+
+	.customize-control-description {
+		display: none;
+		font-style: normal;
+	}
+}
+
 /* === Buttonset Control === */
 .customize-control-nscu-buttonset {
 	input[type="radio"] {
