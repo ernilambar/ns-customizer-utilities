@@ -16,4 +16,12 @@ use WP_Customize_Image_Control;
  *
  * @see WP_Customize_Control
  */
-class Image extends WP_Customize_Image_Control {}
+class Image extends WP_Customize_Image_Control {
+	/**
+	 * Conditional logic
+	 *
+	 * @since 1.0.0
+	 * @var array
+	 */
+	public $conditional_logic = array();
+}

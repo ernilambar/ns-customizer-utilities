@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Message control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Message extends WP_Customize_Control {
+class Message extends Base {
 
 	/**
 	 * Control type.

@@ -7,14 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Color Alpha control class.
  *
  * @since 1.0.0
  */
-class ColorAlpha extends WP_Customize_Control {
+class ColorAlpha extends Base {
 
 	/**
 	 * Control type.

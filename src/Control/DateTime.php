@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Date Time control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class DateTime extends WP_Customize_Control {
+class DateTime extends Base {
 
 	/**
 	 * Control type.

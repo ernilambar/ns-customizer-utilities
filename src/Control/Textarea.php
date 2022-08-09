@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Textarea control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Textarea extends WP_Customize_Control {
+class Textarea extends Base {
 
 	/**
 	 * Control type.

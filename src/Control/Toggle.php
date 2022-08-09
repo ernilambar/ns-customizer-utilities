@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Toggle control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Toggle extends WP_Customize_Control {
+class Toggle extends Base {
 
 	/**
 	 * Control type.
