@@ -18,7 +18,7 @@ use WP_Customize_Image_Control;
  */
 class Image extends WP_Customize_Image_Control {
 	/**
-	 * Conditional logic
+	 * Conditional logic.
 	 *
 	 * @since 1.0.0
 	 * @var array

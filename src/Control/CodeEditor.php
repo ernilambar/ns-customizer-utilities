@@ -1,22 +1,20 @@
 <?php
 /**
- * Color control
+ * Code Editor control
  *
  * @package NSCU
  */
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Color_Control;
+use WP_Customize_Code_Editor_Control;
 
 /**
- * Color control class.
+ * Code Editor control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Color extends WP_Customize_Color_Control {
+class CodeEditor extends WP_Customize_Code_Editor_Control {
 	/**
 	 * Conditional logic.
 	 *
@@ -25,4 +23,3 @@ class Color extends WP_Customize_Color_Control {
 	 */
 	public $conditional_logic = array();
 }
-
