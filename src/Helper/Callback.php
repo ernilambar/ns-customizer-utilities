@@ -37,33 +37,33 @@ class Callback {
 			$logic = wp_parse_args(
 				$logic,
 				array(
-					'field'   => '',
-					'compare' => '==',
+					'key'     => '',
 					'value'   => '',
+					'compare' => '==',
 				)
 			);
 
-			if ( empty( $logic['field'] ) || empty( $logic['compare'] ) ) {
+			if ( empty( $logic['key'] ) || empty( $logic['compare'] ) ) {
 				continue;
 			}
 
-			$field_value = $control->manager->get_setting( $logic['field'] )->value();
+			$field_value = $control->manager->get_setting( $logic['key'] )->value();
 
 			switch ( $logic['compare'] ) {
 				case '==':
-					$group_status = ( $field_value === $logic['value'] );
+					$group_status = ( $field_value == $logic['value'] );
 					break;
 
 				case '!=':
-					$group_status = ( $field_value !== $logic['value'] );
+					$group_status = ( $field_value != $logic['value'] );
 					break;
 
 				case 'in':
-					$group_status = ( in_array( $field_value, $logic['value'], true ) );
+					$group_status = in_array( $field_value, $logic['value'] );
 					break;
 
 				case 'not in':
-					$group_status = ( ! in_array( $field_value, $logic['value'], true ) );
+					$group_status = ! in_array( $field_value, $logic['value'] );
 					break;
 
 				default:
