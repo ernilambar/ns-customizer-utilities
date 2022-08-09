@@ -19,7 +19,7 @@ use WP_Customize_Control;
 class Base extends WP_Customize_Control {
 
 	/**
-	 * Conditional logic
+	 * Conditional logic.
 	 *
 	 * @since 1.0.0
 	 * @var array

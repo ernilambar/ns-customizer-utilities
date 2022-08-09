@@ -34,7 +34,7 @@ class Range extends Base {
 	public $suffix = '';
 
 	/**
-	 * Conditional logic
+	 * Conditional logic.
 	 *
 	 * @since 1.0.0
 	 * @var array
