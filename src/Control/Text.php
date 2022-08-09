@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Text control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Text extends WP_Customize_Control {
+class Text extends Base {
 
 	/**
 	 * Control type.

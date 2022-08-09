@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Sortable control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Sortable extends WP_Customize_Control {
+class Sortable extends Base {
 
 	/**
 	 * Control type.

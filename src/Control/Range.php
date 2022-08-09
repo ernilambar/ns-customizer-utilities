@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Range control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Range extends WP_Customize_Control {
+class Range extends Base {
 
 	/**
 	 * Control type.
@@ -34,6 +32,14 @@ class Range extends WP_Customize_Control {
 	 * @var string
 	 */
 	public $suffix = '';
+
+	/**
+	 * Conditional logic
+	 *
+	 * @since 1.0.0
+	 * @var array
+	 */
+	public $conditional_logic = array();
 
 	/**
 	 * Export data to JS.

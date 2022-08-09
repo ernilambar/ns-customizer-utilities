@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Editor control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Editor extends WP_Customize_Control {
+class Editor extends Base {
 
 	/**
 	 * Control type.

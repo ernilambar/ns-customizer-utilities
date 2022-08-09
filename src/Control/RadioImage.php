@@ -7,7 +7,7 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Radio Image control class.
@@ -16,7 +16,7 @@ use WP_Customize_Control;
  *
  * @see WP_Customize_Control
  */
-class RadioImage extends WP_Customize_Control {
+class RadioImage extends Base {
 
 	/**
 	 * Control type.

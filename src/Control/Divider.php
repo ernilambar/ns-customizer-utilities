@@ -7,16 +7,14 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Control;
+use Nilambar\CustomizerUtils\Control\Base;
 
 /**
  * Divider control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Divider extends WP_Customize_Control {
+class Divider extends Base {
 
 	/**
 	 * Control type.
