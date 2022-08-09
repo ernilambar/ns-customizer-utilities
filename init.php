@@ -7,7 +7,7 @@
 
 namespace Nilambar\CustomizerUtils;
 
-define( 'NSCU_VERSION' , '1.0.3' );
+define( 'NSCU_VERSION' , '1.0.6' );
 
 if ( ! defined( 'NSCU_DIR' ) ) {
 	define( 'NSCU_DIR' , rtrim( plugin_dir_path( __FILE__ ), '/' ) );
