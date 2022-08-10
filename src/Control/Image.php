@@ -7,21 +7,13 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use WP_Customize_Image_Control;
+use Nilambar\CustomizerUtils\Control\Media;
 
 /**
  * Image control class.
  *
  * @since 1.0.0
- *
- * @see WP_Customize_Control
  */
-class Image extends WP_Customize_Image_Control {
-	/**
-	 * Conditional logic.
-	 *
-	 * @since 1.0.0
-	 * @var array
-	 */
-	public $conditional_logic = array();
+class Image extends Media {
+
 }

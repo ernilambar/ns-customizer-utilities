@@ -224,6 +224,100 @@ import './js/color-alpha';
 		},
 	} );
 
+	api.controlConstructor[ 'nscu-media' ] = api.Control.extend( {
+		ready() {
+			const control = this;
+
+			let nscuFileFrame = '';
+
+			const stateId = _.uniqueId( 'nscu-state-' );
+
+			const fieldUpload = control.container.find( '.field-upload' );
+			const fieldRemove = control.container.find( '.field-remove' );
+			const fieldInput = control.container.find( '.field-input' );
+			const fieldPreview = control.container.find( '.field-preview' );
+			const previewWrap = control.container.find( '.preview-wrap' );
+
+			const mimeType = fieldUpload.data( 'mime_type' );
+			const uploaderTitle = fieldUpload.data( 'uploader_title' );
+			const uploaderButtonText = fieldUpload.data( 'uploader_button_text' );
+
+			// Setup modal.
+			const nscuMediaState = wp.media.controller.Library.extend( {
+				defaults: _.defaults( {
+					id: stateId,
+					title: uploaderTitle,
+					allowLocalEdits: false,
+					displaySettings: true,
+					displayUserSettings: false,
+					multiple: false,
+					library: wp.media.query( { type: mimeType } ),
+				}, wp.media.controller.Library.prototype.defaults ),
+			} );
+
+			// Create the media frame.
+			nscuFileFrame = wp.media.frames.nscuFileFrame = wp.media( {
+				button: {
+					text: uploaderButtonText,
+				},
+				state: stateId,
+				states: [
+					new nscuMediaState(),
+				],
+				multiple: false,
+			} );
+
+			nscuFileFrame.on( 'select', () => {
+				const selectedAttachment = nscuFileFrame.state( stateId ).get( 'selection' ).first();
+
+				let attachmentUrl = '';
+
+				if ( 'image' === mimeType ) {
+					const { size } = nscuFileFrame.state( stateId ).display( selectedAttachment ).toJSON();
+					const imageDetails = selectedAttachment.toJSON();
+					const { url } = imageDetails.sizes[ size ];
+					attachmentUrl = url;
+				} else {
+					attachmentUrl = selectedAttachment.toJSON().url;
+				}
+
+				fieldInput.val( attachmentUrl ).trigger( 'change' );
+
+				if ( 'image' === mimeType ) {
+					fieldPreview.attr( 'src', attachmentUrl );
+					previewWrap.addClass( 'preview-on' );
+				}
+				if ( '' !== attachmentUrl ) {
+					fieldRemove.removeClass( 'hide' );
+				}
+			} );
+
+			fieldUpload.on( 'click', function( e ) {
+				e.preventDefault();
+				nscuFileFrame.open();
+			} );
+
+			fieldRemove.on( 'click', function( e ) {
+				e.preventDefault();
+				previewWrap.removeClass( 'preview-on' );
+				fieldInput.val( '' ).trigger( 'change' );
+				fieldRemove.addClass( 'hide' );
+			} );
+
+			fieldInput.on( 'change keyup paste click', function() {
+				const value = jQuery( this ).val();
+				control.setting.set( value );
+
+				if ( '' !== value ) {
+					fieldPreview.attr( 'src', value );
+					previewWrap.addClass( 'preview-on' );
+				} else {
+					previewWrap.removeClass( 'preview-on' );
+				}
+			} );
+		},
+	} );
+
 	api.controlConstructor[ 'nscu-radio' ] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-radio-image' ] = api.nscuBasicControl.extend( {} );

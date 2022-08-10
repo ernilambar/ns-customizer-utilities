@@ -184,6 +184,50 @@ $color_primary: #008dd4;
 	}
 }
 
+/* === Media Control === */
+.customize-control-nscu-media {
+	.field-input-wrap {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.media-button {
+		background-color: $color_primary;
+		border: 1px solid $color_primary;
+		color: #fff;
+		border-radius: 4px;
+		text-decoration: none;
+		padding: 4px;
+		opacity: 0.9;
+		transition: 0.2s;
+
+		&:hover,
+		&:focus,
+		&:active {
+			opacity: 1;
+		}
+
+		&-danger {
+			background-color: #b73b27;
+			border-color: #b73b27;
+		}
+	}
+
+	.preview-wrap {
+		display: none;
+
+		&.preview-on {
+			display: block;
+			margin-top: 10px;
+		}
+	}
+
+	.hide {
+		display: none;
+	}
+}
+
 /* === Message Control === */
 .customize-control-nscu-message {
 	.customize-control-description {
