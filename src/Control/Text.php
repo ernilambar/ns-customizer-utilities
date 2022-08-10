@@ -43,6 +43,7 @@ class Text extends Base {
 		$data = parent::json();
 
 		$data['id']           = $this->type . '-' . $this->id;
+		$data['label']        = html_entity_decode( $this->label, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$data['value']        = $this->value();
 		$data['link']         = $this->get_link();
 		$data['defaultValue'] = $this->setting->default;
