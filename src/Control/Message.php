@@ -35,6 +35,7 @@ class Message extends Base {
 		$data = parent::json();
 
 		$data['id']          = $this->type . '-' . $this->id;
+		$data['label']       = html_entity_decode( $this->label, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$data['value']       = $this->value();
 		$data['description'] = wp_kses_post( $this->description );
 		$data['link']        = $this->get_link();
