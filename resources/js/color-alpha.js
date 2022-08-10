@@ -100,7 +100,7 @@ function acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider ) {
 jQuery( document ).ready( function( $ ) {
 
 	// Loop over each control and transform it into our color picker.
-	$( '.color-alpha-picker' ).each( function() {
+	$( '.color-picker-input' ).each( function() {
 
 		// Scope the vars.
 		var $control, startingColor, paletteInput, showOpacity, defaultColor, palette,
@@ -116,6 +116,7 @@ jQuery( document ).ready( function( $ ) {
 		paletteInput = $control.attr( 'data-palette' );
 		showOpacity  = $control.attr( 'data-show-opacity' );
 		defaultColor = $control.attr( 'data-default-color' );
+		alphaMode    = $control.attr( 'data-alpha-mode' );
 
 		// Process the palette.
 		if ( paletteInput.indexOf( '|' ) !== -1 ) {
@@ -159,12 +160,14 @@ jQuery( document ).ready( function( $ ) {
 		$container = $control.parents( '.wp-picker-container:first' );
 
 		// Insert our opacity slider.
-		$( '<div class="alpha-color-picker-container">' +
-				'<div class="min-click-zone click-zone"></div>' +
-				'<div class="max-click-zone click-zone"></div>' +
-				'<div class="alpha-slider"></div>' +
-				'<div class="transparency"></div>' +
-			'</div>' ).appendTo( $container.find( '.wp-picker-holder' ) );
+		if ( 'true' === alphaMode ) {
+			$( '<div class="alpha-color-picker-container">' +
+					'<div class="min-click-zone click-zone"></div>' +
+					'<div class="max-click-zone click-zone"></div>' +
+					'<div class="alpha-slider"></div>' +
+					'<div class="transparency"></div>' +
+				'</div>' ).appendTo( $container.find( '.wp-picker-holder' ) );
+		}
 
 		$alphaSlider = $container.find( '.alpha-slider' );
 
