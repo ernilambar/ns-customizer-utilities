@@ -1,24 +1,24 @@
 /* === Color Alpha Control === */
-.customize-control-nscu-color-alpha .wp-picker-container .iris-picker {
+.customize-control-nscu-color .wp-picker-container .iris-picker {
 	border-bottom: none;
 }
 
-.customize-control-nscu-color-alpha .wp-picker-container {
+.customize-control-nscu-color .wp-picker-container {
 	max-width: 257px;
 }
 
-.customize-control-nscu-color-alpha .wp-picker-open + .wp-picker-input-wrap {
+.customize-control-nscu-color .wp-picker-open + .wp-picker-input-wrap {
 	width: 100%;
 }
 
-.customize-control-nscu-color-alpha
+.customize-control-nscu-color
 	.wp-picker-input-wrap
-	input[type="text"].wp-color-picker.color-alpha-picker {
+	input[type="text"].wp-color-picker.color-picker-input {
 	float: left;
 	width: 195px;
 }
 
-.customize-control-nscu-color-alpha .wp-picker-input-wrap .button {
+.customize-control-nscu-color .wp-picker-input-wrap .button {
 	margin-left: 0;
 	float: right;
 }
@@ -111,17 +111,17 @@
 }
 
 @media only screen and (max-width: 782px) {
-	.customize-control-nscu-color-alpha
+	.customize-control-nscu-color
 		.wp-picker-input-wrap
-		input[type="text"].wp-color-picker.color-alpha-picker {
+		input[type="text"].wp-color-picker.color-picker-input {
 		width: 184px;
 	}
 }
 
 @media only screen and (max-width: 640px) {
-	.customize-control-nscu-color-alpha
+	.customize-control-nscu-color
 		.wp-picker-input-wrap
-		input[type="text"].wp-color-picker.color-alpha-picker {
+		input[type="text"].wp-color-picker.color-picker-input {
 		width: 172px;
 		height: 33px;
 	}

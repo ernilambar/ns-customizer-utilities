@@ -7,6 +7,8 @@
 
 namespace Nilambar\CustomizerUtils\Helper;
 
+use Nilambar\CustomizerUtils\Helper\Utils;
+
 /**
  * Sanitize class.
  *
@@ -31,9 +33,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int                  $input The value to sanitize.
+	 * @param array                $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return int Sanitized value; otherwise, the setting default.
+	 * @return array Sanitized value; otherwise, the setting default.
 	 */
 	public static function checkbox_multiple( $input, $setting ) {
 		$multi_values = (array) $input;
@@ -56,9 +58,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int                  $input The value to sanitize.
+	 * @param string               $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return int Sanitized value; otherwise, the setting default.
+	 * @return string Sanitized value; otherwise, the setting default.
 	 */
 	public static function color( $input, $setting ) {
 		$input = sanitize_hex_color( $input );
@@ -67,18 +69,30 @@ class Sanitize {
 	}
 
 	/**
-	 * Sanitize color alpha.
+	 * Sanitize color rgba.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int                  $input The value to sanitize.
+	 * @param string               $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return int Sanitized value; otherwise, the setting default.
+	 * @return string Sanitized value; otherwise, the setting default.
 	 */
-	public static function color_alpha( $input, $setting ) {
-		$color_obj = \ariColor::newColor( $input );
+	public static function color_rgba( $input, $setting ) {
+		$new_value = null;
 
-		return $color_obj->toCSS( 'rgba' );
+		if ( ! empty( $input ) ) {
+			if ( false === strpos( $input, 'rgba' ) && '#' === $input[0] ) {
+				// We have got hex value.
+				$new_value = Utils::color_hex_to_rgb( $input, true );
+			} else {
+				$val = str_replace( ' ', '', $input );
+				if ( Utils::is_rgba_color( $val ) ) {
+					$new_value = $val;
+				}
+			}
+		}
+
+		return ( ! is_null( $new_value ) ? $new_value : $setting->default );
 	}
 
 	/**
@@ -133,9 +147,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int                  $input The value to sanitize.
+	 * @param string               $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return int Sanitized value; otherwise, the setting default.
+	 * @return string Sanitized value; otherwise, the setting default.
 	 */
 	public static function email( $input, $setting ) {
 		$input = sanitize_email( $input );
@@ -215,8 +229,8 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed $input The value to sanitize.
-	 * @return mixed Sanitized value.
+	 * @param string $input The value to sanitize.
+	 * @return string Sanitized value.
 	 */
 	public static function slug( $input ) {
 		return sanitize_title( $input );
@@ -227,9 +241,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed                $input The value to sanitize.
+	 * @param array                $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return mixed Sanitized value.
+	 * @return array Sanitized value.
 	 */
 	public static function select_multiple( $input, $setting ) {
 		$new_values = array();
@@ -252,9 +266,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed                $input The value to sanitize.
+	 * @param array                $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return mixed Sanitized value.
+	 * @return array Sanitized value.
 	 */
 	public static function sortable( $input, $setting ) {
 		$new_value = array();
@@ -277,8 +291,8 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed $input The value to sanitize.
-	 * @return mixed Sanitized value.
+	 * @param string $input The value to sanitize.
+	 * @return string Sanitized value.
 	 */
 	public static function text( $input ) {
 		return sanitize_text_field( $input );
@@ -289,8 +303,8 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed $input The value to sanitize.
-	 * @return mixed Sanitized value.
+	 * @param string $input The value to sanitize.
+	 * @return string Sanitized value.
 	 */
 	public static function textarea( $input ) {
 		return sanitize_textarea_field( $input );
@@ -313,9 +327,9 @@ class Sanitize {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int                  $input The value to sanitize.
+	 * @param string               $input The value to sanitize.
 	 * @param WP_Customize_Setting $setting WP_Customize_Setting instance.
-	 * @return int Sanitized value; otherwise, the setting default.
+	 * @return string Sanitized value; otherwise, the setting default.
 	 */
 	public static function url( $input, $setting ) {
 		$input = esc_url_raw( $input );
