@@ -34,8 +34,10 @@ class Init {
 	}
 
 	public function load_assets() {
-		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls.css', array( 'wp-color-picker' ), NSCU_VERSION );
-		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls.js', array( 'jquery', 'customize-controls', 'wp-color-picker' ), NSCU_VERSION, true );
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls' . $min . '.css', array( 'wp-color-picker' ), NSCU_VERSION );
+		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls' . $min . '.js', array( 'jquery', 'customize-controls', 'wp-color-picker' ), NSCU_VERSION, true );
 	}
 }
 

@@ -13,7 +13,7 @@ module.exports = {
 	output: {
 		path: path.resolve( __dirname, 'assets' ),
 		assetModuleFilename: 'static/[name][ext][query]',
-		filename: '[name].js',
+		filename: process.env.NODE_ENV === 'production' ? '[name].min.js' : '[name].js',
 	},
 	target: 'browserslist',
 	externals: {
@@ -58,13 +58,12 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin( { filename: '[name].css' } ),
-	],
+		new MiniCssExtractPlugin( { filename: isProd ? '[name].min.css' : '[name].css', } ),
+	].filter(Boolean),
 	optimization: {
 		minimizer: [
-			new TerserPlugin( { extractComments: false } ),
-			new CssMinimizerPlugin(),
-		],
+			isProd ? new TerserPlugin( { extractComments: false } ) : false,
+			isProd ? new CssMinimizerPlugin() : false,
+		].filter(Boolean),
 	},
 };
