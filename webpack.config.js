@@ -13,7 +13,7 @@ module.exports = {
 	output: {
 		path: path.resolve( __dirname, 'assets' ),
 		assetModuleFilename: 'static/[name][ext][query]',
-		filename: '[name].js',
+		filename: process.env.NODE_ENV === 'production' ? '[name].min.js' : '[name].js',
 	},
 	target: 'browserslist',
 	externals: {
