@@ -1,18 +1,21 @@
 {
   "name": "ns-customizer-utilities",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/ernilambar/ns-customizer-utilities"
   },
-  "keywords": [ "wordpress", "customizer" ],
+  "keywords": [
+    "wordpress",
+    "customizer"
+  ],
   "author": "Nilabar Sharma",
   "license": "MIT",
   "scripts": {
     "dev": "webpack --watch",
     "build": "webpack",
-    "prod": "pnpm run build && NODE_ENV=production webpack",
+    "prod": "NODE_ENV=production webpack",
     "eslint": "eslint --quiet .",
     "eslint:fix": "eslint --quiet --fix .",
     "format": "prettier --write \"resources/**/*.scss\"",
@@ -27,6 +30,7 @@
     "@wordpress/eslint-plugin": "^12.8.0",
     "@wordpress/prettier-config": "^1.4.0",
     "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "eslint": "^8.21.0",
