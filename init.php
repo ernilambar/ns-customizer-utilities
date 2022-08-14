@@ -7,7 +7,7 @@
 
 namespace Nilambar\CustomizerUtils;
 
-define( 'NSCU_VERSION' , '1.0.7' );
+define( 'NSCU_VERSION' , '1.0.8' );
 
 if ( ! defined( 'NSCU_DIR' ) ) {
 	define( 'NSCU_DIR' , rtrim( plugin_dir_path( __FILE__ ), '/' ) );
@@ -34,10 +34,8 @@ class Init {
 	}
 
 	public function load_assets() {
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls' . $min . '.css', array( 'wp-color-picker' ), NSCU_VERSION );
-		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls' . $min . '.js', array( 'jquery', 'customize-controls', 'wp-color-picker' ), NSCU_VERSION, true );
+		wp_register_style( 'nscu-controls', NSCU_URL . '/assets/controls.css', array( 'wp-color-picker' ), NSCU_VERSION );
+		wp_register_script( 'nscu-controls', NSCU_URL . '/assets/controls.js', array( 'jquery', 'customize-controls', 'wp-color-picker' ), NSCU_VERSION, true );
 	}
 }
 
