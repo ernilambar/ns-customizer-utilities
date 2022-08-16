@@ -248,7 +248,7 @@ import './js/color-alpha';
 					id: stateId,
 					title: uploaderTitle,
 					allowLocalEdits: false,
-					displaySettings: true,
+					displaySettings: false,
 					displayUserSettings: false,
 					multiple: false,
 					library: wp.media.query( { type: mimeType } ),
@@ -270,16 +270,7 @@ import './js/color-alpha';
 			nscuFileFrame.on( 'select', () => {
 				const selectedAttachment = nscuFileFrame.state( stateId ).get( 'selection' ).first();
 
-				let attachmentUrl = '';
-
-				if ( 'image' === mimeType ) {
-					const { size } = nscuFileFrame.state( stateId ).display( selectedAttachment ).toJSON();
-					const imageDetails = selectedAttachment.toJSON();
-					const { url } = imageDetails.sizes[ size ];
-					attachmentUrl = url;
-				} else {
-					attachmentUrl = selectedAttachment.toJSON().url;
-				}
+				const attachmentUrl = selectedAttachment.toJSON().url;
 
 				fieldInput.val( attachmentUrl ).trigger( 'change' );
 
