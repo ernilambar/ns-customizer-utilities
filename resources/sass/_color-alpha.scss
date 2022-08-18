@@ -15,7 +15,7 @@
 	.wp-picker-input-wrap
 	input[type="text"].wp-color-picker.color-picker-input {
 	float: left;
-	width: 195px;
+	width: 153px;
 }
 
 .customize-control-nscu-color .wp-picker-input-wrap .button {
@@ -111,10 +111,8 @@
 }
 
 @media only screen and (max-width: 782px) {
-	.customize-control-nscu-color
-		.wp-picker-input-wrap
-		input[type="text"].wp-color-picker.color-picker-input {
-		width: 184px;
+	.customize-control-nscu-color .wp-picker-input-wrap input[type="text"].wp-color-picker.color-picker-input {
+		width: 153px;
 	}
 }
 
@@ -122,7 +120,40 @@
 	.customize-control-nscu-color
 		.wp-picker-input-wrap
 		input[type="text"].wp-color-picker.color-picker-input {
-		width: 172px;
+		width: 153px;
 		height: 33px;
+	}
+}
+
+.customize-control-nscu-color {
+	.wp-picker-container.wp-picker-active {
+
+		.wp-color-result-text {
+			display: none;
+		}
+
+		.button.wp-color-result {
+			width: 34px;
+			float: left;
+			height: auto;
+		}
+
+		.wp-picker-input-wrap {
+			width: 84% !important;
+			float: right;
+			height: auto;
+			display: flex;
+		}
+
+		.wp-picker-holder {
+			clear: both;
+			width: 100%;
+		}
+	}
+}
+
+@media only screen and (max-width: 782px) {
+	.customize-control-nscu-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+		width: 81% !important;
 	}
 }
