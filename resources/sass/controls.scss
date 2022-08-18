@@ -177,10 +177,21 @@ $color_primary: #008dd4;
 	left: -24px;
 	padding: 10px 24px;
 	position: relative;
+	margin-top: 12px;
 	width: calc(100% + 48px);
+
+	&:first-of-type {
+		margin-top: 0;
+	}
 
 	.customize-control-title {
 		font-size: 15px;
+	}
+}
+
+.control-section {
+	.customize-control-nscu-heading:nth-child(2) {
+		margin-top: 0;
 	}
 }
 
