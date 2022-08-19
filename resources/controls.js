@@ -173,19 +173,13 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			const element = control.container.find( 'textarea' );
 			const id = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
 
 			const choices = control.params.choices;
 
-			const editorParams = {
-				quicktags: ( choices.tabs === 'both' || choices.tabs === 'text' ) ? true : false,
-				mediaButtons: choices.media_buttons,
-			};
+			let toolbarButtons = '';
 
 			if ( choices.tabs === 'both' || choices.tabs === 'visual' ) {
-				let toolbarButtons = '';
-
 				if ( choices.toolbar === 'default' ) {
 					toolbarButtons = 'bold italic bullist numlist link';
 				} else if ( choices.toolbar === 'minimal' ) {
@@ -197,30 +191,30 @@ import './js/color-alpha';
 				if ( choices.toolbar === 'custom' ) {
 					toolbarButtons = ( choices.toolbar_buttons !== '' ) ? choices.toolbar_buttons : 'bold italic bullist numlist link';
 				}
-
-				editorParams.tinymce = {
-					wpautop: true,
-					toolbar1: toolbarButtons,
-				};
-			} else {
-				editorParams.tinymce = false;
 			}
 
-			// Initialize editor.
-			if ( wp.editor && wp.editor.initialize ) {
-				wp.editor.initialize( id, editorParams );
+			let tinymce = {
+				wpautop: true,
+				browser_spellcheck: true,
+				wp_autoresize_on: true,
+				toolbar1: toolbarButtons,
+				setup( editor ) {
+					editor.on( 'change', function() {
+						editor.save();
+						jQuery( `#${ id }` ).trigger( 'change' );
+					} );
+				},
+			};
+
+			if ( ! ( choices.tabs === 'both' || choices.tabs === 'visual' ) ) {
+				tinymce = false;
 			}
 
-			const editor = tinyMCE.get( id );
-
-			if ( editor ) {
-				editor.onChange.add( function( ed ) {
-					ed.save();
-					const content = editor.getContent();
-					element.val( content ).trigger( 'change' );
-					api.instance( control.id ).set( content );
-				} );
-			}
+			wp.editor.initialize( id, {
+				tinymce,
+				mediaButtons: choices.media_buttons,
+				quicktags: ( choices.tabs === 'both' || choices.tabs === 'text' ) ? true : false,
+			} );
 		},
 	} );
 
