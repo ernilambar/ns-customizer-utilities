@@ -1,6 +1,6 @@
 {
   "name": "ns-customizer-utilities",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "prettier": "@wordpress/prettier-config",
-  "browserslist": "> 0.25%, not dead",
+  "browserslist": "> 1%, not dead",
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",
