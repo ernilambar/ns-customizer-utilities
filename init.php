@@ -7,14 +7,20 @@
 
 namespace Nilambar\CustomizerUtils;
 
-define( 'NSCU_VERSION' , '1.0.10' );
+if ( defined( 'NSCU_VERSION' ) ) {
+	return;
+}
 
-if ( ! defined( 'NSCU_DIR' ) ) {
-	define( 'NSCU_DIR' , rtrim( plugin_dir_path( __FILE__ ), '/' ) );
+if ( ! defined( 'NSCU_VERSION' ) ) {
+	define( 'NSCU_VERSION' , '1.0.11' );
+}
+
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 if ( ! defined( 'NSCU_URL' ) ) {
-	define( 'NSCU_URL' , rtrim( plugin_dir_url( __FILE__ ), '/' )  );
+	define( 'NSCU_URL' , rtrim( \Kirki\URL::get_from_path( __DIR__ ), '/' )  );
 }
 
 /**
