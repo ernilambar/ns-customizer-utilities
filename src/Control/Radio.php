@@ -95,6 +95,7 @@ class Radio extends Base {
 				<# optionArr = option.split('|||') #>
 				<# optionKey = optionArr[0] #>
 				<# optionVal = optionArr[1] #>
+
 				<li>
 			  <label>
 				<input
@@ -104,7 +105,7 @@ class Radio extends Base {
 				  value="{{ optionKey }}"
 				  {{ data.link }}
 				  name="_customize-radio-{{ data.id }}"
-				  <# if ( data.value === optionKey ) { #> checked<# } #>
+				  <# if ( data.value.toString() === optionKey ) { #> checked<# } #>
 				/>
 				{{ optionVal }}
 			  </label>
