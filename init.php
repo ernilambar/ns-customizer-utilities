@@ -23,7 +23,7 @@ if ( ! defined( 'NSCU_URL' ) ) {
 	define( 'NSCU_URL' , rtrim( \Kirki\URL::get_from_path( __DIR__ ), '/' )  );
 }
 
-if ( ! class_exists( 'Init' ) ) :
+if ( ! class_exists( Init::class, false ) ) :
 	/**
 	 * Init class.
 	 *
