@@ -95,7 +95,7 @@ class Select extends Base {
 				<# optionKey = optionArr[0] #>
 				<# optionVal = optionArr[1] #>
 
-				<option value="{{ optionKey }}" <# if ( optionKey === data.value ) { #> selected="selected" <# } #>>{{{ optionVal }}}</option>
+				<option value="{{ optionKey }}" <# if ( optionKey === data.value.toString() ) { #> selected="selected" <# } #>>{{{ optionVal }}}</option>
 
 			<# } ) #>
 		</select>
