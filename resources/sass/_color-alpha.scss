@@ -12,8 +12,8 @@
 }
 
 .customize-control-nscu-color
-	.wp-picker-input-wrap
-	input[type="text"].wp-color-picker.color-picker-input {
+.wp-picker-input-wrap
+input[type="text"].wp-color-picker.color-picker-input {
 	float: left;
 	width: 153px;
 }
@@ -23,13 +23,6 @@
 	float: right;
 }
 
-.wp-picker-container
-	.wp-picker-open
-	~ .wp-picker-holder
-	.alpha-color-picker-container {
-	display: block;
-}
-
 .alpha-color-picker-container {
 	border: 1px solid #dfdfdf;
 	border-top: none;
@@ -37,6 +30,12 @@
 	background: #fff;
 	padding: 0 11px 10px;
 	position: relative;
+}
+
+.wp-picker-container
+.wp-picker-open ~ .wp-picker-holder
+.alpha-color-picker-container {
+	display: block;
 }
 
 .alpha-color-picker-container .ui-widget-content,
@@ -103,7 +102,7 @@
 	height: 24px;
 	width: 100%;
 	background-color: #fff;
-	background-image: url("../img/transparency-grid.png");
+	background-image: url(../img/transparency-grid.png);
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
 	border-radius: 3px;
 	padding: 0;
@@ -111,21 +110,24 @@
 }
 
 @media only screen and (max-width: 782px) {
+
 	.customize-control-nscu-color .wp-picker-input-wrap input[type="text"].wp-color-picker.color-picker-input {
 		width: 153px;
 	}
 }
 
 @media only screen and (max-width: 640px) {
+
 	.customize-control-nscu-color
-		.wp-picker-input-wrap
-		input[type="text"].wp-color-picker.color-picker-input {
+	.wp-picker-input-wrap
+	input[type="text"].wp-color-picker.color-picker-input {
 		width: 153px;
 		height: 33px;
 	}
 }
 
 .customize-control-nscu-color {
+
 	.wp-picker-container.wp-picker-active {
 
 		.wp-color-result-text {
@@ -153,6 +155,7 @@
 }
 
 @media only screen and (max-width: 782px) {
+
 	.customize-control-nscu-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
 		width: 81% !important;
 	}

@@ -51,3 +51,4 @@ build/
 deploy/
 vendor/
 node_modules/
+assets/controls.asset.php
