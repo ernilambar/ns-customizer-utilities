@@ -1,7 +1,6 @@
 @import "select2";
 @import "flatpickr";
-
-@import "_color-alpha.scss";
+@import "color-alpha";
 
 $color_primary: #008dd4;
 
@@ -16,6 +15,7 @@ $color_primary: #008dd4;
 
 /* === Accordion Control === */
 .customize-control-nscu-accordion {
+
 	.customize-control-title {
 		cursor: pointer;
 		display: flex;
@@ -40,6 +40,7 @@ $color_primary: #008dd4;
 
 /* === Buttonset Control === */
 .customize-control-nscu-buttonset {
+
 	input[type="radio"] {
 		clip: rect(1px, 1px, 1px, 1px);
 		height: 1px;
@@ -71,7 +72,9 @@ $color_primary: #008dd4;
 		}
 
 		.switch-input {
+
 			&:checked {
+
 				+ .switch-label {
 					border-color: #7e8993;
 					background: $color_primary;
@@ -85,6 +88,7 @@ $color_primary: #008dd4;
 
 /* === Checkbox Control === */
 .customize-control-nscu-checkbox {
+
 	.field-wrapper {
 		display: flex;
 		align-items: flex-start;
@@ -103,6 +107,7 @@ $color_primary: #008dd4;
 
 /* === Dimension Control === */
 .customize-control-nscu-dimension {
+
 	.dimension-wrapper {
 		position: relative;
 	}
@@ -144,27 +149,29 @@ $color_primary: #008dd4;
 		transition: all 0.3s;
 		z-index: 3;
 
-		&:hover i {
-			color: $color_primary;
+		i { /* stylelint-disable-line no-descending-specificity */
+			font-size: 12px;
 		}
 
-		i {
-			font-size: 12px;
+		&:hover i {
+			color: $color_primary;
 		}
 	}
 }
 
 /* === Divider Control === */
 .customize-control-nscu-divider {
+
 	hr {
 		border: 0;
-		border-top: 1px solid #cccccc;
+		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #f8f8f8;
 	}
 }
 
 /* === Editor Control === */
 .customize-control-nscu-editor {
+
 	textarea {
 		width: 100%;
 		height: 120px;
@@ -190,6 +197,7 @@ $color_primary: #008dd4;
 }
 
 .control-section {
+
 	.customize-control-nscu-heading:nth-child(2) {
 		margin-top: 0;
 	}
@@ -197,6 +205,7 @@ $color_primary: #008dd4;
 
 /* === Media Control === */
 .customize-control-nscu-media {
+
 	.field-input-wrap {
 		display: flex;
 		align-items: center;
@@ -241,6 +250,7 @@ $color_primary: #008dd4;
 
 /* === Message Control === */
 .customize-control-nscu-message {
+
 	.customize-control-description {
 		font-style: normal;
 		color: #666;
@@ -255,6 +265,7 @@ $color_primary: #008dd4;
 
 /* === Radio Control === */
 .customize-control-nscu-radio {
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -274,6 +285,7 @@ $color_primary: #008dd4;
 
 /* === Radio Image Control === */
 .customize-control-nscu-radio-image {
+
 	input[type="radio"] {
 		clip: rect(1px, 1px, 1px, 1px);
 		height: 1px;
@@ -327,6 +339,7 @@ $color_primary: #008dd4;
 
 /* === Range Control === */
 .customize-control-nscu-range {
+
 	.range-wrapper {
 		position: relative;
 	}
@@ -371,18 +384,19 @@ $color_primary: #008dd4;
 		transition: all 0.3s;
 		z-index: 3;
 
-		&:hover i {
-			color: $color_primary;
+		i { /* stylelint-disable-line no-descending-specificity */
+			font-size: 12px;
 		}
 
-		i {
-			font-size: 12px;
+		&:hover i {
+			color: $color_primary;
 		}
 	}
 }
 
 /* === Sortable Control === */
 .customize-control-nscu-sortable {
+
 	ul.ui-sortable {
 		cursor: default;
 
@@ -418,6 +432,7 @@ $color_primary: #008dd4;
 
 /* === Switcher Control === */
 .customize-control-nscu-switcher {
+
 	.field-wrapper {
 		display: flex;
 		gap: 15px;
@@ -446,14 +461,14 @@ $color_primary: #008dd4;
 			transition: 0.4s;
 		}
 
-		.field-slider:before {
+		.field-slider::before {
 			position: absolute;
 			content: "";
 			height: 16px;
 			width: 16px;
 			left: 4px;
 			bottom: 4px;
-			background-color: white;
+			background-color: #fff;
 			transition: 0.4s;
 		}
 
@@ -465,7 +480,7 @@ $color_primary: #008dd4;
 			box-shadow: 0 0 1px #2271b1;
 		}
 
-		input:checked + .field-slider:before {
+		input:checked + .field-slider::before {
 			transform: translateX(26px);
 		}
 
@@ -473,7 +488,7 @@ $color_primary: #008dd4;
 			border-radius: 34px;
 		}
 
-		.field-slider.round:before {
+		.field-slider.round::before {
 			border-radius: 50%;
 		}
 	}
@@ -481,6 +496,7 @@ $color_primary: #008dd4;
 
 /* === Toggle Control === */
 .customize-control-nscu-toggle {
+
 	.field-wrapper {
 		display: flex;
 		gap: 15px;
@@ -498,7 +514,7 @@ $color_primary: #008dd4;
 			display: none;
 		}
 
-		.field-slider {
+		.field-slider { /* stylelint-disable-line no-descending-specificity */
 			position: absolute;
 			cursor: pointer;
 			top: 0;
@@ -509,14 +525,14 @@ $color_primary: #008dd4;
 			transition: 0.4s;
 		}
 
-		.field-slider:before {
+		.field-slider::before { /* stylelint-disable-line no-descending-specificity */
 			position: absolute;
 			content: "";
 			height: 16px;
 			width: 16px;
 			left: 4px;
 			bottom: 4px;
-			background-color: white;
+			background-color: #fff;
 			transition: 0.4s;
 		}
 
@@ -528,7 +544,7 @@ $color_primary: #008dd4;
 			box-shadow: 0 0 1px #2271b1;
 		}
 
-		input:checked + .field-slider:before {
+		input:checked + .field-slider::before {
 			transform: translateX(26px);
 		}
 
@@ -536,7 +552,7 @@ $color_primary: #008dd4;
 			border-radius: 34px;
 		}
 
-		.field-slider.round:before {
+		.field-slider.round::before {
 			border-radius: 50%;
 		}
 	}
@@ -544,19 +560,22 @@ $color_primary: #008dd4;
 
 /* === Textarea Control === */
 .customize-control-nscu-textarea {
+
 	textarea {
 		width: 100%;
 		height: 120px;
 	}
 }
+
 /* === Button Section === */
 .control-section-nscu-button {
+
 	.accordion-section-title {
 		display: flex;
 		align-items: center;
 		gap: 5px;
 		justify-content: space-between;
-		padding: 7px 0px 7px 14px;
+		padding: 7px 0 7px 14px;
 		padding-right: 14px !important;
 
 		&.no-button {
@@ -586,7 +605,7 @@ $color_primary: #008dd4;
 #customize-controls .control-section-nscu-upsell {
 	background-color: #344860;
 
-	.accordion-section-title {
+	.accordion-section-title { /* stylelint-disable-line no-descending-specificity */
 		background-color: #344860;
 		border-color: #344860;
 		user-select: none;
