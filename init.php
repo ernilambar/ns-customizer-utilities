@@ -12,7 +12,7 @@ if ( defined( 'NSCU_VERSION' ) ) {
 }
 
 if ( ! defined( 'NSCU_VERSION' ) ) {
-	define( 'NSCU_VERSION' , '1.0.12' );
+	define( 'NSCU_VERSION' , '1.1.0' );
 }
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -20,7 +20,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 if ( ! defined( 'NSCU_URL' ) ) {
-	define( 'NSCU_URL' , rtrim( \Kirki\URL::get_from_path( __DIR__ ), '/' )  );
+	define( 'NSCU_URL' , rtrim( get_parent_theme_file_uri(), '/' ) . '/vendor/ernilambar/ns-customizer-utilities' );
 }
 
 if ( ! class_exists( Init::class, false ) ) :

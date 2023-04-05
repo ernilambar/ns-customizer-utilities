@@ -4,53 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daacde87e08f09d0028d88f676743e39",
-    "packages": [
-        {
-            "name": "kirki-framework/url-getter",
-            "version": "v1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/url-getter.git",
-                "reference": "cfe7ea5b51c5e9b5e7d706ed56694f54a972fae2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/cfe7ea5b51c5e9b5e7d706ed56694f54a972fae2",
-                "reference": "cfe7ea5b51c5e9b5e7d706ed56694f54a972fae2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kirki Framework",
-                    "email": "connect@mapsteps.com"
-                }
-            ],
-            "description": "Helper component to get the URL of a file in WordPress.",
-            "homepage": "https://kirki.org/",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/kirki-framework/url-getter/issues",
-                "source": "https://github.com/kirki-framework/url-getter/tree/v1.0.5"
-            },
-            "time": "2021-12-29T16:27:31+00:00"
-        }
-    ],
+    "content-hash": "340a5709109ad24a0fde7d65e95694e3",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
