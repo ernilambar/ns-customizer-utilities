@@ -1,26 +1,29 @@
 {
-	"name"        : "ernilambar/ns-customizer-utilities",
-	"description" : "Custom Customizer Controls",
-	"keywords"    : [ "customizer", "wordpress" ],
-	"homepage"    : "https://github.com/ernilambar/ns-customizer-utilities",
-	"license"     : "MIT",
-	"authors"     : [
+	"name": "ernilambar/ns-customizer-utilities",
+	"description": "Custom WordPress Customizer Controls",
+	"keywords": [
+		"customizer",
+		"wordpress"
+	],
+	"homepage": "https://github.com/ernilambar/ns-customizer-utilities",
+	"license": "GPL-2.0-or-later",
+	"authors": [
 		{
-			"name"     : "Nilambar Sharma",
-			"email"    : "nilambar@outlook.com",
-			"homepage" : "https://www.nilambar.net/",
-			"role"     : "Developer"
+			"name": "Nilambar Sharma",
+			"email": "nilambar@outlook.com",
+			"homepage": "https://www.nilambar.net/",
+			"role": "Developer"
 		}
 	],
-	"support"     : {
-		"issues" : "https://github.com/ernilambar/ns-customizer-utilities/issues"
+	"support": {
+		"issues": "https://github.com/ernilambar/ns-customizer-utilities/issues"
 	},
-	"autoload"    : {
+	"autoload": {
 		"psr-4": {
 			"Nilambar\\CustomizerUtils\\": "src/"
 		}
 	},
-	"require"     : {
-		"php" : ">=5.6"
+	"require": {
+		"php": ">=5.6"
 	}
 }

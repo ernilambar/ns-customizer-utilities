@@ -46,9 +46,9 @@ npm-debug.log
 .sass-cache/
 
 # Project folders
-docs/
-build/
-deploy/
-vendor/
-node_modules/
 assets/controls.asset.php
+/build/
+/deploy/
+/docs/
+/node_modules/
+/vendor/
