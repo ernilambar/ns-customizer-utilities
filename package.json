@@ -1,32 +1,38 @@
 {
-  "name": "ns-customizer-utilities",
-  "version": "1.1.0",
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ernilambar/ns-customizer-utilities"
-  },
-  "keywords": [
-    "wordpress",
-    "customizer"
-  ],
-  "author": "Nilabar Sharma",
-  "license": "MIT",
-  "scripts": {
-    "dev": "wp-scripts start",
-    "build": "wp-scripts build",
-    "lint:css": "wp-scripts lint-style 'resources/**/*.{css,scss}'",
-    "lint:css:fix": "wp-scripts lint-style 'resources/**/*.{css,scss}' --fix",
-    "lint:js": "wp-scripts lint-js ./resources webpack.config.js",
-    "lint:js:fix": "wp-scripts lint-js ./resources webpack.config.js --fix",
-    "preinstall": "npx only-allow pnpm"
-  },
-  "browserslist": "> 1%, not dead",
-  "dependencies": {
-    "flatpickr": "^4.6.13",
-    "select2": "4.1.0-rc.0"
-  },
-  "devDependencies": {
-    "@wordpress/scripts": "^25.4.0"
-  }
+	"name": "ns-customizer-utilities",
+	"version": "1.1.0",
+	"description": "NS Customizer Utilities",
+	"author": "Nilambar Sharma",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"customizer"
+	],
+	"homepage": "https://github.com/ernilambar/ns-customizer-utilities",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ns-customizer-utilities"
+	},
+	"bugs": {
+		"url": "https://github.com/ernilambar/ns-customizer-utilities/issues"
+	},
+	"browserslist": "> 1%, not dead",
+	"dependencies": {
+		"flatpickr": "^4.6.13",
+		"select2": "4.1.0-rc.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^26.6.0"
+	},
+	"scripts": {
+		"dev": "wp-scripts start",
+		"build": "wp-scripts build",
+		"lint:css": "wp-scripts lint-style 'resources/**/*.{css,scss}'",
+		"lint:css:fix": "wp-scripts lint-style 'resources/**/*.{css,scss}' --fix",
+		"lint:js": "wp-scripts lint-js ./resources *.js",
+		"lint:js:fix": "wp-scripts lint-js ./resources *.js --fix",
+		"lint:json:fix": "wp-scripts format *.json",
+		"lint:pkg": "wp-scripts lint-pkg-json",
+		"preinstall": "composer install"
+	}
 }
