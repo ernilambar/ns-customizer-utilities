@@ -12,8 +12,8 @@
 }
 
 .customize-control-nscu-color
-.wp-picker-input-wrap
-input[type="text"].wp-color-picker.color-picker-input {
+	.wp-picker-input-wrap
+	input[type="text"].wp-color-picker.color-picker-input {
 	float: left;
 	width: 153px;
 }
@@ -33,8 +33,9 @@ input[type="text"].wp-color-picker.color-picker-input {
 }
 
 .wp-picker-container
-.wp-picker-open ~ .wp-picker-holder
-.alpha-color-picker-container {
+	.wp-picker-open
+	~ .wp-picker-holder
+	.alpha-color-picker-container {
 	display: block;
 }
 
@@ -110,26 +111,24 @@ input[type="text"].wp-color-picker.color-picker-input {
 }
 
 @media only screen and (max-width: 782px) {
-
-	.customize-control-nscu-color .wp-picker-input-wrap input[type="text"].wp-color-picker.color-picker-input {
+	.customize-control-nscu-color
+		.wp-picker-input-wrap
+		input[type="text"].wp-color-picker.color-picker-input {
 		width: 153px;
 	}
 }
 
 @media only screen and (max-width: 640px) {
-
 	.customize-control-nscu-color
-	.wp-picker-input-wrap
-	input[type="text"].wp-color-picker.color-picker-input {
+		.wp-picker-input-wrap
+		input[type="text"].wp-color-picker.color-picker-input {
 		width: 153px;
 		height: 33px;
 	}
 }
 
 .customize-control-nscu-color {
-
 	.wp-picker-container.wp-picker-active {
-
 		.wp-color-result-text {
 			display: none;
 		}
@@ -155,8 +154,9 @@ input[type="text"].wp-color-picker.color-picker-input {
 }
 
 @media only screen and (max-width: 782px) {
-
-	.customize-control-nscu-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+	.customize-control-nscu-color
+		.wp-picker-container.wp-picker-active
+		.wp-picker-input-wrap {
 		width: 81% !important;
 	}
 }

@@ -47,8 +47,8 @@ npm-debug.log
 
 # Project folders
 assets/controls.asset.php
-/build/
-/deploy/
-/docs/
-/node_modules/
-/vendor/
+build/
+deploy/
+docs/
+node_modules/
+vendor/
