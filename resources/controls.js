@@ -5,7 +5,7 @@ import 'flatpickr';
 
 import './js/color-alpha';
 
-( function( $, api ) {
+( function ( $, api ) {
 	api.nscuBasicControl = api.Control.extend( {
 		ready() {
 			const control = this;
@@ -18,9 +18,13 @@ import './js/color-alpha';
 		initBaseControl( control ) {
 			control = control || this;
 
-			control.container.on( 'change keyup paste click', 'input', function() {
-				control.setting.set( jQuery( this ).val() );
-			} );
+			control.container.on(
+				'change keyup paste click',
+				'input',
+				function () {
+					control.setting.set( jQuery( this ).val() );
+				}
+			);
 		},
 	} );
 
@@ -36,11 +40,11 @@ import './js/color-alpha';
 		initSelectControl( control ) {
 			control = control || this;
 
-			$( 'select', control.container ).select2( { width: 260, minimumResultsForSearch: 10 } ).change(
-				function() {
+			$( 'select', control.container )
+				.select2( { width: 260, minimumResultsForSearch: 10 } )
+				.change( function () {
 					control.setting.set( $( this ).val() );
-				}
-			);
+				} );
 		},
 	} );
 
@@ -56,7 +60,7 @@ import './js/color-alpha';
 		initCheckboxControl( control ) {
 			control = control || this;
 
-			control.container.on( 'change', 'input:checkbox', function() {
+			control.container.on( 'change', 'input:checkbox', function () {
 				const value = this.checked ? true : false;
 				control.setting.set( value );
 			} );
@@ -67,33 +71,53 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			control.container.on( 'click', '.customize-control-title', function() {
-				$( this ).toggleClass( 'acc-active' );
-				control.container.find( '.customize-control-description' ).fadeToggle();
-			} );
+			control.container.on(
+				'click',
+				'.customize-control-title',
+				function () {
+					$( this ).toggleClass( 'acc-active' );
+					control.container
+						.find( '.customize-control-description' )
+						.fadeToggle();
+				}
+			);
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-buttonset' ] = api.nscuBasicControl.extend( {} );
+	api.controlConstructor[ 'nscu-buttonset' ] = api.nscuBasicControl.extend(
+		{}
+	);
 
-	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend( {} );
+	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend(
+		{}
+	);
 
 	api.controlConstructor[ 'nscu-checkbox-multiple' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
 			// Save the value
-			control.container.on( 'change', 'input', function() {
+			control.container.on( 'change', 'input', function () {
 				const value = [];
 				let i = 0;
 
-				jQuery.each( control.params.choices, function( key ) {
-					if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
-						control.container.find( 'input[value="' + key + '"]' ).parent().addClass( 'checked' );
+				jQuery.each( control.params.choices, function ( key ) {
+					if (
+						control.container
+							.find( 'input[value="' + key + '"]' )
+							.is( ':checked' )
+					) {
+						control.container
+							.find( 'input[value="' + key + '"]' )
+							.parent()
+							.addClass( 'checked' );
 						value[ i ] = key;
 						i++;
 					} else {
-						control.container.find( 'input[value="' + key + '"]' ).parent().removeClass( 'checked' );
+						control.container
+							.find( 'input[value="' + key + '"]' )
+							.parent()
+							.removeClass( 'checked' );
 					}
 				} );
 
@@ -126,7 +150,12 @@ import './js/color-alpha';
 				enableTime = false;
 			}
 
-			const pickerArgs = { dateFormat, enableTime, noCalendar, time_24hr: time24hr };
+			const pickerArgs = {
+				dateFormat,
+				enableTime,
+				noCalendar,
+				time_24hr: time24hr,
+			};
 
 			this.container.find( '.date-time-input' ).flatpickr( pickerArgs );
 		},
@@ -136,44 +165,92 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			control.container.on( 'input change', 'input.dimension-slider', function() {
-				const currentValue = control.container.find( '.dimension-slider' ).val() + control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
-				control.container.find( '.dimension-number' ).val( control.container.find( '.dimension-slider' ).val() );
-				control.setting.set( currentValue );
-			} );
-			control.container.on( 'input change', 'input.dimension-number', function() {
-				const currentValue = $( this ).val() + control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
-				control.container.find( '.dimension-slider' ).val( $( this ).val() );
-				control.setting.set( currentValue );
-			} );
-			control.container.on( 'change', 'select.dimension-unit', function() {
-				const currentValue = control.container.find( '.dimension-slider' ).val() + control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
-				control.setting.set( currentValue );
-			} );
+			control.container.on(
+				'input change',
+				'input.dimension-slider',
+				function () {
+					const currentValue =
+						control.container.find( '.dimension-slider' ).val() +
+						control.container
+							.find( '.dimension-unit option' )
+							.filter( ':selected' )
+							.val();
+					control.container
+						.find( '.dimension-number' )
+						.val(
+							control.container.find( '.dimension-slider' ).val()
+						);
+					control.setting.set( currentValue );
+				}
+			);
+			control.container.on(
+				'input change',
+				'input.dimension-number',
+				function () {
+					const currentValue =
+						$( this ).val() +
+						control.container
+							.find( '.dimension-unit option' )
+							.filter( ':selected' )
+							.val();
+					control.container
+						.find( '.dimension-slider' )
+						.val( $( this ).val() );
+					control.setting.set( currentValue );
+				}
+			);
+			control.container.on(
+				'change',
+				'select.dimension-unit',
+				function () {
+					const currentValue =
+						control.container.find( '.dimension-slider' ).val() +
+						control.container
+							.find( '.dimension-unit option' )
+							.filter( ':selected' )
+							.val();
+					control.setting.set( currentValue );
+				}
+			);
 
-			control.container.on( 'click', '.dimension-reset', function( e ) {
+			control.container.on( 'click', '.dimension-reset', function ( e ) {
 				e.preventDefault();
-				const dimensionNumber = $( this ).data( 'default-dimension-number' );
-				const dimensionUnit = $( this ).data( 'default-dimension-unit' );
-				control.container.find( '.dimension-slider' ).val( dimensionNumber );
-				control.container.find( '.dimension-number' ).val( dimensionNumber );
-				control.container.find( '.dimension-unit' ).val( dimensionUnit );
+				const dimensionNumber = $( this ).data(
+					'default-dimension-number'
+				);
+				const dimensionUnit = $( this ).data(
+					'default-dimension-unit'
+				);
+				control.container
+					.find( '.dimension-slider' )
+					.val( dimensionNumber );
+				control.container
+					.find( '.dimension-number' )
+					.val( dimensionNumber );
+				control.container
+					.find( '.dimension-unit' )
+					.val( dimensionUnit );
 				control.setting.set( dimensionNumber + dimensionUnit );
 			} );
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-dropdown-taxonomies' ] = api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-taxonomies' ] =
+		api.nscuSelectControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-dropdown-posts' ] = api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-posts' ] =
+		api.nscuSelectControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-dropdown-google-fonts' ] = api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-google-fonts' ] =
+		api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
-			const id = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
+			const id =
+				'nscu-editor-' +
+				control.id.replace( '[', '' ).replace( ']', '' );
 
 			const choices = control.params.choices;
 
@@ -185,11 +262,15 @@ import './js/color-alpha';
 				} else if ( choices.toolbar === 'minimal' ) {
 					toolbarButtons = 'bold italic link';
 				} else if ( choices.toolbar === 'advance' ) {
-					toolbarButtons = 'formatselect bold italic | bullist numlist | alignleft aligncenter alignright | link';
+					toolbarButtons =
+						'formatselect bold italic | bullist numlist | alignleft aligncenter alignright | link';
 				}
 
 				if ( choices.toolbar === 'custom' ) {
-					toolbarButtons = ( choices.toolbar_buttons !== '' ) ? choices.toolbar_buttons : 'bold italic bullist numlist link';
+					toolbarButtons =
+						choices.toolbar_buttons !== ''
+							? choices.toolbar_buttons
+							: 'bold italic bullist numlist link';
 				}
 			}
 
@@ -199,7 +280,7 @@ import './js/color-alpha';
 				wp_autoresize_on: true,
 				toolbar1: toolbarButtons,
 				setup( editor ) {
-					editor.on( 'change', function() {
+					editor.on( 'change', function () {
 						editor.save();
 						jQuery( `#${ id }` ).trigger( 'change' );
 					} );
@@ -213,7 +294,10 @@ import './js/color-alpha';
 			wp.editor.initialize( id, {
 				tinymce,
 				mediaButtons: choices.media_buttons,
-				quicktags: ( choices.tabs === 'both' || choices.tabs === 'text' ) ? true : false,
+				quicktags:
+					choices.tabs === 'both' || choices.tabs === 'text'
+						? true
+						: false,
 			} );
 		},
 	} );
@@ -234,19 +318,24 @@ import './js/color-alpha';
 
 			const mimeType = fieldUpload.data( 'mime_type' );
 			const uploaderTitle = fieldUpload.data( 'uploader_title' );
-			const uploaderButtonText = fieldUpload.data( 'uploader_button_text' );
+			const uploaderButtonText = fieldUpload.data(
+				'uploader_button_text'
+			);
 
 			// Setup modal.
 			const nscuMediaState = wp.media.controller.Library.extend( {
-				defaults: _.defaults( {
-					id: stateId,
-					title: uploaderTitle,
-					allowLocalEdits: false,
-					displaySettings: false,
-					displayUserSettings: false,
-					multiple: false,
-					library: wp.media.query( { type: mimeType } ),
-				}, wp.media.controller.Library.prototype.defaults ),
+				defaults: _.defaults(
+					{
+						id: stateId,
+						title: uploaderTitle,
+						allowLocalEdits: false,
+						displaySettings: false,
+						displayUserSettings: false,
+						multiple: false,
+						library: wp.media.query( { type: mimeType } ),
+					},
+					wp.media.controller.Library.prototype.defaults
+				),
 			} );
 
 			// Create the media frame.
@@ -255,14 +344,15 @@ import './js/color-alpha';
 					text: uploaderButtonText,
 				},
 				state: stateId,
-				states: [
-					new nscuMediaState(),
-				],
+				states: [ new nscuMediaState() ],
 				multiple: false,
 			} );
 
 			nscuFileFrame.on( 'select', () => {
-				const selectedAttachment = nscuFileFrame.state( stateId ).get( 'selection' ).first();
+				const selectedAttachment = nscuFileFrame
+					.state( stateId )
+					.get( 'selection' )
+					.first();
 
 				const attachmentUrl = selectedAttachment.toJSON().url;
 
@@ -277,19 +367,19 @@ import './js/color-alpha';
 				}
 			} );
 
-			fieldUpload.on( 'click', function( e ) {
+			fieldUpload.on( 'click', function ( e ) {
 				e.preventDefault();
 				nscuFileFrame.open();
 			} );
 
-			fieldRemove.on( 'click', function( e ) {
+			fieldRemove.on( 'click', function ( e ) {
 				e.preventDefault();
 				previewWrap.removeClass( 'preview-on' );
 				fieldInput.val( '' ).trigger( 'change' );
 				fieldRemove.addClass( 'hide' );
 			} );
 
-			fieldInput.on( 'change keyup paste click', function() {
+			fieldInput.on( 'change keyup paste click', function () {
 				const value = jQuery( this ).val();
 				control.setting.set( value );
 
@@ -305,19 +395,31 @@ import './js/color-alpha';
 
 	api.controlConstructor[ 'nscu-radio' ] = api.nscuBasicControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-radio-image' ] = api.nscuBasicControl.extend( {} );
+	api.controlConstructor[ 'nscu-radio-image' ] = api.nscuBasicControl.extend(
+		{}
+	);
 
 	api.controlConstructor[ 'nscu-range' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
-			control.container.on( 'input change', 'input.range-input', function() {
-				control.container.find( '.range-number' ).val( $( this ).val() );
-			} );
-			control.container.on( 'input change', 'input.range-number', function() {
-				control.setting.set( $( this ).val() );
-			} );
-			control.container.on( 'click', '.range-reset', function( e ) {
+			control.container.on(
+				'input change',
+				'input.range-input',
+				function () {
+					control.container
+						.find( '.range-number' )
+						.val( $( this ).val() );
+				}
+			);
+			control.container.on(
+				'input change',
+				'input.range-number',
+				function () {
+					control.setting.set( $( this ).val() );
+				}
+			);
+			control.container.on( 'click', '.range-reset', function ( e ) {
 				e.preventDefault();
 				const resetValue = $( this ).data( 'default' );
 				control.container.find( '.range-number' ).val( resetValue );
@@ -326,7 +428,9 @@ import './js/color-alpha';
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-select' ] = api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-select' ] = api.nscuSelectControl.extend(
+		{}
+	);
 
 	api.controlConstructor[ 'nscu-sortable' ] = api.Control.extend( {
 		ready() {
@@ -335,23 +439,34 @@ import './js/color-alpha';
 			const control = this;
 
 			// Set the sortable container.
-			control.sortableContainer = control.container.find( 'ul.sortable' ).first();
+			control.sortableContainer = control.container
+				.find( 'ul.sortable' )
+				.first();
 
 			// Init sortable.
-			control.sortableContainer.sortable( {
-
-				// Update value when we stop sorting.
-				stop() {
+			control.sortableContainer
+				.sortable( {
+					// Update value when we stop sorting.
+					stop() {
+						control.updateValue();
+					},
+				} )
+				.disableSelection()
+				.find( 'li' )
+				.each( function () {
+					jQuery( this )
+						.find( 'i.visibility' )
+						.click( function () {
+							jQuery( this )
+								.toggleClass( 'dashicons-visibility-faint' )
+								.parents( 'li:eq(0)' )
+								.toggleClass( 'invisible' );
+						} );
+				} )
+				.click( function () {
+					// Update value on click.
 					control.updateValue();
-				},
-			} ).disableSelection().find( 'li' ).each( function() {
-				jQuery( this ).find( 'i.visibility' ).click( function() {
-					jQuery( this ).toggleClass( 'dashicons-visibility-faint' ).parents( 'li:eq(0)' ).toggleClass( 'invisible' );
 				} );
-			} ).click( function() {
-				// Update value on click.
-				control.updateValue();
-			} );
 		},
 
 		// Updates the sorting list.
@@ -361,7 +476,7 @@ import './js/color-alpha';
 			const control = this,
 				newValue = [];
 
-			this.sortableContainer.find( 'li' ).each( function() {
+			this.sortableContainer.find( 'li' ).each( function () {
 				if ( ! jQuery( this ).is( '.invisible' ) ) {
 					newValue.push( jQuery( this ).data( 'value' ) );
 				}
@@ -371,19 +486,25 @@ import './js/color-alpha';
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-switcher' ] = api.nscuCheckboxControl.extend( {} );
+	api.controlConstructor[ 'nscu-switcher' ] = api.nscuCheckboxControl.extend(
+		{}
+	);
 
-	api.controlConstructor[ 'nscu-textarea' ] = api.nscuBasicControl.extend( {} );
+	api.controlConstructor[ 'nscu-textarea' ] = api.nscuBasicControl.extend(
+		{}
+	);
 
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
 			if ( 'off' === control.params.value ) {
-				this.container.find( 'input:checkbox' ).prop( 'checked', false );
+				this.container
+					.find( 'input:checkbox' )
+					.prop( 'checked', false );
 			}
 
-			this.container.on( 'change', 'input:checkbox', function() {
+			this.container.on( 'change', 'input:checkbox', function () {
 				const value = this.checked ? 'on' : '';
 				control.setting.set( value );
 			} );
@@ -401,4 +522,4 @@ import './js/color-alpha';
 	api.sectionConstructor[ 'nscu-button' ] = api.nscuDummySection.extend( {} );
 	api.sectionConstructor[ 'nscu-header' ] = api.nscuDummySection.extend( {} );
 	api.sectionConstructor[ 'nscu-upsell' ] = api.nscuDummySection.extend( {} );
-}( jQuery, wp.customize ) );
+} )( jQuery, wp.customize );
