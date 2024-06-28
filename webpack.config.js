@@ -1,4 +1,5 @@
 const path = require( 'path' );
+
 const CssMinimizerPlugin = require( 'css-minimizer-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const TerserPlugin = require( 'terser-webpack-plugin' );
@@ -25,7 +26,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				options: {
@@ -33,19 +34,11 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.css$/i,
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							postcssOptions: {
-								plugins: [ [ 'postcss-preset-env' ] ],
-							},
-						},
-					},
-					'sass-loader',
+					'postcss-loader',
 				],
 			},
 			{
