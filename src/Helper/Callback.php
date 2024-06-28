@@ -51,19 +51,19 @@ class Callback {
 
 			switch ( $logic['compare'] ) {
 				case '==':
-					$group_status = ( $field_value == $logic['value'] );
+					$group_status = ( $field_value === $logic['value'] );
 					break;
 
 				case '!=':
-					$group_status = ( $field_value != $logic['value'] );
+					$group_status = ( $field_value !== $logic['value'] );
 					break;
 
 				case 'in':
-					$group_status = in_array( $field_value, $logic['value'] );
+					$group_status = in_array( $field_value, $logic['value'], true );
 					break;
 
 				case 'not in':
-					$group_status = ! in_array( $field_value, $logic['value'] );
+					$group_status = ! in_array( $field_value, $logic['value'], true );
 					break;
 
 				default:

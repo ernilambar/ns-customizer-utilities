@@ -97,18 +97,18 @@ class Radio extends Base {
 				<# optionVal = optionArr[1] #>
 
 				<li>
-			  <label>
-				<input
-				  {{{ data.inputAttrs }}}
-				  type="radio"
-				  data-id="{{ data.id }}"
-				  value="{{ optionKey }}"
-				  {{ data.link }}
-				  name="_customize-radio-{{ data.id }}"
-				  <# if ( data.value.toString() === optionKey ) { #> checked<# } #>
-				/>
-				{{ optionVal }}
-			  </label>
+					<label>
+						<input
+							{{{ data.inputAttrs }}}
+							type="radio"
+							data-id="{{ data.id }}"
+							value="{{ optionKey }}"
+							{{ data.link }}
+							name="_customize-radio-{{ data.id }}"
+							<# if ( data.value.toString() === optionKey ) { #> checked<# } #>
+						/>
+						{{ optionVal }}
+					</label>
 				</li>
 		<# } ); #>
 		</ul>
