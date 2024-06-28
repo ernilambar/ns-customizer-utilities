@@ -37,13 +37,9 @@ npm-debug.log
 *.orig
 *.pyc
 *.rej
-*.sass-cache
 *.sw?
 *.vi
 *.zip
-
-# Sass
-.sass-cache/
 
 # Project folders
 assets/controls.asset.php

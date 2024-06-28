@@ -4,6 +4,7 @@ resources/ export-ignore
 .gitattributes export-ignore
 .prettierignore export-ignore
 .prettierrc export-ignore
+postcss.config.cjs export-ignore
 package.json export-ignore
 pnpm-lock.yaml export-ignore
 webpack.config.js export-ignore

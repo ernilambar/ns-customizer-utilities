@@ -1,4 +1,4 @@
-import './sass/controls.scss';
+import './styles/controls.css';
 
 import 'select2';
 import 'flatpickr';

@@ -1,10 +1,13 @@
 @import "select2";
 @import "flatpickr";
-@import "color-alpha";
+@import "color-alpha.css";
 
-$color_primary: #008dd4;
+:root {
+	--nscu-color-base: #008dd4;
+	--nscu-color-upsell: #344860;
+}
 
-/* === Default Select2 === */
+/* Default Select2 */
 .select2-search--dropdown .select2-search__field {
 	padding: 0 4px;
 }
@@ -13,7 +16,7 @@ $color_primary: #008dd4;
 	z-index: 50000000 !important;
 }
 
-/* === Accordion Control === */
+/* Accordion Control */
 .customize-control-nscu-accordion {
 	.customize-control-title {
 		cursor: pointer;
@@ -37,7 +40,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Buttonset Control === */
+/* Buttonset Control */
 .customize-control-nscu-buttonset {
 	input[type="radio"] {
 		clip: rect(1px, 1px, 1px, 1px);
@@ -73,7 +76,7 @@ $color_primary: #008dd4;
 			&:checked {
 				+ .switch-label {
 					border-color: #7e8993;
-					background: $color_primary;
+					background-color: var(--nscu-color-base);
 					color: #fff;
 					z-index: 2;
 				}
@@ -82,7 +85,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Checkbox Control === */
+/* Checkbox Control */
 .customize-control-nscu-checkbox {
 	.field-wrapper {
 		display: flex;
@@ -95,12 +98,12 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Date Time Control === */
+/* Date Time Control */
 .flatpickr-calendar.open {
 	z-index: 50000000 !important;
 }
 
-/* === Dimension Control === */
+/* Dimension Control */
 .customize-control-nscu-dimension {
 	.dimension-wrapper {
 		position: relative;
@@ -144,17 +147,16 @@ $color_primary: #008dd4;
 		z-index: 3;
 
 		i {
-			/* stylelint-disable-line no-descending-specificity */
 			font-size: 12px;
 		}
 
 		&:hover i {
-			color: $color_primary;
+			color: var(--nscu-color-base);
 		}
 	}
 }
 
-/* === Divider Control === */
+/* Divider Control */
 .customize-control-nscu-divider {
 	hr {
 		border: 0;
@@ -163,7 +165,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Editor Control === */
+/* Editor Control */
 .customize-control-nscu-editor {
 	textarea {
 		width: 100%;
@@ -171,7 +173,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Heading Control === */
+/* Heading Control */
 .customize-control-nscu-heading {
 	background-color: #fff;
 	left: -24px;
@@ -195,7 +197,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Media Control === */
+/* Media Control */
 .customize-control-nscu-media {
 	.field-input-wrap {
 		display: flex;
@@ -204,8 +206,8 @@ $color_primary: #008dd4;
 	}
 
 	.media-button {
-		background-color: $color_primary;
-		border: 1px solid $color_primary;
+		background-color: var(--nscu-color-base);
+		border: 1px solid var(--nscu-color-base);
 		color: #fff;
 		border-radius: 4px;
 		text-decoration: none;
@@ -239,7 +241,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Message Control === */
+/* Message Control */
 .customize-control-nscu-message {
 	.customize-control-description {
 		font-style: normal;
@@ -253,7 +255,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Radio Control === */
+/* Radio Control */
 .customize-control-nscu-radio {
 	ul {
 		display: flex;
@@ -272,7 +274,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Radio Image Control === */
+/* Radio Image Control */
 .customize-control-nscu-radio-image {
 	input[type="radio"] {
 		clip: rect(1px, 1px, 1px, 1px);
@@ -321,11 +323,11 @@ $color_primary: #008dd4;
 	}
 
 	input:checked + img {
-		border-color: $color_primary;
+		border-color: var(--nscu-color-base);
 	}
 }
 
-/* === Range Control === */
+/* Range Control */
 .customize-control-nscu-range {
 	.range-wrapper {
 		position: relative;
@@ -372,17 +374,16 @@ $color_primary: #008dd4;
 		z-index: 3;
 
 		i {
-			/* stylelint-disable-line no-descending-specificity */
 			font-size: 12px;
 		}
 
 		&:hover i {
-			color: $color_primary;
+			color: var(--nscu-color-base);
 		}
 	}
 }
 
-/* === Sortable Control === */
+/* Sortable Control */
 .customize-control-nscu-sortable {
 	ul.ui-sortable {
 		cursor: default;
@@ -394,7 +395,7 @@ $color_primary: #008dd4;
 		li {
 			padding: 5px 10px;
 			border: 1px solid #333;
-			background: #fff;
+			background-color: #fff;
 			cursor: move;
 
 			.dashicons.dashicons-menu {
@@ -417,7 +418,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Switcher Control === */
+/* Switcher Control */
 .customize-control-nscu-switcher {
 	.field-wrapper {
 		display: flex;
@@ -459,7 +460,7 @@ $color_primary: #008dd4;
 		}
 
 		input:checked + .field-slider {
-			background-color: $color_primary;
+			background-color: var(--nscu-color-base);
 		}
 
 		input:focus + .field-slider {
@@ -480,7 +481,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Toggle Control === */
+/* Toggle Control */
 .customize-control-nscu-toggle {
 	.field-wrapper {
 		display: flex;
@@ -500,7 +501,6 @@ $color_primary: #008dd4;
 		}
 
 		.field-slider {
-			/* stylelint-disable-line no-descending-specificity */
 			position: absolute;
 			cursor: pointer;
 			top: 0;
@@ -512,7 +512,6 @@ $color_primary: #008dd4;
 		}
 
 		.field-slider::before {
-			/* stylelint-disable-line no-descending-specificity */
 			position: absolute;
 			content: "";
 			height: 16px;
@@ -524,7 +523,7 @@ $color_primary: #008dd4;
 		}
 
 		input:checked + .field-slider {
-			background-color: $color_primary;
+			background-color: var(--nscu-color-base);
 		}
 
 		input:focus + .field-slider {
@@ -545,7 +544,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Textarea Control === */
+/* Textarea Control */
 .customize-control-nscu-textarea {
 	textarea {
 		width: 100%;
@@ -553,7 +552,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Button Section === */
+/* Button Section */
 .control-section-nscu-button {
 	.accordion-section-title {
 		display: flex;
@@ -570,7 +569,7 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Header Section === */
+/* Header Section */
 #customize-controls .control-section-nscu-header {
 	background-color: #eee;
 	text-align: center;
@@ -586,20 +585,19 @@ $color_primary: #008dd4;
 	}
 }
 
-/* === Upsell Section === */
+/* Upsell Section */
 #customize-controls .control-section-nscu-upsell {
-	background-color: #344860;
+	background-color: var(--nscu-color-upsell);
 
 	.accordion-section-title {
-		/* stylelint-disable-line no-descending-specificity */
-		background-color: #344860;
-		border-color: #344860;
+		background-color: var(--nscu-color-upsell);
+		border-color: var(--nscu-color-upsell);
 		user-select: none;
 
 		&:hover,
 		&:focus {
-			background-color: #344860;
-			border-color: #344860;
+			background-color: var(--nscu-color-upsell);
+			border-color: var(--nscu-color-upsell);
 		}
 
 		a {
