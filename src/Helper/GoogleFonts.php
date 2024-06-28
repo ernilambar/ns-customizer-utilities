@@ -19,8 +19,7 @@ class GoogleFonts {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param bool $checked Whether the checkbox is checked.
-	 * @return bool Whether the checkbox is checked.
+	 * @return array Font options.
 	 */
 	public static function get_fonts_options() {
 		$output = array();
@@ -40,7 +39,7 @@ class GoogleFonts {
 	}
 
 	/**
-	 * Return google fonts.
+	 * Return Google fonts.
 	 *
 	 * @since 1.0.0
 	 *
@@ -8606,5 +8605,4 @@ class GoogleFonts {
 			),
 		);
 	}
-
 }
