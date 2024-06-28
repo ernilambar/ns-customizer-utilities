@@ -12,7 +12,7 @@ if ( defined( 'NSCU_VERSION' ) ) {
 }
 
 if ( ! defined( 'NSCU_VERSION' ) ) {
-	define( 'NSCU_VERSION', '1.1.1' );
+	define( 'NSCU_VERSION', '2.0.0' );
 }
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
