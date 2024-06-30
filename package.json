@@ -37,7 +37,7 @@
 		"postcss-import": "^16.1.0",
 		"postcss-loader": "^8.1.1",
 		"postcss-nested": "^6.0.1",
-		"postcss-preset-env": "^9.5.14",
+		"postcss-preset-env": "^9.5.15",
 		"prettier": "npm:wp-prettier@^3.0.3",
 		"style-loader": "^4.0.0",
 		"webpack": "^5.92.1",
@@ -46,7 +46,7 @@
 	"scripts": {
 		"dev": "webpack --watch",
 		"build": "webpack --mode=production --no-devtool",
-		"format": "prettier --write \"resources/**/*.{js,css}\" webpack.config.js postcss.config.cjs *.json",
+		"format": "prettier \"**/*.{cjs,css,js,json}\" --write",
 		"lint-pkg-json": "npmPkgJsonLint ."
 	}
 }

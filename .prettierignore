@@ -1,4 +1,5 @@
-node_modules/
-vendor/
-assets/
+assets
+composer.json
+node_modules
 resources/js/color-alpha.js
+vendor
