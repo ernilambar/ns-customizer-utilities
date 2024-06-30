@@ -17,12 +17,12 @@
 		"url": "https://github.com/ernilambar/ns-customizer-utilities/issues"
 	},
 	"browserslist": "> 1%, not dead",
+	"npmpackagejsonlint": {
+		"extends": "@wordpress/npm-package-json-lint-config"
+	},
 	"dependencies": {
 		"flatpickr": "^4.6.13",
 		"select2": "4.1.0-rc.0"
-	},
-	"npmpackagejsonlint": {
-		"extends": "@wordpress/npm-package-json-lint-config"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.7",
