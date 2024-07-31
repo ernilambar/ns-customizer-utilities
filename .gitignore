@@ -41,7 +41,8 @@ npm-debug.log
 *.vi
 *.zip
 
-# Project folders
+# Project
+composer.lock
 assets/controls.asset.php
 build/
 deploy/
