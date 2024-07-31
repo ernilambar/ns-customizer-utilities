@@ -32,10 +32,7 @@
 	position: relative;
 }
 
-.wp-picker-container
-	.wp-picker-open
-	~ .wp-picker-holder
-	.alpha-color-picker-container {
+.wp-picker-container .wp-picker-open ~ .wp-picker-holder .alpha-color-picker-container {
 	display: block;
 }
 
@@ -154,9 +151,7 @@
 }
 
 @media only screen and (max-width: 782px) {
-	.customize-control-nscu-color
-		.wp-picker-container.wp-picker-active
-		.wp-picker-input-wrap {
+	.customize-control-nscu-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
 		width: 81% !important;
 	}
 }

@@ -18,13 +18,9 @@ import './js/color-alpha';
 		initBaseControl( control ) {
 			control = control || this;
 
-			control.container.on(
-				'change keyup paste click',
-				'input',
-				function () {
-					control.setting.set( jQuery( this ).val() );
-				}
-			);
+			control.container.on( 'change keyup paste click', 'input', function () {
+				control.setting.set( jQuery( this ).val() );
+			} );
 		},
 	} );
 
@@ -71,26 +67,16 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			control.container.on(
-				'click',
-				'.customize-control-title',
-				function () {
-					$( this ).toggleClass( 'acc-active' );
-					control.container
-						.find( '.customize-control-description' )
-						.fadeToggle();
-				}
-			);
+			control.container.on( 'click', '.customize-control-title', function () {
+				$( this ).toggleClass( 'acc-active' );
+				control.container.find( '.customize-control-description' ).fadeToggle();
+			} );
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-buttonset' ] = api.nscuBasicControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-buttonset' ] = api.nscuBasicControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-checkbox' ] = api.nscuCheckboxControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-checkbox-multiple' ] = api.Control.extend( {
 		ready() {
@@ -102,11 +88,7 @@ import './js/color-alpha';
 				let i = 0;
 
 				jQuery.each( control.params.choices, function ( key ) {
-					if (
-						control.container
-							.find( 'input[value="' + key + '"]' )
-							.is( ':checked' )
-					) {
+					if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
 						control.container
 							.find( 'input[value="' + key + '"]' )
 							.parent()
@@ -165,92 +147,52 @@ import './js/color-alpha';
 		ready() {
 			const control = this;
 
-			control.container.on(
-				'input change',
-				'input.dimension-slider',
-				function () {
-					const currentValue =
-						control.container.find( '.dimension-slider' ).val() +
-						control.container
-							.find( '.dimension-unit option' )
-							.filter( ':selected' )
-							.val();
-					control.container
-						.find( '.dimension-number' )
-						.val(
-							control.container.find( '.dimension-slider' ).val()
-						);
-					control.setting.set( currentValue );
-				}
-			);
-			control.container.on(
-				'input change',
-				'input.dimension-number',
-				function () {
-					const currentValue =
-						$( this ).val() +
-						control.container
-							.find( '.dimension-unit option' )
-							.filter( ':selected' )
-							.val();
-					control.container
-						.find( '.dimension-slider' )
-						.val( $( this ).val() );
-					control.setting.set( currentValue );
-				}
-			);
-			control.container.on(
-				'change',
-				'select.dimension-unit',
-				function () {
-					const currentValue =
-						control.container.find( '.dimension-slider' ).val() +
-						control.container
-							.find( '.dimension-unit option' )
-							.filter( ':selected' )
-							.val();
-					control.setting.set( currentValue );
-				}
-			);
+			control.container.on( 'input change', 'input.dimension-slider', function () {
+				const currentValue =
+					control.container.find( '.dimension-slider' ).val() +
+					control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
+				control.container
+					.find( '.dimension-number' )
+					.val( control.container.find( '.dimension-slider' ).val() );
+				control.setting.set( currentValue );
+			} );
+			control.container.on( 'input change', 'input.dimension-number', function () {
+				const currentValue =
+					$( this ).val() +
+					control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
+				control.container.find( '.dimension-slider' ).val( $( this ).val() );
+				control.setting.set( currentValue );
+			} );
+			control.container.on( 'change', 'select.dimension-unit', function () {
+				const currentValue =
+					control.container.find( '.dimension-slider' ).val() +
+					control.container.find( '.dimension-unit option' ).filter( ':selected' ).val();
+				control.setting.set( currentValue );
+			} );
 
 			control.container.on( 'click', '.dimension-reset', function ( e ) {
 				e.preventDefault();
-				const dimensionNumber = $( this ).data(
-					'default-dimension-number'
-				);
-				const dimensionUnit = $( this ).data(
-					'default-dimension-unit'
-				);
-				control.container
-					.find( '.dimension-slider' )
-					.val( dimensionNumber );
-				control.container
-					.find( '.dimension-number' )
-					.val( dimensionNumber );
-				control.container
-					.find( '.dimension-unit' )
-					.val( dimensionUnit );
+				const dimensionNumber = $( this ).data( 'default-dimension-number' );
+				const dimensionUnit = $( this ).data( 'default-dimension-unit' );
+				control.container.find( '.dimension-slider' ).val( dimensionNumber );
+				control.container.find( '.dimension-number' ).val( dimensionNumber );
+				control.container.find( '.dimension-unit' ).val( dimensionUnit );
 				control.setting.set( dimensionNumber + dimensionUnit );
 			} );
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-dropdown-taxonomies' ] =
-		api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-taxonomies' ] = api.nscuSelectControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-dropdown-posts' ] =
-		api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-posts' ] = api.nscuSelectControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-dropdown-google-fonts' ] =
-		api.nscuSelectControl.extend( {} );
+	api.controlConstructor[ 'nscu-dropdown-google-fonts' ] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-editor' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
-			const id =
-				'nscu-editor-' +
-				control.id.replace( '[', '' ).replace( ']', '' );
+			const id = 'nscu-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
 
 			const choices = control.params.choices;
 
@@ -294,10 +236,7 @@ import './js/color-alpha';
 			wp.editor.initialize( id, {
 				tinymce,
 				mediaButtons: choices.media_buttons,
-				quicktags:
-					choices.tabs === 'both' || choices.tabs === 'text'
-						? true
-						: false,
+				quicktags: choices.tabs === 'both' || choices.tabs === 'text' ? true : false,
 			} );
 		},
 	} );
@@ -318,9 +257,7 @@ import './js/color-alpha';
 
 			const mimeType = fieldUpload.data( 'mime_type' );
 			const uploaderTitle = fieldUpload.data( 'uploader_title' );
-			const uploaderButtonText = fieldUpload.data(
-				'uploader_button_text'
-			);
+			const uploaderButtonText = fieldUpload.data( 'uploader_button_text' );
 
 			// Setup modal.
 			const nscuMediaState = wp.media.controller.Library.extend( {
@@ -395,30 +332,18 @@ import './js/color-alpha';
 
 	api.controlConstructor[ 'nscu-radio' ] = api.nscuBasicControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-radio-image' ] = api.nscuBasicControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-radio-image' ] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-range' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
-			control.container.on(
-				'input change',
-				'input.range-input',
-				function () {
-					control.container
-						.find( '.range-number' )
-						.val( $( this ).val() );
-				}
-			);
-			control.container.on(
-				'input change',
-				'input.range-number',
-				function () {
-					control.setting.set( $( this ).val() );
-				}
-			);
+			control.container.on( 'input change', 'input.range-input', function () {
+				control.container.find( '.range-number' ).val( $( this ).val() );
+			} );
+			control.container.on( 'input change', 'input.range-number', function () {
+				control.setting.set( $( this ).val() );
+			} );
 			control.container.on( 'click', '.range-reset', function ( e ) {
 				e.preventDefault();
 				const resetValue = $( this ).data( 'default' );
@@ -428,9 +353,7 @@ import './js/color-alpha';
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-select' ] = api.nscuSelectControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-select' ] = api.nscuSelectControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-sortable' ] = api.Control.extend( {
 		ready() {
@@ -439,9 +362,7 @@ import './js/color-alpha';
 			const control = this;
 
 			// Set the sortable container.
-			control.sortableContainer = control.container
-				.find( 'ul.sortable' )
-				.first();
+			control.sortableContainer = control.container.find( 'ul.sortable' ).first();
 
 			// Init sortable.
 			control.sortableContainer
@@ -486,22 +407,16 @@ import './js/color-alpha';
 		},
 	} );
 
-	api.controlConstructor[ 'nscu-switcher' ] = api.nscuCheckboxControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-switcher' ] = api.nscuCheckboxControl.extend( {} );
 
-	api.controlConstructor[ 'nscu-textarea' ] = api.nscuBasicControl.extend(
-		{}
-	);
+	api.controlConstructor[ 'nscu-textarea' ] = api.nscuBasicControl.extend( {} );
 
 	api.controlConstructor[ 'nscu-toggle' ] = api.Control.extend( {
 		ready() {
 			const control = this;
 
 			if ( 'off' === control.params.value ) {
-				this.container
-					.find( 'input:checkbox' )
-					.prop( 'checked', false );
+				this.container.find( 'input:checkbox' ).prop( 'checked', false );
 			}
 
 			this.container.on( 'change', 'input:checkbox', function () {

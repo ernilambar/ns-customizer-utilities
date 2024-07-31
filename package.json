@@ -46,7 +46,7 @@
 	"scripts": {
 		"dev": "webpack --watch",
 		"build": "webpack --mode=production --no-devtool",
-		"format": "prettier \"**/*.{cjs,css,js,json}\" --write",
+		"format": "prettier \"**/*.{cjs,css,js,json,mjs}\" --write",
 		"lint-pkg-json": "npmPkgJsonLint ."
 	}
 }

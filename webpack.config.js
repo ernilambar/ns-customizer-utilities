@@ -35,11 +35,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/i,
-				use: [
-					MiniCssExtractPlugin.loader,
-					'css-loader',
-					'postcss-loader',
-				],
+				use: [ MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader' ],
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -59,9 +55,6 @@ module.exports = {
 	},
 	plugins: [ new MiniCssExtractPlugin( { filename: '[name].css' } ) ],
 	optimization: {
-		minimizer: [
-			new TerserPlugin( { extractComments: false } ),
-			new CssMinimizerPlugin(),
-		],
+		minimizer: [ new TerserPlugin( { extractComments: false } ), new CssMinimizerPlugin() ],
 	},
 };
