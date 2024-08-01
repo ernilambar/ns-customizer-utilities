@@ -1,7 +1,7 @@
 {
 	"name": "ernilambar/ns-customizer-utilities",
 	"description": "Custom WordPress Customizer Controls",
-	"license": "GPL-2.0-or-later",
+	"license": "MIT",
 	"keywords": [
 		"customizer",
 		"wordpress"
