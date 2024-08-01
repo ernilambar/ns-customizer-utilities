@@ -12,7 +12,7 @@ if ( defined( 'NSCU_VERSION' ) ) {
 }
 
 if ( ! defined( 'NSCU_VERSION' ) ) {
-	define( 'NSCU_VERSION', '2.0.0' );
+	define( 'NSCU_VERSION', '3.0.0' );
 }
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -24,6 +24,7 @@ if ( ! defined( 'NSCU_URL' ) ) {
 }
 
 if ( ! class_exists( Init::class, false ) ) :
+
 	/**
 	 * Init class.
 	 *
