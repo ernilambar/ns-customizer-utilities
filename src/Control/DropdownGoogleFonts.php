@@ -7,7 +7,6 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use Nilambar\CustomizerUtils\Control\Select;
 use Nilambar\CustomizerUtils\Helper\GoogleFonts;
 
 /**

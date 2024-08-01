@@ -7,8 +7,6 @@
 
 namespace Nilambar\CustomizerUtils\Helper;
 
-use Nilambar\CustomizerUtils\Helper\Utils;
-
 /**
  * Sanitize class.
  *
