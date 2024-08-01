@@ -7,8 +7,6 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use Nilambar\CustomizerUtils\Control\Base;
-
 /**
  * Toggle control class.
  *

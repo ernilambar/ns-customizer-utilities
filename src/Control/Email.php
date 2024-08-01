@@ -7,8 +7,6 @@
 
 namespace Nilambar\CustomizerUtils\Control;
 
-use Nilambar\CustomizerUtils\Control\Text;
-
 /**
  * Email control class.
  *
